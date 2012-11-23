@@ -25,6 +25,8 @@ gem "fog"
 
 gem 'activeadmin'
 
+gem 'money-rails'
+
 gem 'rack-cors', :require => 'rack/cors'
 
 group :development do

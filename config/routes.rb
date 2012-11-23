@@ -1,4 +1,7 @@
 Bespeak::Application.routes.draw do
+  resources :course_types
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

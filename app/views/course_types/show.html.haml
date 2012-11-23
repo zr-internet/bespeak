@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @course_type.name
+%p
+  %b Description:
+  = @course_type.description
+%p
+  %b Cost:
+  = @course_type.cost
+
+= link_to 'Edit', edit_course_type_path(@course_type)
+\|
+= link_to 'Back', course_types_path

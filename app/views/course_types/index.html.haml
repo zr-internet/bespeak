@@ -1,0 +1,23 @@
+%h1 Listing course_types
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Cost
+    %th
+    %th
+    %th
+
+  - @course_types.each do |course_type|
+    %tr
+      %td= course_type.name
+      %td= course_type.description
+      %td= course_type.cost
+      %td= link_to 'Show', course_type
+      %td= link_to 'Edit', edit_course_type_path(course_type)
+      %td= link_to 'Destroy', course_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Course type', new_course_type_path

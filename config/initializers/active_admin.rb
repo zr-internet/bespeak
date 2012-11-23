@@ -125,7 +125,6 @@ ActiveAdmin.setup do |config|
   #
   # config.before_filter :do_something_awesome
 
-
   # == Register Stylesheets & Javascripts
   #
   # We recommend using the built in Active Admin layout and loading
@@ -146,4 +145,11 @@ ActiveAdmin.setup do |config|
   #
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
+end
+
+# == Run all actions with the admin role so we can use mass-assignment
+module ActiveAdmin
+	class BaseController
+	  with_role :admin
+	end
 end
