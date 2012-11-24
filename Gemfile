@@ -24,8 +24,10 @@ gem 'thin'
 gem "fog"
 
 gem 'activeadmin'
+gem 'omniauth'
 
 gem 'money-rails'
+gem 'geocoder'
 
 gem 'rack-cors', :require => 'rack/cors'
 

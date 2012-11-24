@@ -128,6 +128,7 @@ GEM
     formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    geocoder (1.1.5)
     gherkin (2.11.5)
       json (>= 1.4.6)
     growl (1.0.3)
@@ -157,6 +158,7 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
+    hashie (1.2.0)
     heroku (2.33.1)
       heroku-api (~> 0.3.6)
       launchy (>= 0.3.2)
@@ -212,6 +214,9 @@ GEM
     net-ssh (2.6.2)
     netrc (0.7.7)
     nokogiri (1.5.5)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
+      rack
     orm_adapter (0.4.0)
     pg (0.14.1)
     pickle (0.4.11)
@@ -341,6 +346,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   foreman
+  geocoder
   growl
   guard
   guard-bundler
@@ -352,6 +358,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   money-rails
+  omniauth
   pg
   pickle
   poltergeist

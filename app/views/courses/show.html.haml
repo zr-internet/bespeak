@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Office:
+  = @course.office_id
+%p
+  %b Course type:
+  = @course.course_type_id
+%p
+  %b Start:
+  = @course.start
+%p
+  %b End:
+  = @course.end
+%p
+  %b Max occupancy:
+  = @course.max_occupancy
+
+= link_to 'Edit', edit_course_path(@course)
+\|
+= link_to 'Back', courses_path

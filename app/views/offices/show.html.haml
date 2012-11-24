@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @office.name
+%p
+  %b Address:
+  = @office.address
+%p
+  %b Latitude:
+  = @office.latitude
+%p
+  %b Longitude:
+  = @office.longitude
+
+= link_to 'Edit', edit_office_path(@office)
+\|
+= link_to 'Back', offices_path
