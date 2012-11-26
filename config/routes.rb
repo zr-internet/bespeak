@@ -1,4 +1,7 @@
 Bespeak::Application.routes.draw do
+  resources :bookings
+
+
   devise_for :customers
 
   resources :courses

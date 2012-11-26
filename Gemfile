@@ -33,7 +33,6 @@ gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem "rails3-generators"
-  gem "heroku"
 
   gem "haml-rails"
   gem "guard"

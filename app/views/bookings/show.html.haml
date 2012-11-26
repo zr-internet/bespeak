@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Course:
+  = @booking.course
+%p
+  %b Customer:
+  = @booking.customer
+%p
+  %b Attendees:
+  = @booking.attendees
+
+= link_to 'Edit', edit_booking_path(@booking)
+\|
+= link_to 'Back', bookings_path
