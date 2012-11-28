@@ -5,4 +5,8 @@ class Office < ActiveRecord::Base
 	after_validation :geocode          # auto-fetch coordinates
 	
 	has_many					:courses
+	
+	def to_s
+		name
+	end
 end
