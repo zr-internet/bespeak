@@ -5,6 +5,8 @@ class Course < ActiveRecord::Base
 	belongs_to :course_type
 	
 	def to_s
-		[course_type.name, office.name, start.strftime("%F - %l:%M %P")].join(", ")
+		[name, office.name, start.strftime("%F - %l:%M %P")].join(", ")
 	end
+	
+	delegate :cost, :cost_cents, :description, :name, :to => :course_type
 end

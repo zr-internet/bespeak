@@ -3,4 +3,14 @@ class Booking < ActiveRecord::Base
 
 	belongs_to			:customer
 	belongs_to			:course
+	
+	monetize :owed_cents
+	def owed_cents
+		attendees * course.cost_cents
+	end
+	
+	monetize :paid_cents
+	def paid_cents
+		0
+	end
 end
