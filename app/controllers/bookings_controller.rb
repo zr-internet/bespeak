@@ -13,7 +13,7 @@ class BookingsController < InheritedResources::Base
 		payment.amount = @booking.owed
 		
 		payment.extend PaymentProcess::Processor
-		payment.token = payment.process(params[:payment_details])
+		payment.process!(params[:payment_details])
 		
 		create!
 	end	
