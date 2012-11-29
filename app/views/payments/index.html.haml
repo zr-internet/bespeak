@@ -1,0 +1,25 @@
+%h1 Listing payments
+
+%table
+  %tr
+    %th Amount cents
+    %th Type
+    %th Token
+    %th Booking
+    %th
+    %th
+    %th
+
+  - @payments.each do |payment|
+    %tr
+      %td= payment.amount_cents
+      %td= payment.type
+      %td= payment.token
+      %td= payment.booking
+      %td= link_to 'Show', payment
+      %td= link_to 'Edit', edit_payment_path(payment)
+      %td= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Payment', new_payment_path

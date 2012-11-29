@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Amount cents:
+  = @payment.amount_cents
+%p
+  %b Type:
+  = @payment.type
+%p
+  %b Token:
+  = @payment.token
+%p
+  %b Booking:
+  = @payment.booking
+
+= link_to 'Edit', edit_payment_path(@payment)
+\|
+= link_to 'Back', payments_path

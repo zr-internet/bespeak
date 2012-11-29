@@ -1,4 +1,7 @@
 Bespeak::Application.routes.draw do
+  resources :payments
+
+
   resources :bookings
 
 

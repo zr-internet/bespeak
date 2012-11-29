@@ -25,6 +25,7 @@ gem "fog"
 
 gem 'activeadmin'
 gem 'omniauth'
+gem "authorize-net", "~> 1.5.2"
 
 gem 'money-rails'
 gem 'geocoder'
