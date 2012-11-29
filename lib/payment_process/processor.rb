@@ -2,8 +2,7 @@ require 'authorize_net'
 
 module PaymentProcess
   module Processor
-  	def process(options)
-			logger.debug options
+  	def process!(options)
   		self.token = nil
   		if self.method == self.class.payment_methods[:cash]
   			self.token = SecureRandom.urlsafe_base64(9)

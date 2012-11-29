@@ -2,10 +2,10 @@ class Payment < ActiveRecord::Base
   belongs_to :booking
   attr_accessible :amount_cents, :token, :method, :booking_id, :as => [:admin, :customer]
 
-	validate	:token, :required => true, :uniqueness => true
-	validate	:method, :required => true
-	validate	:booking, :required => true
-	validate	:amount_cents, :required => true
+	validates	:token, :presence => true, :uniqueness => true
+	validates	:method, :presence => true
+	validates	:booking, :presence => true
+	validates	:amount_cents, :presence => true
 
 	monetize	:amount_cents
 	

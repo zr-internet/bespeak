@@ -5,6 +5,8 @@ class Booking < ActiveRecord::Base
 	belongs_to			:course
 	has_many				:payments
 	
+	validates_associated :payments
+	
 	monetize :owed_cents
 	def owed_cents
 		attendees * course.cost_cents - paid_cents
