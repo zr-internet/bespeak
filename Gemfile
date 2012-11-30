@@ -29,6 +29,7 @@ gem "authorize-net", "~> 1.5.2"
 
 gem 'money-rails'
 gem 'geocoder'
+gem 'rabl'
 
 gem 'rack-cors', :require => 'rack/cors'
 
