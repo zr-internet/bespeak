@@ -4,14 +4,16 @@ class BookingsController < InheritedResources::Base
 	def create
 		params_comb = [:course_id, :attendees, :email, :payment_method, :payment_details, :coupons]
 		customer = Customer.find_or_create_by_email(params[:email])
-		course = Course.first
+		course = Course.find(params[:course_id])
 		
 		@booking = course.bookings.new
 		@booking.customer, @booking.attendees = customer, params[:attendees]
-		payment = @booking.payments.new
+		payment = Payment.new
+		payment.booking = @booking
 		payment.method = params[:payment_method]
 		payment.amount = @booking.owed
 		
+		debugger
 		payment.extend PaymentProcess::Processor
 		payment.process!(params[:payment_details])
 		

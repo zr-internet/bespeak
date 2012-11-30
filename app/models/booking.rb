@@ -3,7 +3,7 @@ class Booking < ActiveRecord::Base
 
 	belongs_to			:customer
 	belongs_to			:course
-	has_many				:payments
+	has_many				:payments, :inverse_of => :booking
 	
 	validates_associated :payments
 	

@@ -1,5 +1,5 @@
 class Payment < ActiveRecord::Base
-  belongs_to :booking
+  belongs_to :booking, :inverse_of => :payments
   attr_accessible :amount_cents, :token, :method, :booking_id, :as => [:admin, :customer]
 
 	validates	:token, :presence => true, :uniqueness => true
