@@ -13,7 +13,6 @@ class BookingsController < InheritedResources::Base
 		payment.method = params[:payment_method]
 		payment.amount = @booking.owed
 		
-		debugger
 		payment.extend PaymentProcess::Processor
 		payment.process!(params[:payment_details])
 		
