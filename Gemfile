@@ -28,6 +28,7 @@ gem 'omniauth'
 gem "authorize-net", "~> 1.5.2"
 
 gem 'money-rails'
+gem 'chronic'
 gem 'geocoder'
 gem 'rabl'
 
