@@ -38,6 +38,7 @@ group :development do
   gem "rails3-generators"
 
   gem "haml-rails"
+	gem 'rb-fsevent', '~> 0.9.1'
   gem "guard"
   gem "guard-bundler"
   gem "guard-rspec"

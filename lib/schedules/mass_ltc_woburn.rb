@@ -5,14 +5,19 @@ module Schedules
 		attr_reader :times
 		attr_reader :duration
 		
-		def initialize(options)
+		def initialize(options = {})
 			@course_type = options[:course_type] || CourseType.where(name: "MA LTC-007").first
 			@office = options[:office] || Office.where(name: "Woburn").first
-			@times = options[:times] || [Chronic.parse("Tuesday 6:30pm"), Chronic.parse("Saturday 9:00am")]
-			@duration = 3.hours + 30.minutes
+			begin
+				Chronic.time_class = @office.time_zone
+				@times = options[:times] || [Chronic.parse("Tuesday 6:30pm"), Chronic.parse("Saturday 9:00am")]
+				@duration = 3.hours + 30.minutes
+			ensure 
+				Chronic.time_class = Time.zone
+			end
 		end
 		
-		def next_course(date = Time.now, count = 1)
+		def next_course(date = Time.zone.now, count = 1)
 			courses = []
 			week_start = date.beginning_of_week(:sunday)
 			while courses.size < count
