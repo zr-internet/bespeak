@@ -6,7 +6,7 @@ ActiveAdmin.register Office do
 			f.input :name
 			f.input :phone
 			f.input :address
-			f.input :time_zone,  :as => :select, :collection => ActiveSupport::TimeZone.us_zones
+			f.input :time_zone, :as => :select, :collection => ActiveSupport::TimeZone.us_zones
 		end
 		f.buttons
 	end
