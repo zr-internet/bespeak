@@ -20,7 +20,6 @@ end
 
 gem "haml"
 gem 'jquery-rails'
-gem 'thin'
 gem "fog"
 
 gem 'activeadmin'
@@ -58,6 +57,7 @@ group :development, :test do
   unless ENV["CI"]
     gem 'debugger'
   end
+	gem 'thin'
 end
 
 group :test do
@@ -71,4 +71,8 @@ group :test do
   gem "email_spec"
   gem "poltergeist"
   gem "vcr"
+end
+
+group :production do
+	gem 'unicorn'
 end

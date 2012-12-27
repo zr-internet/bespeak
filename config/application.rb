@@ -59,5 +59,8 @@ module Bespeak
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+		
+		#http://blog.railsonfire.com/2012/05/06/Unicorn-on-Heroku.html - set logger so it works with unicorn
+		config.logger = Logger.new(STDOUT)
   end
 end
