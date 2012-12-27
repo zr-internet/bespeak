@@ -5,6 +5,9 @@ class Booking < ActiveRecord::Base
 	belongs_to			:course
 	has_many				:payments, :inverse_of => :booking
 	
+	validates	:customer, :presence => true
+	validates	:course, :presence => true
+	
 	validates_associated :payments
 	
 	monetize :owed_cents

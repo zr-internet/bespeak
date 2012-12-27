@@ -25,7 +25,8 @@ module Bespeak
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
+		config.active_record.observers = :booking_observer
+		
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Eastern Time (US & Canada)'
@@ -59,8 +60,5 @@ module Bespeak
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-		
-		#http://blog.railsonfire.com/2012/05/06/Unicorn-on-Heroku.html - set logger so it works with unicorn
-		config.logger = Logger.new(STDOUT)
   end
 end

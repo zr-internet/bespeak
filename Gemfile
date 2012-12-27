@@ -42,7 +42,6 @@ group :development do
   gem "guard-bundler"
   gem "guard-rspec"
   gem "guard-spork"
-  gem "guard-cucumber"
   gem "rails-footnotes"
   gem 'quiet_assets'
 end
@@ -61,9 +60,9 @@ group :development, :test do
 end
 
 group :test do
-  gem "cucumber-rails"
   gem "capybara"
   gem "database_cleaner"
+	gem "no_peeping_toms", "~> 2.1.3"
   gem "pickle"
   gem "bourne"
   gem "timecop"

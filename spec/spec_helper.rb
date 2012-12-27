@@ -9,8 +9,11 @@ Spork.prefork do
 	require 'debugger' unless ENV["CI"]
 
   RSpec.configure do |config|
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
 	  config.treat_symbols_as_metadata_keys_with_true_values = true
+		config.before(:suite) do
+			ActiveRecord::Observer.disable_observers
+		end
   end
   
 end
