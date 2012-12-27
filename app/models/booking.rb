@@ -16,4 +16,8 @@ class Booking < ActiveRecord::Base
 	def paid_cents
 		payments.sum(:amount_cents)
 	end
+	
+	delegate :email, :to => :customer, :prefix => true, :allow_nil => true
+	delegate :name, :time, :address, :to => :course, :prefix => true, :allow_nil => true
+	delegate :office_name, :to => :course, :prefix => false, :allow_nil => true
 end

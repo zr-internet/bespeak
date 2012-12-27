@@ -11,6 +11,8 @@ class Course < ActiveRecord::Base
 	end
 	
 	delegate :cost, :cost_cents, :description, :name, :to => :course_type
+	delegate :address, :to => :office
+	delegate :name, :to => :office, :prefix => true, :allow_nil => true
 	
 	scope :upcoming, lambda { where('start >= ?', Time.now) }
 	# TODO: Replace with code like: http://blog.donwilson.net/2011/11/constructing-a-less-than-simple-query-with-rails-and-arel/
