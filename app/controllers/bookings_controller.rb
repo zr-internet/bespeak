@@ -8,8 +8,7 @@ class BookingsController < InheritedResources::Base
 		
 		@booking = course.bookings.new
 		@booking.customer, @booking.attendees = customer, params[:attendees]
-		payment = Payment.new
-		payment.booking = @booking
+		payment = @booking.payments.build
 		payment.method = params[:payment_method]
 		payment.amount = @booking.owed
 		

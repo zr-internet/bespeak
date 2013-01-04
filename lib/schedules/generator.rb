@@ -1,3 +1,9 @@
+# 1.9.3-p327 :006 > s = Schedules::Generator.new(timezone: o.time_zone)
+# => #<Schedules::Generator:0x007fa81c627f70 @timezone=(GMT-05:00) Eastern Time (US & Canada)> 
+# 1.9.3-p327 :007 > p = "Tuesday at 6:30"
+# => "Tuesday at 6:30" 
+# 1.9.3-p327 :008 > s.times(pattern: p, count: 8)
+# => [Tue, 08 Jan 2013 06:30:00 EST -05:00, Tue, 15 Jan 2013 06:30:00 EST -05:00, Tue, 22 Jan 2013 06:30:00 EST -05:00, Tue, 29 Jan 2013 06:30:00 EST -05:00, Tue, 05 Feb 2013 06:30:00 EST -05:00, Tue, 12 Feb 2013 06:30:00 EST -05:00, Tue, 19 Feb 2013 06:30:00 EST -05:00, Tue, 26 Feb 2013 06:30:00 EST -05:00]
 module Schedules
 	class Generator
 		attr_reader :timezone

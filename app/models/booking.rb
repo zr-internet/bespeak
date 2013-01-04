@@ -1,3 +1,5 @@
+require 'validates_associated_with_error_messages'
+
 class Booking < ActiveRecord::Base
   attr_accessible	:attendees, :course_id, :customer_id, :as => [:customer, :admin]
 
@@ -8,7 +10,7 @@ class Booking < ActiveRecord::Base
 	validates	:customer, :presence => true
 	validates	:course, :presence => true
 	
-	validates_associated :payments
+	validates_associated_with_error_messages :payments
 	
 	monetize :owed_cents
 	def owed_cents

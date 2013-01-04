@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        payment:
+          attributes:
+            token:
+              blank: "The credit card failed to process"
