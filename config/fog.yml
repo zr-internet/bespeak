@@ -1,0 +1,21 @@
+development: 
+  client_directory: dev-assets-bespeak
+  client_host: http://dev-assets-bespeak.s3.amazonaws.com
+  asset_directory: dev-assets-bespeak
+  asset_host: http://dev-assets-bespeak.s3.amazonaws.com
+  public: true
+  
+test: 
+  client_directory: test-assets-bespeak
+  client_host: http://test-assets-bespeak.s3.amazonaws.com
+  asset_directory: test-assets-bespeak
+  asset_host: http://test-assets-bespeak.s3.amazonaws.com
+  public: true
+
+
+production: 
+  client_directory: assets-bespeak
+  client_host: http://d1rye0j08gxig9.cloudfront.net	
+  asset_directory: assets-bespeak
+  asset_host: http://d1rye0j08gxig9.cloudfront.net
+  public: true

@@ -58,6 +58,11 @@ module Bespeak
     # Enable the asset pipeline
     config.assets.enabled = true
 
+		# Support asset precompilation for heroku
+		config.assets.initialize_on_precompile = false
+		config.assets.precompile += %w( active_admin.js active_admin.css )
+
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
