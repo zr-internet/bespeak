@@ -23,6 +23,6 @@ class Booking < ActiveRecord::Base
 	end
 	
 	delegate :email, :to => :customer, :prefix => true, :allow_nil => true
-	delegate :name, :start, :address, :to => :course, :prefix => true, :allow_nil => true
+	delegate :name, :start_at, :end_at, :address, :to => :course, :prefix => true, :allow_nil => true
 	delegate :office_name, :to => :course, :prefix => false, :allow_nil => true
 end

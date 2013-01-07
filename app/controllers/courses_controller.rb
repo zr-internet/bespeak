@@ -3,6 +3,6 @@ class CoursesController < InheritedResources::Base
 	
   protected
     def collection
-      @courses ||= end_of_association_chain.upcoming.available.order(:start)
+      @courses ||= end_of_association_chain.upcoming.available.order(:start_at)
     end
 end

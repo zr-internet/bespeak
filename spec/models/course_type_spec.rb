@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe CourseType do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it { should respond_to :name }
+	it { should respond_to :description }
+	it { should respond_to :cost }
 end

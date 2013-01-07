@@ -3,6 +3,6 @@ class CustomerMailer < ActionMailer::Base
 
 	def booking_confirmation(booking)
 		@booking = booking
-		mail(:to => booking.customer_email, :subject => "MA Gun Safety Class Registration" )
+		mail(:to => booking.customer_email, :subject => "MA Gun Safety #{@booking.course_name} Registration" )
 	end
 end

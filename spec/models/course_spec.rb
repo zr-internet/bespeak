@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Course do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it { should respond_to :start_at }
+	it { should respond_to :end_at }
+	it { should respond_to :address }
+	it { should respond_to :name }
+	it { should respond_to :office_name }
+	
+	it { should belong_to :office }
+	it { should belong_to :course_type }
 end
