@@ -1,6 +1,6 @@
 ActiveAdmin.register Course do
 	index do
-		column "start", :sortable => :start do |course|	 course.start.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)") end
+		column "start_at", :sortable => :start_at do |course|	 course.start_at.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)") end
 		column :name
 		column "office", :sortable => :office do |course| 
 			link_to course.office.name, admin_office_path(course.office) 
@@ -17,11 +17,11 @@ ActiveAdmin.register Course do
 		attributes_table do
 			row :course_type
 			row :office
-			row :start do
-				course.start.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)")
+			row :start_at do
+				course.start_at.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)")
 			end
-			row :end do
-				course.end.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)")
+			row :end_at do
+				course.end_at.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)")
 			end
 			row :max_occupancy
 		end
@@ -32,8 +32,8 @@ ActiveAdmin.register Course do
 		f.inputs "Course Details" do			 
 			f.input :course_type									
 			f.input :office						 
-			f.input :start, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "Start (in office local time)"
-			f.input :end, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "End (in office local time)"
+			f.input :start_at, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "Start (in office local time)"
+			f.input :end_at, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "End (in office local time)"
 			f.input :max_occupancy
 		end																
 		f.buttons													
@@ -42,8 +42,8 @@ ActiveAdmin.register Course do
 	controller do
 		def create
 			timezone = Office.find(params[:course][:office_id]).time_zone
-			params[:course][:start] = timezone.parse(params[:course][:start])
-			params[:course][:end] = timezone.parse(params[:course][:end])
+			params[:course][:start_at] = timezone.parse(params[:course][:start_at])
+			params[:course][:end_at] = timezone.parse(params[:course][:end_at])
 			super
 		end
 	end
