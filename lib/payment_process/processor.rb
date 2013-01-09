@@ -7,6 +7,7 @@ module PaymentProcess
   		if self.cash?
   			self.token = SecureRandom.urlsafe_base64(9)
   		elsif self.credit_card?
+				debugger
 				if Rails.env.production? 
 					gateway = :production
 				else

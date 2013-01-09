@@ -10,7 +10,8 @@ class BookingsController < InheritedResources::Base
 		@booking.customer, @booking.attendees = customer, params[:attendees]
 		payment = @booking.payments.build
 		payment.method = params[:payment_method]
-		payment.amount = @booking.owed
+
+		payment.amount = @booking.owed unless payment.cash? 
 		
 		payment.extend PaymentProcess::Processor
 		payment.process!(params[:payment_details])

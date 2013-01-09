@@ -4,5 +4,9 @@ FactoryGirl.define do
 		office
 		start_at					Time.utc(2012,1,1,10)
 		end_at						Time.utc(2012,1,1,12)
+		
+		factory :open_course do
+			max_occupancy		20
+		end
   end
 end

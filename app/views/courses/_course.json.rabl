@@ -1,5 +1,5 @@
 object @course
 
 attributes :id, :course_type_id, :office_id
-node(:start) { |c| c.start.to_i }
-node(:end) { |c| c.end.to_i }
+node(:start_at) { |c| c.start_at.to_i }
+node(:end_at) { |c| c.end_at.to_i }

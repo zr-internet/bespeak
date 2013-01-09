@@ -7,7 +7,11 @@ describe Booking do
 	it { should respond_to :course_name }
 	it { should respond_to :course_start_at }
 	it { should respond_to :course_address }
+	it { should respond_to :course_cost }
 	it { should respond_to :office_name }
 	
 	it { should validate_presence_of :customer }
+	
+	it { should have_many :payments }
+	it { should belong_to :customer }
 end
