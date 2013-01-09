@@ -90,9 +90,7 @@ describe "Bookings" do
 							"payment_method"=>"cash", 
 							"name"=>name, 
 							"payment_details"=> { },
-							"coupons" => [
-								{ "coupon_code" => "a valid free course coupon code" }
-							]
+							"coupon" => "a valid free course coupon code"
 						}
 					}
 				

@@ -10,13 +10,13 @@ class BookingsController < InheritedResources::Base
 		@booking.customer, @booking.attendees = customer, params[:attendees]
 		
 		#process coupons prior to processing any payments
-		coupons = params[:coupons] || []
-		coupons.each do |coupon|
+
+		if params[:coupon].present?
 			payment = @booking.payments.build
 			payment.method = "coupon"
 			payment.extend PaymentProcess::Processor
 			
-			payment.process!(coupon)
+			payment.process!(coupon_code: params[:coupon])
 		end
 		
 		payment = @booking.payments.build
