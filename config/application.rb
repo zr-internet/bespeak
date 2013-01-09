@@ -61,7 +61,7 @@ module Bespeak
 
 		# Support asset precompilation for heroku
 		config.assets.initialize_on_precompile = false
-		config.assets.precompile += %w( active_admin.js active_admin.css )
+		config.assets.precompile += %w(active_admin.css active_admin/print.css active_admin.js)
 
 
     # Version of your assets, change this if you want to expire all your assets
