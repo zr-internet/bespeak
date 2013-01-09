@@ -8,6 +8,17 @@ class BookingsController < InheritedResources::Base
 		
 		@booking = course.bookings.new
 		@booking.customer, @booking.attendees = customer, params[:attendees]
+		
+		#process coupons prior to processing any payments
+		coupons = params[:coupons] || []
+		coupons.each do |coupon|
+			payment = @booking.payments.build
+			payment.method = "coupon"
+			payment.extend PaymentProcess::Processor
+			
+			payment.process!(coupon)
+		end
+		
 		payment = @booking.payments.build
 		payment.method = params[:payment_method]
 

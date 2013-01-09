@@ -114,12 +114,12 @@ describe "Bookings" do
 						}.to change {customer.bookings.count }.by(1)
 					end
 					
-					it "should create a payment for the customer" do
+					it "should create a coupon payment for the customer" do
 						customer = Customer.find_or_create_by_email(email)
 
 					  expect {
 							post bookings_path(:format => :json), params
-						}.to change {customer.payments.count }.by(1)
+						}.to change { customer.reload.payments.coupons.count }.by(1)
 					end
 				end
 			end

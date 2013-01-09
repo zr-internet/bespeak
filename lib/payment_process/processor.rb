@@ -4,10 +4,11 @@ module PaymentProcess
   module Processor
   	def process!(options)
   		self.token = nil
-  		if self.cash?
-  			self.token = SecureRandom.urlsafe_base64(9)
-  		elsif self.credit_card?
-				debugger
+
+			case self.method
+			when self.class.payment_methods[:cash]
+				self.token = SecureRandom.urlsafe_base64(9)
+			when self.class.payment_methods[:credit_card]
 				if Rails.env.production? 
 					gateway = :production
 				else
@@ -28,8 +29,10 @@ module PaymentProcess
   			else
 					logger.debug response.fields[:response_reason_text]
   			  self.errors.add(:token, response.fields[:response_reason_text])
-					
   			end
+			when self.class.payment_methods[:coupon]
+				self.token = options[:coupon_code]
+				self.amount = self.booking.course_cost
   		else
   			raise NotImplementedError
   		end
