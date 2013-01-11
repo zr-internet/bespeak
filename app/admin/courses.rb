@@ -1,4 +1,5 @@
 ActiveAdmin.register Course do
+	config.sort_order = "start_at_asc"
 	index do
 		column "start_at", :sortable => :start_at do |course|	 course.start_at.in_time_zone(course.office.time_zone).strftime("%B %d, %Y %H:%M (%Z)") end
 		column :name
