@@ -30,6 +30,7 @@ gem 'money-rails'
 gem 'chronic'
 gem 'geocoder'
 gem 'rabl'
+gem 'honeybadger'
 
 gem 'rack-cors', :require => 'rack/cors'
 
