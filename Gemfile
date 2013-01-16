@@ -31,6 +31,7 @@ gem 'chronic'
 gem 'geocoder'
 gem 'rabl'
 gem 'honeybadger'
+gem "high_voltage"
 
 gem 'rack-cors', :require => 'rack/cors'
 
