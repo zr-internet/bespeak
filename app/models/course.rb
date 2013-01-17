@@ -26,7 +26,7 @@ class Course < ActiveRecord::Base
 		"course-available-" + Digest::MD5.hexdigest("#{Course.maximum(:updated_at).try(:to_i)}-#{Course.count}-#{upcoming.minimum(:start_at).try(:to_i)}-#{Booking.minimum(:updated_at).try(:to_i)}-#{Booking.count}")
 	end
 	
-	def self.cache_key
-		Digest::MD5.hexdigest "#{scoped.maximum(:updated_at).try(:to_i)}-#{scoped.count}"
+	def cache_key
+		"course-" + Digest::MD5.hexdigest("#{id}-#{updated_at.try(:to_i)}-#{start_at.try(:to_i)}-#{end_at.try(:to_i)}-#{max_occupancy}-#{course_type_id}-#{office_id}")
 	end
 end

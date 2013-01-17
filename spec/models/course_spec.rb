@@ -50,10 +50,11 @@ describe Course do
 						FactoryGirl.create(:booking, course: course)
 					}.to change { Course.available_key }
 				end
-				it "should change a course is updated" do
-					c = FactoryGirl.create(:course, updated_at: Time.now - 1.day)
+				it "should change when a course is updated" do
+					c = FactoryGirl.create(:course, max_occupancy: 1, updated_at: Time.now - 1.day)
 					expect {
-						c.touch
+						c.updated_at = Course.maximum(:updated_at) + 1.second
+						c.save
 					}.to change { Course.available_key }
 				end
 			end
