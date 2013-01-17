@@ -14,4 +14,10 @@ describe Booking do
 	
 	it { should have_many :payments }
 	it { should belong_to :customer }
+	
+	context "caching" do
+		context "#cache_key" do
+			it { should respond_to :cache_key }
+		end
+	end
 end

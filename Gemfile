@@ -32,8 +32,10 @@ gem 'geocoder'
 gem 'rabl'
 gem 'honeybadger'
 gem "high_voltage"
+gem "dalli"
 
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cache'
 
 group :development do
   gem "rails3-generators"

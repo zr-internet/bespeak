@@ -16,5 +16,17 @@ class Course < ActiveRecord::Base
 	
 	scope :upcoming, lambda { where('start_at >= ?', Time.zone.now) }
 	# TODO: Replace with code like: http://blog.donwilson.net/2011/11/constructing-a-less-than-simple-query-with-rails-and-arel/
-	scope :available, -> { joins("LEFT OUTER JOIN bookings ON bookings.course_id = courses.id").group("courses.id, courses.course_type_id, courses.start_at, courses.end_at, courses.office_id, courses.max_occupancy, courses.created_at, courses.updated_at").having("COALESCE(SUM(bookings.attendees), 0) < courses.max_occupancy").select("courses.id, courses.course_type_id, courses.start_at, courses.end_at, courses.office_id, courses.max_occupancy, courses.created_at, courses.updated_at, SUM(bookings.attendees)") }
+	def self.available
+		Rails.cache.fetch available_key do
+			joins("LEFT OUTER JOIN bookings ON bookings.course_id = courses.id").group("courses.id, courses.course_type_id, courses.start_at, courses.end_at, courses.office_id, courses.max_occupancy, courses.created_at, courses.updated_at").having("COALESCE(SUM(bookings.attendees), 0) < courses.max_occupancy").select("courses.id, courses.course_type_id, courses.start_at, courses.end_at, courses.office_id, courses.max_occupancy, courses.created_at, courses.updated_at, SUM(bookings.attendees)")
+		end
+	end
+	
+	def self.available_key
+		"course-available-" + Digest::MD5.hexdigest("#{Course.maximum(:updated_at).try(:to_i)}-#{Course.count}-#{upcoming.minimum(:start_at).try(:to_i)}-#{Booking.minimum(:updated_at).try(:to_i)}-#{Booking.count}")
+	end
+	
+	def self.cache_key
+		Digest::MD5.hexdigest "#{scoped.maximum(:updated_at).try(:to_i)}-#{scoped.count}"
+	end
 end
