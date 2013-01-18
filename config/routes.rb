@@ -7,7 +7,11 @@ Bespeak::Application.routes.draw do
 
   devise_for :customers
 
-  resources :courses
+  resources :courses do
+		collection do
+			get 'available'
+		end
+	end
 
 
   resources :offices

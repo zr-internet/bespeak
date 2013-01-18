@@ -7,6 +7,10 @@ describe CoursesController do
       get("/courses").should route_to("courses#index")
     end
 
+		it "routes to #available" do
+			get("/courses/available.json").should route_to({action: "available", controller: "courses", format: "json"})
+		end
+
     it "routes to #new" do
       get("/courses/new").should route_to("courses#new")
     end
