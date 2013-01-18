@@ -26,6 +26,8 @@ gem 'activeadmin'
 gem 'omniauth'
 gem "authorize-net", "~> 1.5.2"
 
+gem 'responders'
+
 gem 'money-rails'
 gem 'chronic'
 gem 'geocoder'

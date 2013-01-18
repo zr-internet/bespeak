@@ -68,4 +68,10 @@ Bespeak::Application.configure do
 
 	#http://blog.railsonfire.com/2012/05/06/Unicorn-on-Heroku.html - set logger so it works with unicorn
 	config.logger = Logger.new(STDOUT)
+	
+	#https://github.com/heroku/rack-cache-demo/blob/master/config/environments/production.rb
+	config.action_dispatch.rack_cache = {
+														:metastore		=> Dalli::Client.new,
+														:entitystore	=> 'file:tmp/cache/rack/body',
+														:allow_reload => false }
 end
