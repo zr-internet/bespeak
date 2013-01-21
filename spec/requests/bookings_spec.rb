@@ -17,6 +17,23 @@ describe "Bookings" do
 		context "with an open course" do
 			let!(:course) { FactoryGirl.create(:open_course) }
 			
+			context "with text/plain post" do
+			  let(:params) {
+					URI.encode_www_form({
+						"email"=>email, 
+						"attendees"=>"1", 
+						"course_id"=>"#{course.id}", 
+						"payment_method"=>"cash", 
+						"name"=>name, 
+						"payment_details"=> { }
+					})
+				}
+			
+				it "should return a success code" do
+					post bookings_path(:format => :json), params
+					response.should be_success
+				end
+			end
 			context "with valid params" do
 				context "with cash payment" do
 				  let(:params) {

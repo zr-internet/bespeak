@@ -1,5 +1,8 @@
+require 'plain_text_params_filter'
+
 class BookingsController < InheritedResources::Base
 	respond_to :json, :only => :create
+	before_filter PlainTextParamsFilter, only: :create
 	
 	def create
 		params_comb = [:course_id, :attendees, :email, :payment_method, :payment_details, :coupons]
