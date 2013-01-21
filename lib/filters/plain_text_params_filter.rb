@@ -1,3 +1,4 @@
+require 'rack/utils'
 require 'uri'
 
 class PlainTextParamsFilter
@@ -7,7 +8,7 @@ class PlainTextParamsFilter
 	def self.filter(controller)
 		return true unless controller.request.content_type == TEXT_PLAIN and controller.request.raw_post.present?
 		
-		decoded_params = URI::decode_www_form controller.request.raw_post
-		controller.params.merge! Hash[decoded_params]
+		decoded_params = Rack::Utils.parse_nested_query(controller.request.raw_post)
+		controller.params.merge! decoded_params
 	end
 end
