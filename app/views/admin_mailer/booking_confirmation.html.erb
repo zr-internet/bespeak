@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			body { font-family: arial, helvetica, sans-serif; }
+		</style>
+	</head>
+	<body>
+		<h1>
+			We've got bookings for <%= @booking.course_name %> course in <%= @booking.office_name %>.
+		</h1>
+		<p>
+			Booking course for:<strong><%= @booking.course.start_at.in_time_zone @booking.course.office.time_zone %> with <%= pluralize(@booking.attendees, 'person') %></strong>
+		</p>
+		<p>
+			The customer has paid <%= @booking.paid %> and owes <%= @booking.owed %>
+		</p>
+	</body>
+</html>
