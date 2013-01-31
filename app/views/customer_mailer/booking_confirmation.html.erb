@@ -10,7 +10,7 @@
 			Thank you for signing up for your <%= @booking.course_name %> course in <%= @booking.office_name %>.
 		</h1>
 		<p>
-			You are currently registered for:<strong><%= @booking.course.start_at.in_time_zone(@booking.course.office.time_zone).time.to_formatted_s(:long_ordinal) %></strong>
+			You are currently registered for:<strong><%= @booking.course.start_at.in_time_zone(@booking.course.office.time_zone).to_formatted_s(:long_ordinal) %></strong>
 		</p>
 		<p>
 			<strong>Location: <%= @booking.course_address %></strong>
