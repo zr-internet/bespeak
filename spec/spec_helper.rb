@@ -6,6 +6,7 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+	require 'draper/test/rspec_integration'
 	require 'debugger' unless ENV["CI"]
 
   RSpec.configure do |config|
@@ -22,6 +23,10 @@ Spork.each_run do
 	# reload all the models
   Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
     load model
+  end
+	# reload all the decorators
+  Dir["#{Rails.root}/app/decorators/**/*.rb"].each do |decorator|
+    load decorator
   end
 	# reload all the helpers
   Dir["#{Rails.root}/app/helpers/**/*.rb"].each do |helper|

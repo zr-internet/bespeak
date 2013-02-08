@@ -13,6 +13,67 @@ describe Course do
 	it { should belong_to :office }
 	it { should belong_to :course_type }
 	
+	describe "#attendee_count" do
+		context "with no bookings" do
+			subject { FactoryGirl.build(:course) }
+			it "should be 0" do
+				subject.attendee_count.should == 0
+			end		  
+		end
+		context "with a single booking for 1 person" do
+		  subject { FactoryGirl.create(:booking, attendees: 1).course }
+			it "should be 1" do
+				subject.attendee_count.should == 1
+			end
+		end
+		context "with a single booking for 2 people" do
+		  subject { FactoryGirl.create(:booking, attendees: 2).course }
+			it "should be 2" do
+				subject.attendee_count.should == 2
+			end
+		end
+		context "with a 2 bookings each for 1 person" do
+		  subject { FactoryGirl.create(:course).tap do |c| FactoryGirl.create_list(:booking, 2, course: c) end }
+			
+			it "should be 2" do
+				subject.attendee_count.should == 2
+			end
+		end
+	end
+	
+	describe "#open?" do
+		it { should respond_to :open?}
+		context "with course in the future" do
+		  subject { FactoryGirl.build(:course, start_at: Time.now + 1.second) }
+			context "with attendee count < max_occupancy" do
+			  before(:each) do 
+					subject.max_occupancy = subject.attendee_count + 1
+				end
+				
+				it "should return true" do
+					subject.should be_open
+				end
+			end
+			context "with attendee count >= max_occupancy" do
+				it "should return false" do
+					subject.should_not be_open
+				end
+			end
+		end
+		context "with course in the past or now" do
+			subject { FactoryGirl.build(:course, start_at: Time.now) }
+			it "should return false" do
+			  subject.should_not be_open
+			end
+		end
+	end
+	
+	describe "#closed?" do
+		it "should return the opposite of #open?" do
+			subject.closed?.should == !subject.open?
+		end
+	end
+	
 	describe "scopes" do
 		subject { Course }
 		it { should respond_to :available }

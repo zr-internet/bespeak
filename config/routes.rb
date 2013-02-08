@@ -12,6 +12,9 @@ Bespeak::Application.routes.draw do
 			get 'available'
 		end
 	end
+	
+	match	'/book' => 'courses#book', :as => 'book'
+	match	'/book/payment' => 'courses#payment', :as => 'payment_book'
 
 
   resources :offices

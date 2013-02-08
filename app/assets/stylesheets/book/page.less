@@ -1,0 +1,103 @@
+#badge {margin-left: 10px; }
+
+.address { font-size:12px; line-height:13px; width: 170px; }
+.phone { font-size:32px; font-weight:bold; color:#407700; }
+.center { text-align: center; margin: 0 auto; }
+.indent { padding-left: 1em; }
+
+#rghtCap, #rghtCap #pipelist {
+	width: auto;
+	margin: 0 20px 0 0;
+}
+
+#masthead { height: 110px;}
+.banner { height: auto; }
+
+#mh_lft { width: 450px !important; }
+  #mh_lft > .logo { width: 100% !important; }
+
+#location { width: auto; margin-left: 0px; margin-top: 10px; float: right; }
+  #location > div { padding-left:10px; float:right; }
+  #location > div > p { margin:0 0 10px 0; font-weight:bold; font-style:italic }
+  
+#location-map { width:183px; height:84px; float:right; }
+
+.right { float: right; }
+.left { float: left; }
+.small { font-size: .8em; font-weight: light; }
+
+.optional { display: none; }
+
+#booking, #payment { 
+  overflow:hidden; text-align: left;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  h1, h2, h3, h4, h5, h6, p  { text-align: left; }
+  h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+  
+  .intro { 
+    margin-bottom: 20px; 
+    
+    header .progress {
+			a { color: white; text-decoration: none; font-weight: normal; line-height: 20px; }
+    }
+  }
+  
+	#filters > .btn-group > button { 
+		&:before { content: ' '; width: 14px; display: inline-block; }
+		&.active:before { content: ''; width: 0; }
+	}
+
+  #course-list {
+    h1 { margin-bottom: 0em; }
+
+		table#courses {
+			caption { display: none; }
+		}
+  }
+}
+
+.tooltip { width: 200px; background-color: rgba(255,255,255, .8); border: 1px solid #888; position: fixed; top: 50%; left: 50%; }
+
+label[for="coupon"] input {
+  margin-left:10px;
+}
+
+
+#payment {
+  #payment-details { margin: 20px 10px; }
+  .well.details { margin: 10px 10px 10px 0; }
+  #cash-details { display: none; }
+  fieldset.cta { border-top: dashed 1px #AAA; margin-top: 20px; padding-top: 20px; }
+	.coupon { 
+		margin: 10px 0;
+		font-weight: bold;
+		.discount { 
+			float: right;
+			&:before { content: "$"; } 
+		}
+	}
+}
+
+#bill {
+  #grand-total {
+    float: right;
+    width: 195px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  a.small { left: 10px; position: relative; }
+  #coupon-form { display: none; width: 680px; margin-top: 10px; }
+}
+
+.grandTotal {
+  &:before { content: "$"; }
+}
+
+.footList ul {
+	color: #333;
+	li.active { border-right: 1px solid #333; padding: 0em 0.3em; }
+	li a { border-right-color: #03C; }
+}
+

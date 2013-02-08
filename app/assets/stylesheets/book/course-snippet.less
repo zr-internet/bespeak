@@ -1,0 +1,26 @@
+// CSS Reset
+
+.course {
+	font-size: 1.1em;
+	cursor: pointer;
+	
+  .name {
+		color: @mgsOrange;
+		font-weight: bold;
+  }
+  
+  .office { display:block; }
+  
+
+  .date-info {
+    display: block;
+    .date { color: #black; font-weight: bold;  }
+    .start { color: #333; }
+    .end { color: #333; }
+  }  
+  .cost { 
+    color: #666;    
+    &:before { content: "$"; }
+  }
+}
+

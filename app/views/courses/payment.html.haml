@@ -1,0 +1,109 @@
+#payment
+  %section.intro.row-fluid
+    %header.row-fluid
+      .progress
+        %a.bar.bar-success{:href => "./", :style => "width:34%;"} Course Selection
+        .bar.bar-success.active{:style => "width: 33%;"} Payment
+        .bar{:style => "width: 33%;"} Confirmation
+      %h1 Selected Course
+    %section#booking-list.row-fluid
+      #bookings.bookings.span12
+        %section.selected.booking{data: {course_id: @course.id, course_type_id: @course.course_type.id}}
+          .course-details
+            .name
+              %h2= @course.name
+            .office= @course.office_name
+            .date-info
+              %span.date= @course.date 
+              %span.start= @course.start_time 
+              -
+              %span.end= @course.end_time 
+          .booking-details
+            %label{:for => "attendees_#{@course.id}"}
+              Attendees
+              %input.attendee-selector{:id => "attendees_#{@course.id}", :max => "10", :min => "1", :size => "2", :type => "number", :value => "", :value => 1}
+            %span.multiply ×
+            %span.cost= @course.cost 
+            %span.equals =
+            %span.total= @course.cost
+
+    %section.row-fluid
+      #bill.span12
+        %a.small{"data-other-id" => "coupon-form", :href => "#"} Have a coupon?
+        %form#coupon-form.well{:action => "#", :name => "coupon-form"}
+          %label{:for => "coupon"} What's your coupon code?
+          %input{:name => "coupon-code", :placeholder => "code", :type => "text"}/
+          %button.btn.btn-link{:type => "submit"} Apply my coupon
+        %p#grand-total
+          Grand Total =
+          %span.total.grandTotal -
+  %section#payment-details.row-fluid
+    %form#booking-form.span7{:action => "#", :autocomplete => "on", :enctype => "multipart/form-data", :method => "post", :name => "form"}
+      .payments
+        %legend How would you like to pay?
+        %label.radio.inline
+          %input#paymentOptionsCreditCard{:checked => "", :name => "paymentOptions", :type => "radio", :value => "credit-card"}/
+          Credit Card
+        %label.radio.inline
+          %input#paymentOptionsCash{:name => "paymentOptions", :type => "radio", :value => "cash"}/
+          Cash
+        %fieldset#credit-card-details.well.details{:name => "credit-card-details"}
+          .cc-details
+            .control-group
+              %label.required{:for => "nameCreditCard"} Name (as it appears on card)
+              %input#nameCreditCard.span8{:name => "name", :placeholder => "Your Name", :type => "text", :value => ""}/
+            .control-group
+              %label.required{:for => "creditCardNumber"} Card Number
+              %input#creditCardNumber.span8{:autocomplete => "off", :name => "creditCardNumber", :size => "20", :type => "tel", :value => ""}/
+              %label.help.error{:for => "creditCardNumber"} Please enter your credit card number
+              .acceptedCards
+                %img.fsCreditCardLogo{:alt => "Visa", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/visa.png"}/
+                %img.fsCreditCardLogo{:alt => "MasterCard", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/mastercard.png"}/
+                %img.fsCreditCardLogo{:alt => "American Express", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/amex.png"}/
+                %img.fsCreditCardLogo{:alt => "Discover", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/discover.png"}/
+            .control-group.creditCardExp
+              %label.required{:for => "creditCardExpMonth"} Expiration Date
+              .controls-row
+                %select#creditCardExpMonth.span2{:name => "creditCardExpMonth"}
+                  %option{:selected => "selected", :value => ""} Month
+                  %option{:value => "01"} Jan
+                  %option{:value => "02"} Feb
+                  %option{:value => "03"} Mar
+                  %option{:value => "04"} Apr
+                  %option{:value => "05"} May
+                  %option{:value => "06"} Jun
+                  %option{:value => "07"} Jul
+                  %option{:value => "08"} Aug
+                  %option{:value => "09"} Sep
+                  %option{:value => "10"} Oct
+                  %option{:value => "11"} Nov
+                  %option{:value => "12"} Dec
+                %select#creditCardExpYear.span2{:name => "creditCardExpYear"}
+                  %option{:selected => "selected", :value => ""} Year
+                  %option{:value => "13"} 2013
+                  %option{:value => "14"} 2014
+                  %option{:value => "15"} 2015
+                  %option{:value => "16"} 2016
+                  %option{:value => "17"} 2017
+              %label.error{:for => "creditCardExpiration"} Please enter your credit card's expiration date
+            .ccv
+              %label.required{:for => "ccv"} Security Code
+              %input#ccv.span2{:maxlength => "4", :name => "ccv", :type => "tel"}/
+        %fieldset#cash-details.well.details{:name => "cash-details"}
+          .control-group
+            %label.required{:for => "nameCash"} Name
+            %input#nameCash.span8{:disabled => "", :name => "name", :placeholder => "Your Name", :type => "text", :value => ""}/
+          .control-group
+            %label.required{:for => "telephone"} Telephone
+            %input{:disabled => "", :id => "#phone", :name => "telephone", :type => "tel"}/
+          %p
+            Please bring
+            %span.total.grandTotal 95
+            USD cash or check. The instructor will collect payment when you arrive.
+      %fieldset#personal-details.row-fluid
+        .control-group
+          %label{:for => "email"} Where should we email your receipt and booking confirmation?
+          %input#email{:name => "email", :placeholder => "Email", :type => "email"}/
+      %fieldset.cta.row-fluid
+        %input.btn.mgs{:type => "submit", :value => "Book my gun safety course!"}/
+      #submit-errors.text-error.row-fluid

@@ -10,6 +10,17 @@ class Course < ActiveRecord::Base
 		[name, office.name, start_at.in_time_zone(office.time_zone).strftime("%F - %l:%M %P")].join(", ")
 	end
 	
+	def attendee_count
+		bookings.sum(:attendees)
+	end
+	
+	def open?
+		attendee_count < (max_occupancy || 0) && start_at >= Time.zone.now
+	end
+	def closed?
+		!open?
+	end
+	
 	delegate :cost, :cost_cents, :description, :name, :to => :course_type
 	delegate :address, :to => :office
 	delegate :name, :to => :office, :prefix => true, :allow_nil => true

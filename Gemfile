@@ -12,14 +12,17 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+	gem "therubyracer"
   gem 'uglifier', '>= 1.0'
   gem 'coffee-rails'
   gem "asset_sync"
+	gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem 'sass-rails', "~> 3.2"
 end
 
 gem "haml"
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails', '~>2.1'
 gem "fog"
 
 gem 'activeadmin'
@@ -34,6 +37,8 @@ gem 'geocoder'
 gem 'rabl'
 gem 'honeybadger'
 gem "high_voltage"
+gem 'draper', '~> 1.0'
+
 gem "dalli"
 
 gem 'rack-cors', :require => 'rack/cors'

@@ -7,6 +7,8 @@ FactoryGirl.define do
 		
 		factory :open_course do
 			max_occupancy		20
+			start_at				{ Time.now + 1.day }
+			end_at					{ Time.now + 1.day + 1.hour }
 		end
   end
 end

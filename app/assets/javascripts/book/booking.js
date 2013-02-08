@@ -1,0 +1,9 @@
+//= require book/jquery-url-param
+//= require book/jquery.metadata
+//= require book/jquery.validate.min
+//= require book/bespeak
+//= require book/validation
+//= require book/filters
+//= require book/see-more
+//= require book/load-courses
+//= require book/payment

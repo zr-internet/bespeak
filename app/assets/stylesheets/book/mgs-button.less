@@ -1,0 +1,14 @@
+@mgsBackground:                     darken(#f0871b, 5%);
+@mgsBackgroundHighlight:            lighten(@mgsBackground, 10%);
+@mgsBorder:                         #e87a0e;
+
+// Provide *some* extra contrast for those who can get it
+#payment form .btn.mgs {
+  color: rgba(255,255,255,.75);
+  border-color: @mgsBorder;
+  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
+  .buttonBackground(@mgsBackground, @mgsBackgroundHighlight);  
+  width: 340px; height: 36px;
+  font-size: 24px; line-height: 24px;
+  font-family: Arial;
+}

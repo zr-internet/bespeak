@@ -1,0 +1,70 @@
+// CSS Reset
+
+@baseRadius: 5px;
+@mgsOrange: darken(#f0871b, 5%);
+
+/*a.action {
+  color: @mgsOrange;
+  text-decoration: none;
+  font-size: 1.33em;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  &:after {
+    content: "\00BB";
+  }
+}*/
+
+.booking { 
+
+  padding: @baseRadius*2;
+  .border-right-radius(@baseRadius);
+  border: 1px solid #eee;
+  min-height: 50px;
+  line-height: 1em;
+  
+  .course-details {
+    float: left;
+    max-width: 65%;
+    
+    .name {
+      display:inline;
+      h2 {
+        display:inline;
+        font-size: 2em;
+        color: @mgsOrange;
+        font-weight: normal;
+        margin: 0;
+      }
+    }
+  
+    .office { display:inline; line-height: 0}
+    
+
+    .date-info {
+      .date { color: #black; font-weight: bold; display: inline; }
+      .start { color: #333; }
+      .end { color: #333; }
+    }
+  }
+
+  
+  .booking-details {
+    float: right;
+    width: 300px;
+    margin-top: 10px;
+    label { display: inline; }
+    .cost, .total { 
+      font-weight: bold;
+      color: #333;
+      &:before { content: "$"; }
+    }
+    
+    .attendee-selector { margin-left: .5em; width: 2.5em; text-align: right; vertical-align: baseline;}    
+  }
+
+}
+
+

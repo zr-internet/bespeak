@@ -1,0 +1,46 @@
+#booking
+  %section.intro.row-fluid
+    %header
+      .progress
+        .bar.bar-success.active{:style => "width:34%;"} Course Selection
+        .bar{:style => "width: 33%;"} Payment
+        .bar{:style => "width: 33%;"} Confirmation
+      %h1 Pick Your Firearm Safety Course
+    #filters.btn-toolbar
+      #office-filter.btn-group{"data-filter" => "office"}
+        - @offices.each do |office|
+          %button.btn.btn-small.btn-info.active{type: "button", data: {office_id: office.id}}
+            %i.icon-ok.icon-white
+            = office.name
+      #course-type-filter.btn-group{"data-filter" => "course-type"}
+        - @course_types.each do |course_type|
+          %button.btn.btn-small.btn-info.active{type: "button", data: {course_type_id: course_type.id}}
+            %i.icon-ok.icon-white
+            = course_type.name
+      #date-filter.btn-group{"data-filter" => "date"}
+  %section#course-list.row-fluid
+    %table#courses.courses.span12.table.table-hover.table-condensed
+      %caption Click on any course to reserve your spot
+      %thead
+        %tr
+          %th Date
+          %th Course
+          %th Location
+          %th Cost
+          %th Book!
+      %tbody
+        - @courses.each do |course| 
+          %tr.course{data: {course_id: course.id}}
+            %td.date-info
+              %span.date= course.date
+              %span.start= course.start_time
+            %td.name= course.course_type.name
+            %td.office= course.office.name
+            %td.cost= course.course_type.cost
+            %td.cta
+              .book{data: {course_id: course.id}}
+                %a.action Take this course
+  .more-courses
+    %em
+      Don't see a date or location that works for you? We also offer custom group or corporate classes.
+      %a{:href => "mailto:info@massachusettsgunsafety.com?subject=Corporate/Group class enquiry"} Contact us for details!
