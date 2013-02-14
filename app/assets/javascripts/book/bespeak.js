@@ -264,9 +264,9 @@ Bespeak = function() {
 	
 	
 	function serverDomain() {
-	 	if(location.hostname == "crowdvert.local" && location.protocol == "https:") {
+	 	if((location.hostname == "crowdvert.local" || location.hostname == "0.0.0.0") && location.protocol == "https:") {
 			return "//0.0.0.0:5001";
-		} else if(location.hostname == "crowdvert.local" && location.protocol == "http:") {
+		} else if((location.hostname == "crowdvert.local" || location.hostname == "0.0.0.0")  && location.protocol == "http:") {
 			return "//0.0.0.0:5000";
 		} else {
 			return "//bespeak.herokuapp.com";
