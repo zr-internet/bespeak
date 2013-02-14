@@ -172,17 +172,7 @@ CourseType.prototype.label = function() {
 		return 'unknown';
 	}
 }
-CourseType.prototype.draw_button = function(parent) {
-	$(parent).append(ich.tmplcoursetypebutton(this));
-}
-CourseType.add_filter = function(parent) {
-	var filters = parent;
-	var courseTypes = CourseType.all.as_array().sort(CourseType.Sorters.alphabetical)
-	for(var index = 0; index < courseTypes.length; index++ ) {
-		courseTypes[index].draw_button(filters);
-	}
-	$(parent).append(filters);
-}
+
 CourseType.fromJson = function (props) {
 	ct = new CourseType(props.id, props.name, props.description, props.cost)
 	return ct;
@@ -199,21 +189,9 @@ Office = function(id, name, address, phone, timeZoneOffset) {
 	if(typeof Office.all === 'undefined') { Office.all = new IdentityMap(); }
 	Office.all[this.id] = this;
 }
-
 Office.prototype.localTime = function(time) {
 	var localOffset = new Date().getTimezoneOffset()*60;
 	return new Date(time.getTime() + (this.timeZoneOffset + localOffset) * 1000);
-}
-Office.prototype.draw_button = function(parent) {
-	$(parent).append(ich.tmplofficebutton(this));
-}
-Office.add_filter = function(parent) {
-	var filters = parent;
-	var offices = Office.all.as_array().sort(Office.Sorters.alphabetical)
-	for(var index = 0; index < offices.length; index++ ) {
-		offices[index].draw_button(filters);
-	}
-	$(parent).append(filters);
 }
 Office.fromJson = function (props) {
 	o = new Office(props.id, props.name, props.address, props.phone, props.timeZoneOffset)
@@ -227,20 +205,21 @@ Schedule = function() {};
 Schedule.Sorters = { byDateAsc: function(a, b) { return a.start > b.start ? 1 : a.start < b.start ? -1 : 0; } };
 Schedule.Filters = { 
 	byOffices: function(course) {
-		var offices = $.map($('#office-filter .active'), function(element) { return Office.all[$(element).data('office_id')]});
-		var match = $.inArray(course.office, offices);
+		var offices = $.map($('#office-filter .active'), function(element) { return $(element).data('office_id') });
+		var match = $.inArray($(course).data('office_id'), offices);
 		return match >= 0;
 	},
 	byCourseTypes: function(course) {
-		var courseTypes = $.map($('#course-type-filter .active'), function(element) { return CourseType.all[$(element).data('course_type_id')]});
-		var match = $.inArray(course.courseType, courseTypes);
+		var courseTypes = $.map($('#course-type-filter .active'), function(element) { return $(element).data('course_type_id')});
+		var match = $.inArray($(course).data('course_type_id'), courseTypes);
 		return match >= 0;
 	},
 	active: [],
-	current: function(course, index, array) {
+	current: function(index) {
 		var pass = true;
+		var course = this;
 		$.each(Schedule.Filters.active, function(index, filter) {
-			pass = pass && filter(course, index, array);
+			pass = pass && filter(course);
 		});
 		return pass;
 	}
@@ -250,6 +229,17 @@ Schedule.load = function(courseIndexUrl, courseTypeIndexUrl, officeIndexUrl, suc
 };
 
 Schedule.draw = function(parent) {
+	var filteredCourses = $(parent).children('.course');
+	filteredCourses = filteredCourses.filter(Schedule.Filters.current);
+	$(parent).children().hide();
+	if(filteredCourses.length == 0)
+	{
+		$(parent).append('<tr class="warning"><td colspan="5"><p><strong>No courses currently available</strong><p><p class="small">Please try looking for different location, course, and time combinations</p></td></tr>');
+	}
+	
+	$.each(filteredCourses, function(index, course) {
+		$(course).show();
+	});
 };
 
 Bespeak = function() {

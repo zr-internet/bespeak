@@ -30,7 +30,7 @@
           %th Book!
       %tbody
         - @courses.each do |course| 
-          %tr.course{data: {course_id: course.id}}
+          %tr.course{data: {course_id: course.id, office_id: course.office.id, course_type_id: course.course_type.id}}
             %td.date-info
               %span.date= course.date
               %span.start= course.start_time
