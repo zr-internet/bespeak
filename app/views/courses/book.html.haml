@@ -23,11 +23,11 @@
       %caption Click on any course to reserve your spot
       %thead
         %tr
-          %th Date
-          %th Course
-          %th Location
-          %th Cost
-          %th Book!
+          %th.span4 Date
+          %th.span3 Course
+          %th.span2 Location
+          %th.span2 Cost
+          %th.span2 Book!
       %tbody
         - @courses.each do |course| 
           %tr.course{data: {course_id: course.id, office_id: course.office.id, course_type_id: course.course_type.id}}
