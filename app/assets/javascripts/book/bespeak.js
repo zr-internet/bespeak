@@ -44,7 +44,7 @@ function buildPayload(form) {
 }
 
 function onSuccess(data, status, jqXHR) {
-  window.location.href = 'http://www.massachusettsgunsafety.com/thanks.html'
+  window.top.location.href = 'http://www.massachusettsgunsafety.com/thanks.html'
 }
 
 function onError(data, status, jqXHR) {
