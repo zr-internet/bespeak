@@ -1,4 +1,7 @@
 $(function() {
+	Schedule.Filters.active.push(Schedule.Filters.byOffices);
+	Schedule.Filters.active.push(Schedule.Filters.byCourseTypes);
+
 	var courseType = $.urlParam('course-type');
 	var office = $.urlParam('office');
 	
