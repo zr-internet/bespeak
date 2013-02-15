@@ -2,7 +2,7 @@ require 'active_support'
 require 'time_zone_ext'
 
 class Office < ActiveRecord::Base
-	attr_accessible :address, :name, :phone, :time_zone, :as => :admin
+	attr_accessible :address, :name, :phone, :time_zone, :directions, :as => :admin
 
 	geocoded_by :address
 	after_validation :geocode          # auto-fetch coordinates
@@ -17,6 +17,10 @@ class Office < ActiveRecord::Base
 	def time_zone=(zone)
 		zone = ActiveSupport::TimeZone.from_string(zone) if zone.kind_of? String
 		write_attribute(:time_zone, zone.name)
+	end
+	
+	def directions
+		read_attribute(:directions) || ""
 	end
 	
 	def to_s

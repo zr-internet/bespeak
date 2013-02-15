@@ -15,6 +15,7 @@
 		<p>
 			<strong>Location: <%= @booking.course_address %></strong>
 		</p>
+		<%= simple_format(@booking.course.office.directions) %>
 		<p>
 			Click on the link below to download a sizeable information packet which will give you an excellent primer on Massachusetts gun law.
 			<emphasis>Feel free to print it out and bring it to class as this is the material we will be covering</emphasis>.
