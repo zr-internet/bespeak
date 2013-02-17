@@ -99,46 +99,86 @@ describe "Bookings" do
 					end
 				end
 				context "with coupons" do
-					let(:params) {
-						{
-							"email"=>email, 
-							"attendees"=>"1", 
-							"course_id"=>"#{course.id}", 
-							"payment_method"=>"cash", 
-							"name"=>name, 
-							"payment_details"=> { },
-							"coupon" => "a valid free course coupon code"
+					context "cash payment" do
+					  let(:params) {
+							{
+								"email"=>email, 
+								"attendees"=>"1", 
+								"course_id"=>"#{course.id}", 
+								"payment_method"=>"cash", 
+								"name"=>name, 
+								"payment_details"=> { },
+								"coupon" => "a valid free course coupon code"
+							}
 						}
-					}
-				
-					it "should return a success code" do
-						post bookings_path(:format => :json), params
-						response.should be_success
-					end
-					
-					it "should create a booking for the course" do
-					  expect {
-							post bookings_path(:format => :json), params
-						}.to change {course.bookings.count }.by(1)
-					end
-					
-					it "should create a booking for the customer" do
-						customer = Customer.find_or_create_by_email(email)
-					  expect {
-							post bookings_path(:format => :json), params
-						}.to change {customer.bookings.count }.by(1)
-					end
-					
-					it "should create a coupon payment for the customer" do
-						customer = Customer.find_or_create_by_email(email)
 
-					  expect {
+						it "should return a success code" do
 							post bookings_path(:format => :json), params
-						}.to change { customer.reload.payments.coupons.count }.by(1)
+							response.should be_success
+						end
+
+						it "should create a booking for the course" do
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change {course.bookings.count }.by(1)
+						end
+
+						it "should create a booking for the customer" do
+							customer = Customer.find_or_create_by_email(email)
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change {customer.bookings.count }.by(1)
+						end
+
+						it "should create a coupon payment for the customer" do
+							customer = Customer.find_or_create_by_email(email)
+
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change { customer.reload.payments.coupons.count }.by(1)
+						end
+					end
+					context "credit card payment" do
+					  let(:params) {
+							{
+								"email"=>email, 
+								"attendees"=>"1", 
+								"course_id"=>"#{course.id}", 
+								"payment_method"=>"credit_card", 
+								"name"=>name, 
+								"payment_details"=> { },
+								"coupon" => "a valid free course coupon code"
+							}
+						}
+
+						it "should return a success code" do
+							post bookings_path(:format => :json), params
+							response.should be_success
+						end
+
+						it "should create a booking for the course" do
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change {course.bookings.count }.by(1)
+						end
+
+						it "should create a booking for the customer" do
+							customer = Customer.find_or_create_by_email(email)
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change {customer.bookings.count }.by(1)
+						end
+
+						it "should create a coupon payment for the customer" do
+							customer = Customer.find_or_create_by_email(email)
+
+						  expect {
+								post bookings_path(:format => :json), params
+							}.to change { customer.reload.payments.coupons.count }.by(1)
+						end
 					end
 				end
 			end
 		end
-		
 	end
 end

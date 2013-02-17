@@ -4,6 +4,7 @@ Bespeak::Application.configure do
 		  origins '*'
 		  resource '/bookings.json', :headers => :any, :methods => [:post, :options]
 			resource '*.json', :headers => :any, :methods => :get
+			resource '/courses/available.json', :headers => :any, :methods => :get
 		end
 	end
 end

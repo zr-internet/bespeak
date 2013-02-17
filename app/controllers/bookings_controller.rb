@@ -13,23 +13,25 @@ class BookingsController < InheritedResources::Base
 		@booking.customer, @booking.attendees = customer, params[:attendees]
 		
 		#process coupons prior to processing any payments
-
+		coupon_payment = Money.new(0)
 		if params[:coupon].present?
 			payment = @booking.payments.build
 			payment.method = "coupon"
 			payment.extend PaymentProcess::Processor
 			
 			payment.process!(coupon_code: params[:coupon])
+			coupon_payment = payment.amount
 		end
 		
-		payment = @booking.payments.build
-		payment.method = params[:payment_method]
+		# if we still owe money after processing the coupon then process the additional payments
+		if @booking.owed > Money.new(0)
+			payment = @booking.payments.build
+			payment.method = params[:payment_method]
 
-		payment.amount = @booking.owed unless payment.cash? 
-		
-		payment.extend PaymentProcess::Processor
-		payment.process!(params[:payment_details])
-		
+			payment.amount = @booking.owed unless payment.cash?
+			payment.extend PaymentProcess::Processor
+			payment.process!(params[:payment_details])
+		end
 		create!
 	end	
 end
