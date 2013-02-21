@@ -14,6 +14,7 @@ Bespeak::Application.routes.draw do
 	end
 	
 	match	'/book' => 'courses#book', :as => 'book'
+	match	'/form' => 'courses#formstack', :as => 'form'
 	match	'/book/payment' => 'courses#payment', :as => 'payment_book'
 
 

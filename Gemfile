@@ -20,7 +20,7 @@ group :assets do
   gem 'sass-rails', "~> 3.2"
 end
 
-gem "haml"
+gem "haml", '~>4'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails', '~>2.1'
 gem "fog"

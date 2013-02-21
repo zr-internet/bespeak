@@ -26,7 +26,7 @@ function couponPayload(payload) {
 function buildPayload(form) {
   var payload = { email: $('#email').val(), 
     attendees: $('input.attendee-selector').val(),
-    course_id: $(".booking").data("course_id"),
+    course_id: $(".booking").data("course-id"),
   };
   if($('#paymentOptionsCreditCard').is(':checked')) {
     payload = creditCardPayload(payload);
@@ -205,13 +205,13 @@ Schedule = function() {};
 Schedule.Sorters = { byDateAsc: function(a, b) { return a.start > b.start ? 1 : a.start < b.start ? -1 : 0; } };
 Schedule.Filters = { 
 	byOffices: function(course) {
-		var offices = $.map($('#office-filter .active'), function(element) { return $(element).data('office_id') });
-		var match = $.inArray($(course).data('office_id'), offices);
+		var offices = $.map($('#office-filter .active'), function(element) { return $(element).data('office-id') });
+		var match = $.inArray($(course).data('office-id'), offices);
 		return match >= 0;
 	},
 	byCourseTypes: function(course) {
-		var courseTypes = $.map($('#course-type-filter .active'), function(element) { return $(element).data('course_type_id')});
-		var match = $.inArray($(course).data('course_type_id'), courseTypes);
+		var courseTypes = $.map($('#course-type-filter .active'), function(element) { return $(element).data('course-type-id')});
+		var match = $.inArray($(course).data('course-type-id'), courseTypes);
 		return match >= 0;
 	},
 	active: [],

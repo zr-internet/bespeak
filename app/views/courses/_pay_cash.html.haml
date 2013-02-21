@@ -1,0 +1,13 @@
+%section#pay-cash.hidden
+  %fieldset#payment-options
+    %legend 3. Review and Confirm
+    .errors
+    .payment-details
+      %label.due-now 
+        Total Due Now
+        %input{name:'due-now', readonly: true, value: "$0.00"}
+        %small Please be prepared to pay by cash or check when arriving to class.
+   
+    .nav
+      %button.btn.previous{data:{show: '#select-course', hide: "#pay-cash"}} Previous
+      %button.btn.btn-primary.submit{data:{validate: "#pay-cash"}} Complete Registration

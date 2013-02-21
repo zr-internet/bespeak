@@ -44,7 +44,7 @@ describe "courses/book" do
 		
 		it "renders a tr element for each course" do
 			render
-			courses.each { |c| rendered.should have_selector("tr[data-course_id='#{c.id}']")}
+			courses.each { |c| rendered.should have_selector("tr[data-course-id='#{c.id}']")}
 		end
 	end
 end

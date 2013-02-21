@@ -12,4 +12,8 @@ class CourseDecorator < Draper::Decorator
 	def end_time
 		source.end_at.in_time_zone(source.office.time_zone).strftime("%-l:%M %P")
 	end
+	
+	def start_date_time
+		[date,start_time].join(' @ ')
+	end
 end

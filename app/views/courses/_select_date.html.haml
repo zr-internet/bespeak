@@ -1,0 +1,23 @@
+%section#select-date
+  %fieldset#filters
+    %legend 1. Select a Class Date
+    .errors
+    .license
+      %h4 Select License
+
+      #course-type-filter.controls-row
+        - @course_filters.each do |course_filter|
+          %label.radio.inline.nowrap
+            %input{type: "radio", name: "filters-courses", "data-office-id" => course_filter.office.id, "data-office-name" => course_filter.office.name, "data-course-type-id" => course_filter.course_type.id, "data-course-type-name" => course_filter.course_type.name}
+            = course_filter.course_type.name + "(#{course_filter.office.name})"
+        
+      #courses
+        - @course_filters.each do |course_filter|
+          = select_by_course_type_and_office(@courses, course_filter.course_type, course_filter.office)
+
+    #email
+      %label{for: "email"} Email Address
+      %input{name:"email", class: 'input-xlarge'}
+
+    .nav
+      %button.btn.next{data:{show: '#select-course', hide: "#select-date", validate: "#select-date"}} Next

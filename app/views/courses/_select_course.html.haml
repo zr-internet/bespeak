@@ -1,0 +1,12 @@
+%section#select-course.hidden
+  %fieldset#payment-options
+    %legend 2. Select a Course and Payment Option
+    .errors
+    .payment-option
+
+      #course-type-filter.controls-row
+        - Payment.payment_methods.each do |method, label|
+          = radio_payment_option(method)
+    .nav
+      %button.btn.previous{data:{show: '#select-date', hide: "#select-course"}} Previous
+      %button.btn.next{data:{show: '#pay-cash', hide: "#select-course", validate: "#select-course"}} Next

@@ -1,1073 +1,449 @@
-<form method="post" action="https://www.formstack.com/forms/index.php" class="fsForm  fsMultiColumn " id="fsForm1126946">
-<input type="hidden" name="form" value="1126946">
-<input type="hidden" name="viewkey" value="bTd8A8JtXw">
-<input type="hidden" name="unique_key" value="c28835f1147453e9a556221ed45c9555">
-<input type="hidden" name="password" value="">
-<input type="hidden" name="hidden_fields" id="hidden_fields1126946" value="">
-<input type="hidden" name="fspublicsession" id="session_id1126946" value="">
-<input type="hidden" name="incomplete" id="incomplete1126946" value="">
-<input type="hidden" name="referrer" id="referrer1126946" value="http://www.massachusettsgunsafety.com/order.html">
-<input type="hidden" name="referrer_type" id="referrer_type1126946" value="js">
-<input type="hidden" name="_submit" value="1">
-<div role="alert" id="requiredFieldsError" style="display:none;">Please fill in a valid value for all required fields</div>
-<div role="alert" id="resumeConfirm" style="display:none;">Are you sure you want to leave this form and resume later?</div>
-<div role="alert" id="fileTypeAlert" style="display:none;">You must upload one of the following file types for the selected field:</div>
-<div role="alert" id="embedError" style="display:none;">There was an error displaying the form. Please copy and paste the embed code again.</div>
-<div role="alert" id="applyDiscountButton" style="display:none;">Apply Discount</div>
-<div role="alert" id="dcmYouSaved" style="display:none;">You saved</div>
-<div role="alert" id="dcmWithCode" style="display:none;">with code</div>
-<div class="fsPage" id="fsPage1126946-1">
-            
-                
-                        
-                                                    
-             
-            
-            
-            <table class="fsSection fsTable" id="fsSection16101069" cellspacing="0" cellpadding="0" role="presentation"><tbody>
-            
-            
-            
-            
-                                        
-                                                    <tr valign="top" id="fsRow1126946-1" class="fsRow fsSectionRow">
-                <td class="fsRowOpen">&nbsp;</td>
-                <td colspan="2" class="fsRowBody fsCell fsSectionCell" id="fsCell16101069">
-                    <div class="FSSectionTop"></div>
-    <div class="fsSectionText">
-        <h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"><img src="https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress1.png" alt="" width="550" height="85"></h4>
-<h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;">1. Select a Class Date</h4>
-    </div>
-<div class="FSSectionBottom"></div>
-                </td>
-                <td class="fsRowClose">&nbsp;</td>
-            </tr>  
+- content_for :head do
+  :javascript
+    Bespeak.CourseTypes = #{ render(template: 'course_types/index.json.rabl', formats: [:json], handlers: [:rabl]) };
+    Bespeak.Offices = #{ render(template: 'offices/index.json.rabl', formats: [:json], handlers: [:rabl]) };
+
+#form
+  %section.intro.row-fluid
+    %header
+      .progress
+        .bar.bar-success.active{:style => "width:34%;"} Select Date
+        .bar{:style => "width: 33%;"} Select Course
+        .bar{:style => "width: 33%;"} Review & Submit
         
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-2" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical " colspan="2" id="fsCell16101056">
-                                
-                                    <fieldset id="label16101056">
-                        <legend class="fsLabel fsRequiredLabel "><span>Select License<span class="fsRequiredMarker">*</span></span></legend>
-            			<div class="fieldset-content">
-                                
-                                                   
-                
-        
-            
-        
-        <input type="radio" id="field16101056_1" name="field16101056" value="Massachusetts LTC (Woburn)" class="fsField fsRequired" aria-required="true"><label class="fsOptionLabel" for="field16101056_1">Massachusetts LTC (Woburn)</label>
-        
-                
-                
-            
-            
-        
-        <input type="radio" id="field16101056_2" name="field16101056" value="Massachusetts LTC (Quincy)" class="fsField " aria-required="true"><label class="fsOptionLabel" for="field16101056_2">Massachusetts LTC (Quincy)</label>
-        
-                
-                
-            
-            
-        
-        <input type="radio" id="field16101056_3" name="field16101056" value="UTAH Nonresident CCW" class="fsField " aria-required="true"><label class="fsOptionLabel" for="field16101056_3">UTAH Nonresident CCW</label>
-        
-                
-                
+    = render partial: 'select_date'
+    = render partial: 'select_course'
+    = render partial: 'pay_cash'
+
     
-                
-                                                                    
-                
-                            			</div></fieldset>
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-3" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell18045216">
-                                
-                                
-                                                   
-                <select id="field18045216" name="field18045216" size="1" class="fsField " disabled="">
-        <option value="Friday, February 15 @ 6:30 pm" title="Friday, February 15 @ 6:30 pm">Friday, February 15 @ 6:30 pm</option>
-        <option value="Saturday, February 16 @ 9:00 am" title="Saturday, February 16 @ 9:00 am">Saturday, February 16 @ 9:00 am</option>
-        <option value="Saturday, February 16 @ 1:30 pm" title="Saturday, February 16 @ 1:30 pm">Saturday, February 16 @ 1:30 pm</option>
-        <option value="Tuesday, February 19 @ 6:30 pm" title="Tuesday, February 19 @ 6:30 pm">Tuesday, February 19 @ 6:30 pm</option>
-        <option value="Wednesday, February 20 @ 6:30 pm" title="Wednesday, February 20 @ 6:30 pm">Wednesday, February 20 @ 6:30 pm</option>
-        <option value="Friday, February 22 @ 6:30 pm" title="Friday, February 22 @ 6:30 pm">Friday, February 22 @ 6:30 pm</option>
-        <option value="Saturday, February 23 @ 9:00 am" title="Saturday, February 23 @ 9:00 am">Saturday, February 23 @ 9:00 am</option>
-        <option value="Saturday, February 23 @ 1:30 pm" title="Saturday, February 23 @ 1:30 pm">Saturday, February 23 @ 1:30 pm</option>
-        <option value="Tuesday, February 26 @ 6:30 pm" title="Tuesday, February 26 @ 6:30 pm">Tuesday, February 26 @ 6:30 pm</option>
-        <option value="Saturday, March 2 @ 9:00 am" title="Saturday, March 2 @ 9:00 am">Saturday, March 2 @ 9:00 am</option>
-        <option value="Tuesday, March 5 @ 6:30 pm" title="Tuesday, March 5 @ 6:30 pm">Tuesday, March 5 @ 6:30 pm</option>
-        <option value="Saturday, March 9 @ 9:00 am" title="Saturday, March 9 @ 9:00 am">Saturday, March 9 @ 9:00 am</option>
-        <option value="Tuesday, March 12@ 6:30 pm" title="Tuesday, March 12@ 6:30 pm">Tuesday, March 12@ 6:30 pm</option>
-        <option value="Saturday, March 16 @ 9:00 am" title="Saturday, March 16 @ 9:00 am">Saturday, March 16 @ 9:00 am</option>
-        <option value="Tuesday, March 19 @ 6:30 pm" title="Tuesday, March 19 @ 6:30 pm">Tuesday, March 19 @ 6:30 pm</option>
-        <option value="Saturday, March 23 @ 9:00 am" title="Saturday, March 23 @ 9:00 am">Saturday, March 23 @ 9:00 am</option>
-</select>
-                
-                                                                    
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-4" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                    
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst  fsLabelVertical fsHiddenCell" colspan="1" id="fsCell18170110">
-                                
-                                
-                                                   
-                <select id="field18170110" name="field18170110" size="1" class="fsField " disabled="">
-        <option value="Wednesday, February 20 @ 6:30 pm" title="Wednesday, February 20 @ 6:30 pm">Wednesday, February 20 @ 6:30 pm</option>
-        <option value="Wednesday, February 27 @ 6:30 pm" title="Wednesday, February 27 @ 6:30 pm">Wednesday, February 27 @ 6:30 pm</option>
-        <option value="Saturday, March 2 @ 9:00 am" title="Saturday, March 2 @ 9:00 am">Saturday, March 2 @ 9:00 am</option>
-        <option value="Wednesday, March 6 @ 6:30 pm" title="Wednesday, March 6 @ 6:30 pm">Wednesday, March 6 @ 6:30 pm</option>
-        <option value="Saturday, March 9 @ 9:00 am" title="Saturday, March 9 @ 9:00 am">Saturday, March 9 @ 9:00 am</option>
-        <option value="Wednesday, March 13 @ 6:30 pm" title="Wednesday, March 13 @ 6:30 pm">Wednesday, March 13 @ 6:30 pm</option>
-        <option value="Wednesday March 20 @ 6:30 pm" title="Wednesday March 20 @ 6:30 pm">Wednesday March 20 @ 6:30 pm</option>
-        <option value="Saturday, March 23 @ 9:00 am" title="Saturday, March 23 @ 9:00 am">Saturday, March 23 @ 9:00 am</option>
-        <option value="Wednesday, March 27 @ 6:30 pm" title="Wednesday, March 27 @ 6:30 pm">Wednesday, March 27 @ 6:30 pm</option>
-        <option value="Saturday, March 30 @ 9:00 am" title="Saturday, March 30 @ 9:00 am">Saturday, March 30 @ 9:00 am</option>
-</select>
-                
-                                                                    
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                                    <td colspan="1" class="fsRowBody fsCell fsLast">&nbsp;</td>
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-5" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell17301148">
-                                
-                                
-                                                   
-                <select id="field17301148" name="field17301148" size="1" class="fsField " disabled="">
-        <option value="Monday, February 25 @ 6:30 pm" title="Monday, February 25 @ 6:30 pm">Monday, February 25 @ 6:30 pm</option>
-</select>
-                
-                                                                    
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-6" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                    
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst  fsLabelVertical " colspan="1" id="fsCell13413454" aria-describedby="fsSupporting13413454">
-                                
-                                    <label id="label13413454" class="fsLabel" for="field13413454">Email Address                                            </label>
-                                
-                                                   
-                <input type="text" id="field13413454" name="field13413454" size="45" value="" class="fsField fsFormatEmail ">
-                
-                                                                                        <div id="fsSupporting" class="fsSupporting">
-                                YOUR EMAIL IS USED TO SEND YOUR RECEIPT AND CLASS CONFIRMATION EMAIL. IT MAY ALSO BE USED TO INFORM YOU OF SCHEDULE CHANGES.
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                                    <td colspan="1" class="fsRowBody fsCell fsLast">&nbsp;</td>
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                                    <tr valign="top" class="fsSpacerRow">
-                        <td class="fsRowOpen">&nbsp;</td>
-                        <td colspan="2" class="fsRowBody"></td>
-                        <td class="fsRowClose">&nbsp;</td>
-                    </tr>
-                    
-                <tr valign="top" class="fsRowBottom">
-                    <td class="fsRowOpen">&nbsp;</td>
-                    <td colspan="2" class="fsRowBody"></td>
-                    <td class="fsRowClose">&nbsp;</td>
-                </tr> 
-            
-                </tbody></table>
-                
-                
-                                
-                        
-                                                    
-                        
-                                
-                        <div class="fsPagination">                            
-                            
-                            <button type="button" class="fsNextButton" value="Next" onclick="form1126946.nextPage(1)">
-                                <span>Next</span>
-                            </button>
-                            
-                                                        
-                            <div class="fsPaginationContent">
-                                                                
-                                                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                                        
-                    <div class="fsPage" id="fsPage1126946-2" style="display: none;">
-                    
-                                   
-             
-            
-            
-            <table class="fsSection fsTable" id="fsSection13413455" cellspacing="0" cellpadding="0" role="presentation" style="display: none;"><tbody>
-            
-            
-            
-            
-                                        
-                                                    <tr valign="top" id="fsRow1126946-7" class="fsRow fsSectionRow">
-                <td class="fsRowOpen">&nbsp;</td>
-                <td colspan="2" class="fsRowBody fsCell fsSectionCell" id="fsCell13413455">
-                    <div class="FSSectionTop"></div>
-    <div class="fsSectionText">
-        <h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"><img src="https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress2.png" alt="" width="550" height="85"></h4>
-<h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;">2. Select a Course &amp; Payment Option</h4>
-    </div>
-<div class="FSSectionBottom"></div>
-                </td>
-                <td class="fsRowClose">&nbsp;</td>
-            </tr>  
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-8" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell13413456" aria-describedby="fsSupporting13413456">
-                                
-                                    <fieldset id="label13413456">
-                        <legend class="fsLabel fsRequiredLabel hidden"><span>Massachusetts Gun Safety Course<span class="fsRequiredMarker">*</span></span></legend>
-            			<div class="fieldset-content">
-                                
-                                                   
-                
-        
-            
-        
-        <input type="radio" id="field13413456_1" name="field13413456" value="$95.00" class="fsField fsRequired" aria-required="true" disabled=""><label class="fsOptionLabel" for="field13413456_1">Massachusetts Gun Safety Course (Pay-Now) - $95</label>
-        
-        <br>        
-                
-            
-            
-        
-        <input type="radio" id="field13413456_2" name="field13413456" value="$0.00" class="fsField " aria-required="true" disabled=""><label class="fsOptionLabel" for="field13413456_2">Massachusetts Gun Safety Course (Pay-Later) - $0</label>
-        
-        <br>        
-                
-            
-            
-        
-        <input type="radio" id="field13413456_3" name="field13413456" value="$0" class="fsField " aria-required="true" disabled=""><label class="fsOptionLabel" for="field13413456_3">Massachusetts Gun Safety Course (Coupon) - $0</label>
-        
-        <br>        
-                
-    
-                
-                                                                                        <div id="fsSupporting" class="fsSupporting">
-                                If "Pay Now" is chosen you will have the ability to add additional guest reservations on the next page. "Pay Later" option is only available for single bookings.
-                            </div>
-                                                                            
-                
-                            			</div></fieldset>
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-9" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                    
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst  fsLabelVertical fsHiddenCell" colspan="1" id="fsCell17301153" aria-describedby="fsSupporting17301153">
-                                
-                                    <fieldset id="label17301153">
-                        <legend class="fsLabel fsRequiredLabel hidden"><span>UTAH Nonresident CCW Course<span class="fsRequiredMarker">*</span></span></legend>
-            			<div class="fieldset-content">
-                                
-                                                   
-                
-        
-            
-        
-        <input type="radio" id="field17301153_1" name="field17301153" value="$95.00" class="fsField fsRequired" aria-required="true" disabled=""><label class="fsOptionLabel" for="field17301153_1">UTAH Nonresident CCW Course (Pay-Now) - $95</label>
-        
-        <br>        
-                
-            
-            
-        
-        <input type="radio" id="field17301153_2" name="field17301153" value="$0.00" class="fsField " aria-required="true" disabled=""><label class="fsOptionLabel" for="field17301153_2">UTAH Nonresident CCW Course (Pay-Later) - $0</label>
-        
-        <br>        
-                
-    
-                
-                                                                                        <div id="fsSupporting" class="fsSupporting">
-                                If "Pay Now" is chosen you will have the ability to add additional guest reservations on the next page. "Pay Later" option is only available for single bookings.
-                            </div>
-                                                                            
-                
-                            			</div></fieldset>
-                
-          
-            </td>
-            
-            
-                            
-                
-                                    <td colspan="1" class="fsRowBody fsCell fsLast">&nbsp;</td>
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                                    <tr valign="top" class="fsSpacerRow">
-                        <td class="fsRowOpen">&nbsp;</td>
-                        <td colspan="2" class="fsRowBody"></td>
-                        <td class="fsRowClose">&nbsp;</td>
-                    </tr>
-                    
-                <tr valign="top" class="fsRowBottom">
-                    <td class="fsRowOpen">&nbsp;</td>
-                    <td colspan="2" class="fsRowBody"></td>
-                    <td class="fsRowClose">&nbsp;</td>
-                </tr> 
-            
-                </tbody></table>
-                
-                
-                                
-                        
-                                                    
-                        
-                                
-                        <div class="fsPagination">                            
-                            
-                            <button type="button" class="fsNextButton" value="Next" onclick="form1126946.nextPage(2)">
-                                <span>Next</span>
-                            </button>
-                            
-                                                            <button type="button" class="fsPreviousButton" value="Previous" onclick="form1126946.previousPage(2)">
-                                    <span>Previous</span>
-                                </button>
-                                &nbsp; &nbsp;
-                                                        
-                            <div class="fsPaginationContent">
-                                                                
-                                                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                                        
-                    <div class="fsPage" id="fsPage1126946-3" style="display: none;">
-                    
-                                   
-             
-            
-            
-            <table class="fsSection fsTable" id="fsSection13413457" cellspacing="0" cellpadding="0" role="presentation"><tbody>
-            
-            
-            
-            
-                                        
-                                                    <tr valign="top" id="fsRow1126946-10" class="fsRow fsSectionRow">
-                <td class="fsRowOpen">&nbsp;</td>
-                <td colspan="2" class="fsRowBody fsCell fsSectionCell" id="fsCell13413457">
-                    <div class="FSSectionTop"></div>
-    <div class="fsSectionText">
-        <h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"><img src="https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress3.png" alt="" width="550" height="85"></h4>
-<h4 style="outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;">3. Review and Confirm</h4>
-    </div>
-<div class="FSSectionBottom"></div>
-                </td>
-                <td class="fsRowClose">&nbsp;</td>
-            </tr>  
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-11" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell16407551" aria-describedby="fsSupporting16407551">
-                                
-                                    <label id="label16407551" class="fsLabel" for="field16407551">Number Of Guests                                            </label>
-                                
-                                                   
-                <select id="field16407551" name="field16407551" size="1" class="fsField " disabled="">
-        <option value="$0" title="0 - Just Me!">0 - Just Me!</option>
-        <option value="$95" title="1 Guest">1 Guest</option>
-        <option value="$190" title="2 Guests">2 Guests</option>
-        <option value="$285" title="3 Guests">3 Guests</option>
-        <option value="$380" title="4 Guests">4 Guests</option>
-</select>
-                
-                                                                                        <div id="fsSupporting" class="fsSupporting">
-                                You may book additional reservations for a friend or guest. Each additional booking will be added to your "Total Due Now" below.
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-12" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell fsReadOnly fsFirst fsLast fsLabelVertical " colspan="2" id="fsCell13413458" aria-describedby="fsSupporting13413458">
-                                
-                                    <label id="label13413458" class="fsLabel" for="field13413458">Total Due Now                                            </label>
-                                
-                                                   
-                <input type="text" id="field13413458" name="field13413458" size="10" value="" readonly="readonly" class="fsField ">
-                
-                                                                                        <div id="fsSupporting" class="fsSupporting">
-                                **If "Pay Later" option was chosen, please be prepared to pay by cash or check when arriving to class.
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-13" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical " colspan="2" id="fsCell13413459">
-                                
-                                
-                                                   
-                <p><span style="font-size: small;"><span style="font-family: arial, helvetica, sans-serif;">.........................................................................................................................</span></span></p>
-                
-                                
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-14" class="fsRow fsFieldRow " style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                    
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst  fsLabelVertical " colspan="1" id="fsCell13414519" aria-describedby="fsSupporting13414519">
-                                
-                                    <label id="label13414519" class="fsLabel fsRequiredLabel" for="field13414519">First Name<span class="fsRequiredMarker">*</span>                                            </label>
-                                
-                                                   
-                <input type="text" id="field13414519" name="field13414519" size="30" value="" class="fsField fsRequired" aria-required="true">
-                
-                                                                                        <div class="fsSupporting fsCallout" style="display: none; opacity: 0;" role="alert">
-                                <div class="fsCalloutTop"></div>
-                                <div class="fsCalloutBody">THIS SHOULD BE THE NAME OF THE PERSON ATTENDING THE CLASS AS IT APPEARS ON THEIR STATE ISSUED I.D. OR DRIVERS LICENSE.</div>
-                                <div class="fsCalloutBottom"></div>
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                        
-        
-            
-                
-                        
-                        
-                                                    
-                        
-                                                    
-                        
-                                                    
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell   fsLast fsLabelVertical " colspan="1" id="fsCell14286250" aria-describedby="fsSupporting14286250">
-                                
-                                    <label id="label14286250" class="fsLabel fsRequiredLabel" for="field14286250">Last Name<span class="fsRequiredMarker">*</span>                                            </label>
-                                
-                                                   
-                <input type="text" id="field14286250" name="field14286250" size="30" value="" class="fsField fsRequired" aria-required="true">
-                
-                                                                                        <div class="fsSupporting fsCallout" style="display: none; opacity: 0;" role="alert">
-                                <div class="fsCalloutTop"></div>
-                                <div class="fsCalloutBody">THIS SHOULD BE THE NAME OF THE PERSON ATTENDING THE CLASS AS IT APPEARS ON THEIR STATE ISSUED I.D. OR DRIVERS LICENSE.</div>
-                                <div class="fsCalloutBottom"></div>
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-15" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical " colspan="2" id="fsCell13414511" aria-describedby="fsSupporting13414511">
-                                
-                                    <label id="label13414511" class="fsLabel fsRequiredLabel" for="field13414511">Phone Number<span class="fsRequiredMarker">*</span>                                            </label>
-                                
-                                                   
-                <input type="text" id="field13414511" name="field13414511" size="20" value="" class="fsField fsRequired" aria-required="true">
-                
-                                                                                        <div class="fsSupporting fsCallout" style="display: none; opacity: 0;" role="alert">
-                                <div class="fsCalloutTop"></div>
-                                <div class="fsCalloutBody">THIS PHONE NUMBER WILL BE USED TO CONTACT YOU IF THERE ARE ANY PROBLEMS THAT REQUIRE US TO CANCEL THE CLASS.</div>
-                                <div class="fsCalloutBottom"></div>
-                            </div>
-                                                                            
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-16" class="fsRow fsFieldRow fsLastRow" style="">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical " colspan="2" id="fsCell13413461">
-                                
-                                
-                                                   
-                <p><span style="font-size: small;"><span style="font-family: arial, helvetica, sans-serif;">.........................................................................................................................</span></span></p>
-                
-                                
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-17" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell13413462">
-                                
-                                    <label id="label13413462" class="fsLabel fsRequiredLabel" for="field13413462">Credit Card Number<span class="fsRequiredMarker">*</span>                                            </label>
-                                
-                                                   
-                
-    <input type="text" id="field13413462" name="field13413462" autocomplete="off" size="20" value="" class="fsField fsRequired fsFormatCreditCard fsFormatCreditCardVisa fsFormatCreditCardMasterCard fsFormatCreditCardAmex fsFormatCreditCardDiscover   " aria-required="true" disabled="">
-            <img src="https://www.formstack.com/forms/images/2/creditcard/visa.png" alt="Visa" class="fsCreditCardLogo">
-    
-            <img src="https://www.formstack.com/forms/images/2/creditcard/mastercard.png" alt="MasterCard" class="fsCreditCardLogo">
-    
-            <img src="https://www.formstack.com/forms/images/2/creditcard/amex.png" alt="American Express" class="fsCreditCardLogo">
-    
-            <img src="https://www.formstack.com/forms/images/2/creditcard/discover.png" alt="Discover" class="fsCreditCardLogo">
-    
-    
-        
-                
-                                                                    
-                
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-                
-                
-                        
-                        
-                                                    
-                        
-                                                
-                <tr valign="top" id="fsRow1126946-18" class="fsRow fsFieldRow fsLastRow" style="display: none;">
-                <td class="fsRowOpen">&nbsp;</td>
-                        
-                                                    
-                        
-                        
-                        
-                                                                
-            <td class="fsRowBody fsCell fsFieldCell  fsFirst fsLast fsLabelVertical fsHiddenCell" colspan="2" id="fsCell13413463">
-                                
-                                    <fieldset id="label13413463">
-                        <legend class="fsLabel fsRequiredLabel "><span>Expiration Date<span class="fsRequiredMarker">*</span></span></legend>
-            			<div class="fieldset-content">
-                                
-                                                   
-                                    
-        
-        
-        
-                    <label class="hidden" for="field13413463M">Month</label>
-        <select id="field13413463M" name="field13413463M" class="fsField fsRequired" aria-required="true" disabled="">
-                    <option value="" selected="selected">&nbsp;</option>
-                    <option value="Jan">Jan</option>
-                    <option value="Feb">Feb</option>
-                    <option value="Mar">Mar</option>
-                    <option value="Apr">Apr</option>
-                    <option value="May">May</option>
-                    <option value="Jun">Jun</option>
-                    <option value="Jul">Jul</option>
-                    <option value="Aug">Aug</option>
-                    <option value="Sep">Sep</option>
-                    <option value="Oct">Oct</option>
-                    <option value="Nov">Nov</option>
-                    <option value="Dec">Dec</option>
-                </select>
-             <label class="hidden" for="field13413463Y">Year</label>
-        <select id="field13413463Y" name="field13413463Y" class="fsField fsRequired" aria-required="true" disabled="">
-                    <option value="" selected="selected">&nbsp;</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                </select>
-    
-    
-            
-    <a href="javascript://" id="fsCalendar13413463Link" class="fsCalendarPickerLink" style="margin:0 5px;display:inline-block"><img src="https://www.formstack.com/forms/images/2/calendar.png" alt="Select Date"></a>
-    
-    <div id="fsCalendar13413463" class="fsCalendar yui-calcontainer single withtitle" style="display:none; position:absolute"><div class="title">&nbsp;</div><table cellspacing="0" class="yui-calendar y2013" id="fsCalendar13413463">
-<thead>
-<tr>
-<th colspan="7" class="calhead">
-<div class="calheader">
-<a class="calnavleft" href="#">Previous Month (January 2013)</a>
-February 2013
-<a class="calnavright" href="#">Next Month (March 2013)</a>
-</div>
-</th>
-</tr>
-<tr class="calweekdayrow">
-<th class="calweekdaycell" scope="col">Su</th>
-<th class="calweekdaycell" scope="col">Mo</th>
-<th class="calweekdaycell" scope="col">Tu</th>
-<th class="calweekdaycell" scope="col">We</th>
-<th class="calweekdaycell" scope="col">Th</th>
-<th class="calweekdaycell" scope="col">Fr</th>
-<th class="calweekdaycell" scope="col">Sa</th>
-</tr>
-</thead>
-<tbody class="m2 calbody">
-<tr class="w5">
-<td class="calcell oom calcelltop calcellleft" id="fsCalendar13413463_cell0">27</td>
-<td class="calcell oom calcelltop" id="fsCalendar13413463_cell1">28</td>
-<td class="calcell oom calcelltop" id="fsCalendar13413463_cell2">29</td>
-<td class="calcell oom calcelltop" id="fsCalendar13413463_cell3">30</td>
-<td class="calcell oom calcelltop" id="fsCalendar13413463_cell4">31</td>
-<td class="calcell wd5 d1 selectable calcelltop" id="fsCalendar13413463_cell5"><a href="#" class="selector">1</a></td>
-<td class="calcell wd6 d2 selectable calcelltop calcellright" id="fsCalendar13413463_cell6"><a href="#" class="selector">2</a></td>
-</tr>
-<tr class="w6">
-<td class="calcell wd0 d3 selectable calcellleft" id="fsCalendar13413463_cell7"><a href="#" class="selector">3</a></td>
-<td class="calcell wd1 d4 selectable" id="fsCalendar13413463_cell8"><a href="#" class="selector">4</a></td>
-<td class="calcell wd2 d5 selectable" id="fsCalendar13413463_cell9"><a href="#" class="selector">5</a></td>
-<td class="calcell wd3 d6 selectable" id="fsCalendar13413463_cell10"><a href="#" class="selector">6</a></td>
-<td class="calcell wd4 d7 selectable" id="fsCalendar13413463_cell11"><a href="#" class="selector">7</a></td>
-<td class="calcell wd5 d8 selectable" id="fsCalendar13413463_cell12"><a href="#" class="selector">8</a></td>
-<td class="calcell wd6 d9 selectable calcellright" id="fsCalendar13413463_cell13"><a href="#" class="selector">9</a></td>
-</tr>
-<tr class="w7">
-<td class="calcell wd0 d10 selectable calcellleft" id="fsCalendar13413463_cell14"><a href="#" class="selector">10</a></td>
-<td class="calcell wd1 d11 selectable" id="fsCalendar13413463_cell15"><a href="#" class="selector">11</a></td>
-<td class="calcell wd2 d12 selectable" id="fsCalendar13413463_cell16"><a href="#" class="selector">12</a></td>
-<td class="calcell wd3 d13 selectable" id="fsCalendar13413463_cell17"><a href="#" class="selector">13</a></td>
-<td class="calcell wd4 d14 selectable" id="fsCalendar13413463_cell18"><a href="#" class="selector">14</a></td>
-<td class="calcell wd5 d15 today selectable" id="fsCalendar13413463_cell19"><a href="#" class="selector">15</a></td>
-<td class="calcell wd6 d16 selectable calcellright" id="fsCalendar13413463_cell20"><a href="#" class="selector">16</a></td>
-</tr>
-<tr class="w8">
-<td class="calcell wd0 d17 selectable calcellleft" id="fsCalendar13413463_cell21"><a href="#" class="selector">17</a></td>
-<td class="calcell wd1 d18 selectable" id="fsCalendar13413463_cell22"><a href="#" class="selector">18</a></td>
-<td class="calcell wd2 d19 selectable" id="fsCalendar13413463_cell23"><a href="#" class="selector">19</a></td>
-<td class="calcell wd3 d20 selectable" id="fsCalendar13413463_cell24"><a href="#" class="selector">20</a></td>
-<td class="calcell wd4 d21 selectable" id="fsCalendar13413463_cell25"><a href="#" class="selector">21</a></td>
-<td class="calcell wd5 d22 selectable" id="fsCalendar13413463_cell26"><a href="#" class="selector">22</a></td>
-<td class="calcell wd6 d23 selectable calcellright" id="fsCalendar13413463_cell27"><a href="#" class="selector">23</a></td>
-</tr>
-<tr class="w9">
-<td class="calcell wd0 d24 selectable calcellleft" id="fsCalendar13413463_cell28"><a href="#" class="selector">24</a></td>
-<td class="calcell wd1 d25 selectable" id="fsCalendar13413463_cell29"><a href="#" class="selector">25</a></td>
-<td class="calcell wd2 d26 selectable" id="fsCalendar13413463_cell30"><a href="#" class="selector">26</a></td>
-<td class="calcell wd3 d27 selectable" id="fsCalendar13413463_cell31"><a href="#" class="selector">27</a></td>
-<td class="calcell wd4 d28 selectable" id="fsCalendar13413463_cell32"><a href="#" class="selector">28</a></td>
-<td class="calcell oom" id="fsCalendar13413463_cell33">1</td>
-<td class="calcell oom calcellright" id="fsCalendar13413463_cell34">2</td>
-</tr>
-<tr class="w10">
-<td class="calcell oom calcellleft calcellbottom" id="fsCalendar13413463_cell35">3</td>
-<td class="calcell oom calcellbottom" id="fsCalendar13413463_cell36">4</td>
-<td class="calcell oom calcellbottom" id="fsCalendar13413463_cell37">5</td>
-<td class="calcell oom calcellbottom" id="fsCalendar13413463_cell38">6</td>
-<td class="calcell oom calcellbottom" id="fsCalendar13413463_cell39">7</td>
-<td class="calcell oom calcellbottom" id="fsCalendar13413463_cell40">8</td>
-<td class="calcell oom calcellright calcellbottom" id="fsCalendar13413463_cell41">9</td>
-</tr>
-</tbody>
-</table><a href="#" class="link-close"><span class="close-icon calclose">Close</span></a></div>
-        
-    &nbsp;
-                
-                                                                    
-                
-                            			</div></fieldset>
-                
-          
-            </td>
-            
-            
-                            
-                
-                 
-                
-                <td class="fsRowClose">&nbsp;</td></tr>
-                        
-        
-    
-            <tr valign="top" class="fsSpacerRow">
-            <td class="fsRowOpen">&nbsp;</td>
-            <td colspan="2" class="fsRowBody"></td>
-            <td class="fsRowClose">&nbsp;</td>
-        </tr>
-    
-    <tr valign="top" class="fsRowBottom">
-        <td class="fsRowOpen">&nbsp;</td>
-        <td colspan="2" class="fsRowBody"></td>
-        <td class="fsRowClose">&nbsp;</td>
-    </tr> 
-    </tbody></table>
-    
-    
-    
-</div>
-        
-<div id="fsSubmit1126946" class="fsSubmit fsPagination" style="display: none;">
-        
-            <input id="fsSubmitButton1126946" class="fsSubmitButton fsSubmitMultipage" type="submit" value="  Complete Registration  " onclick="form1126946.submitForm(); return false;">
-        
-            <button type="button" class="fsPreviousButton" value="Previous" onclick="form1126946.previousPage(3)">
-            <span>Previous</span>
-        </button>
-        &nbsp; &nbsp;
-        
-    
-</div>
-                    <br style="clear:both">
-    <script type="text/javascript">
-    <!--
-    var form1126946;
-    
-    var form1126946Load = function() {
-        
-        form1126946 = new FSForm(1126946);
-                form1126946.checks.push({target: '18045216', action: 'Show', bool: 'AND', fields: ['16101056'],checks: [{field: '16101056', condition: '==', option: 'Massachusetts LTC (Woburn)'}]});
-                form1126946.checks.push({target: '18170110', action: 'Show', bool: 'AND', fields: ['16101056'],checks: [{field: '16101056', condition: '==', option: 'Massachusetts LTC (Quincy)'}]});
-                form1126946.checks.push({target: '17301148', action: 'Show', bool: 'AND', fields: ['16101056'],checks: [{field: '16101056', condition: '==', option: 'UTAH Nonresident CCW'}]});
-                form1126946.checks.push({target: '13413456', action: 'Show', bool: 'OR', fields: ['16101056'],checks: [{field: '16101056', condition: '==', option: 'Massachusetts LTC (Woburn)'},{field: '16101056', condition: '==', option: 'Massachusetts LTC (Quincy)'}]});
-                form1126946.checks.push({target: '17301153', action: 'Show', bool: 'AND', fields: ['16101056'],checks: [{field: '16101056', condition: '==', option: 'UTAH Nonresident CCW'}]});
-                form1126946.checks.push({target: '16407551', action: 'Show', bool: 'OR', fields: ['13413456','17301153'],checks: [{field: '13413456', condition: '==', option: '$95.00'},{field: '17301153', condition: '==', option: '$95.00'}]});
-                form1126946.checks.push({target: '13413462', action: 'Show', bool: 'OR', fields: ['13413456','17301153'],checks: [{field: '13413456', condition: '==', option: '$95.00'},{field: '17301153', condition: '==', option: '$95.00'}]});
-                form1126946.checks.push({target: '13413463', action: 'Show', bool: 'OR', fields: ['13413456','17301153'],checks: [{field: '13413456', condition: '==', option: '$95.00'},{field: '17301153', condition: '==', option: '$95.00'}]});
-        
-        form1126946.logicFields = ['13413456','17301153','16101056'];
-                form1126946.calculations.push({target: '13413458', equation: '[13413456] + [17301153] + [16407551]', fields: ['13413456','17301153','16407551']});
-        
-        form1126946.calcFields = ['13413456','17301153','16407551'];
-        form1126946.lastPage = 3;
-	
-        form1126946.init();
-        
-    };
-    
-    var oldonload1126946 = window.onload;
-    window.onload = typeof window.onload == 'function' ?
-        function() { oldonload1126946(); form1126946Load(); } : 
-        window.onload = form1126946Load;
-    //-->
-    </script>
-    
-</form>
+  / %section#course-list.row-fluid
+  /   %table
+  / 
+  / 
+  / 
+  /   %form#fsForm1126946.fsForm.fsMultiColumn{:action => "https://www.formstack.com/forms/index.php", :method => "post"}
+  /     %input{:name => "form", :type => "hidden", :value => "1126946"}/
+  /     %input{:name => "viewkey", :type => "hidden", :value => "bTd8A8JtXw"}/
+  /     %input{:name => "unique_key", :type => "hidden", :value => "c28835f1147453e9a556221ed45c9555"}/
+  /     %input{:name => "password", :type => "hidden", :value => ""}/
+  /     %input#hidden_fields1126946{:name => "hidden_fields", :type => "hidden", :value => ""}/
+  /     %input#session_id1126946{:name => "fspublicsession", :type => "hidden", :value => ""}/
+  /     %input#incomplete1126946{:name => "incomplete", :type => "hidden", :value => ""}/
+  /     %input#referrer1126946{:name => "referrer", :type => "hidden", :value => "http://www.massachusettsgunsafety.com/order.html"}/
+  /     %input#referrer_type1126946{:name => "referrer_type", :type => "hidden", :value => "js"}/
+  /     %input{:name => "_submit", :type => "hidden", :value => "1"}/
+  /     #requiredFieldsError{:role => "alert", :style => "display:none;"} Please fill in a valid value for all required fields
+  /     #resumeConfirm{:role => "alert", :style => "display:none;"} Are you sure you want to leave this form and resume later?
+  /     #fileTypeAlert{:role => "alert", :style => "display:none;"} You must upload one of the following file types for the selected field:
+  /     #embedError{:role => "alert", :style => "display:none;"} There was an error displaying the form. Please copy and paste the embed code again.
+  /     #applyDiscountButton{:role => "alert", :style => "display:none;"} Apply Discount
+  /     #dcmYouSaved{:role => "alert", :style => "display:none;"} You saved
+  /     #dcmWithCode{:role => "alert", :style => "display:none;"} with code
+  /     #fsPage1126946-1.fsPage
+  /       %table#fsSection16101069.fsSection.fsTable{:cellpadding => "0", :cellspacing => "0", :role => "presentation"}
+  /         %tbody
+  /           %tr#fsRow1126946-1.fsRow.fsSectionRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell16101069.fsRowBody.fsCell.fsSectionCell{:colspan => "2"}
+  /               .FSSectionTop
+  /               .fsSectionText
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"}
+  /                   %img{:alt => "", :height => "85", :src => "https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress1.png", :width => "550"}/
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"} 1. Select a Class Date
+  /               .FSSectionBottom
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-2.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell16101056.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical{:colspan => "2"}
+  /               %fieldset#label16101056
+  /                 %legend.fsLabel.fsRequiredLabel
+  /                   %span
+  /                     Select License
+  /                     %span.fsRequiredMarker *
+  /                 .fieldset-content
+  /                   %input#field16101056_1.fsField.fsRequired{"aria-required" => "true", :name => "field16101056", :type => "radio", :value => "Massachusetts LTC (Woburn)"}/
+  /                   %label.fsOptionLabel{:for => "field16101056_1"} Massachusetts LTC (Woburn)
+  /                   %input#field16101056_2.fsField{"aria-required" => "true", :name => "field16101056", :type => "radio", :value => "Massachusetts LTC (Quincy)"}/
+  /                   %label.fsOptionLabel{:for => "field16101056_2"} Massachusetts LTC (Quincy)
+  /                   %input#field16101056_3.fsField{"aria-required" => "true", :name => "field16101056", :type => "radio", :value => "UTAH Nonresident CCW"}/
+  /                   %label.fsOptionLabel{:for => "field16101056_3"} UTAH Nonresident CCW
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-3.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell18045216.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{:colspan => "2"}
+  /               %select#field18045216.fsField{:disabled => "", :name => "field18045216", :size => "1"}
+  /                 %option{:title => "Friday, February 15 @ 6:30 pm", :value => "Friday, February 15 @ 6:30 pm"} Friday, February 15 @ 6:30 pm
+  /                 %option{:title => "Saturday, February 16 @ 9:00 am", :value => "Saturday, February 16 @ 9:00 am"} Saturday, February 16 @ 9:00 am
+  /                 %option{:title => "Saturday, February 16 @ 1:30 pm", :value => "Saturday, February 16 @ 1:30 pm"} Saturday, February 16 @ 1:30 pm
+  /                 %option{:title => "Tuesday, February 19 @ 6:30 pm", :value => "Tuesday, February 19 @ 6:30 pm"} Tuesday, February 19 @ 6:30 pm
+  /                 %option{:title => "Wednesday, February 20 @ 6:30 pm", :value => "Wednesday, February 20 @ 6:30 pm"} Wednesday, February 20 @ 6:30 pm
+  /                 %option{:title => "Friday, February 22 @ 6:30 pm", :value => "Friday, February 22 @ 6:30 pm"} Friday, February 22 @ 6:30 pm
+  /                 %option{:title => "Saturday, February 23 @ 9:00 am", :value => "Saturday, February 23 @ 9:00 am"} Saturday, February 23 @ 9:00 am
+  /                 %option{:title => "Saturday, February 23 @ 1:30 pm", :value => "Saturday, February 23 @ 1:30 pm"} Saturday, February 23 @ 1:30 pm
+  /                 %option{:title => "Tuesday, February 26 @ 6:30 pm", :value => "Tuesday, February 26 @ 6:30 pm"} Tuesday, February 26 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 2 @ 9:00 am", :value => "Saturday, March 2 @ 9:00 am"} Saturday, March 2 @ 9:00 am
+  /                 %option{:title => "Tuesday, March 5 @ 6:30 pm", :value => "Tuesday, March 5 @ 6:30 pm"} Tuesday, March 5 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 9 @ 9:00 am", :value => "Saturday, March 9 @ 9:00 am"} Saturday, March 9 @ 9:00 am
+  /                 %option{:title => "Tuesday, March 12@ 6:30 pm", :value => "Tuesday, March 12@ 6:30 pm"} Tuesday, March 12@ 6:30 pm
+  /                 %option{:title => "Saturday, March 16 @ 9:00 am", :value => "Saturday, March 16 @ 9:00 am"} Saturday, March 16 @ 9:00 am
+  /                 %option{:title => "Tuesday, March 19 @ 6:30 pm", :value => "Tuesday, March 19 @ 6:30 pm"} Tuesday, March 19 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 23 @ 9:00 am", :value => "Saturday, March 23 @ 9:00 am"} Saturday, March 23 @ 9:00 am
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-4.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell18170110.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLabelVertical.fsHiddenCell{:colspan => "1"}
+  /               %select#field18170110.fsField{:disabled => "", :name => "field18170110", :size => "1"}
+  /                 %option{:title => "Wednesday, February 20 @ 6:30 pm", :value => "Wednesday, February 20 @ 6:30 pm"} Wednesday, February 20 @ 6:30 pm
+  /                 %option{:title => "Wednesday, February 27 @ 6:30 pm", :value => "Wednesday, February 27 @ 6:30 pm"} Wednesday, February 27 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 2 @ 9:00 am", :value => "Saturday, March 2 @ 9:00 am"} Saturday, March 2 @ 9:00 am
+  /                 %option{:title => "Wednesday, March 6 @ 6:30 pm", :value => "Wednesday, March 6 @ 6:30 pm"} Wednesday, March 6 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 9 @ 9:00 am", :value => "Saturday, March 9 @ 9:00 am"} Saturday, March 9 @ 9:00 am
+  /                 %option{:title => "Wednesday, March 13 @ 6:30 pm", :value => "Wednesday, March 13 @ 6:30 pm"} Wednesday, March 13 @ 6:30 pm
+  /                 %option{:title => "Wednesday March 20 @ 6:30 pm", :value => "Wednesday March 20 @ 6:30 pm"} Wednesday March 20 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 23 @ 9:00 am", :value => "Saturday, March 23 @ 9:00 am"} Saturday, March 23 @ 9:00 am
+  /                 %option{:title => "Wednesday, March 27 @ 6:30 pm", :value => "Wednesday, March 27 @ 6:30 pm"} Wednesday, March 27 @ 6:30 pm
+  /                 %option{:title => "Saturday, March 30 @ 9:00 am", :value => "Saturday, March 30 @ 9:00 am"} Saturday, March 30 @ 9:00 am
+  /             %td.fsRowBody.fsCell.fsLast{:colspan => "1"}  
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-5.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell17301148.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{:colspan => "2"}
+  /               %select#field17301148.fsField{:disabled => "", :name => "field17301148", :size => "1"}
+  /                 %option{:title => "Monday, February 25 @ 6:30 pm", :value => "Monday, February 25 @ 6:30 pm"} Monday, February 25 @ 6:30 pm
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-6.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413454.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLabelVertical{"aria-describedby" => "fsSupporting13413454", :colspan => "1"}
+  /               %label#label13413454.fsLabel{:for => "field13413454"} Email Address
+  /               %input#field13413454.fsField.fsFormatEmail{:name => "field13413454", :size => "45", :type => "text", :value => ""}/
+  /               #fsSupporting.fsSupporting
+  /                 YOUR EMAIL IS USED TO SEND YOUR RECEIPT AND CLASS CONFIRMATION EMAIL. IT MAY ALSO BE USED TO INFORM YOU OF SCHEDULE CHANGES.
+  /             %td.fsRowBody.fsCell.fsLast{:colspan => "1"}  
+  /             %td.fsRowClose  
+  /           %tr.fsSpacerRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /           %tr.fsRowBottom{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /       .fsPagination
+  /         %button.fsNextButton{:onclick => "form1126946.nextPage(1)", :type => "button", :value => "Next"}
+  /           %span Next
+  /         .fsPaginationContent
+  /     #fsPage1126946-2.fsPage{:style => "display: none;"}
+  /       %table#fsSection13413455.fsSection.fsTable{:cellpadding => "0", :cellspacing => "0", :role => "presentation", :style => "display: none;"}
+  /         %tbody
+  /           %tr#fsRow1126946-7.fsRow.fsSectionRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413455.fsRowBody.fsCell.fsSectionCell{:colspan => "2"}
+  /               .FSSectionTop
+  /               .fsSectionText
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"}
+  /                   %img{:alt => "", :height => "85", :src => "https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress2.png", :width => "550"}/
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"} 2. Select a Course & Payment Option
+  /               .FSSectionBottom
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-8.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413456.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{"aria-describedby" => "fsSupporting13413456", :colspan => "2"}
+  /               %fieldset#label13413456
+  /                 %legend.fsLabel.fsRequiredLabel.hidden
+  /                   %span
+  /                     Massachusetts Gun Safety Course
+  /                     %span.fsRequiredMarker *
+  /                 .fieldset-content
+  /                   %input#field13413456_1.fsField.fsRequired{"aria-required" => "true", :disabled => "", :name => "field13413456", :type => "radio", :value => "$95.00"}/
+  /                   %label.fsOptionLabel{:for => "field13413456_1"} Massachusetts Gun Safety Course (Pay-Now) - $95
+  /                   %br/
+  /                   %input#field13413456_2.fsField{"aria-required" => "true", :disabled => "", :name => "field13413456", :type => "radio", :value => "$0.00"}/
+  /                   %label.fsOptionLabel{:for => "field13413456_2"} Massachusetts Gun Safety Course (Pay-Later) - $0
+  /                   %br/
+  /                   %input#field13413456_3.fsField{"aria-required" => "true", :disabled => "", :name => "field13413456", :type => "radio", :value => "$0"}/
+  /                   %label.fsOptionLabel{:for => "field13413456_3"} Massachusetts Gun Safety Course (Coupon) - $0
+  /                   %br/
+  /                   #fsSupporting.fsSupporting
+  /                     If "Pay Now" is chosen you will have the ability to add additional guest reservations on the next page. "Pay Later" option is only available for single bookings.
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-9.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell17301153.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLabelVertical.fsHiddenCell{"aria-describedby" => "fsSupporting17301153", :colspan => "1"}
+  /               %fieldset#label17301153
+  /                 %legend.fsLabel.fsRequiredLabel.hidden
+  /                   %span
+  /                     UTAH Nonresident CCW Course
+  /                     %span.fsRequiredMarker *
+  /                 .fieldset-content
+  /                   %input#field17301153_1.fsField.fsRequired{"aria-required" => "true", :disabled => "", :name => "field17301153", :type => "radio", :value => "$95.00"}/
+  /                   %label.fsOptionLabel{:for => "field17301153_1"} UTAH Nonresident CCW Course (Pay-Now) - $95
+  /                   %br/
+  /                   %input#field17301153_2.fsField{"aria-required" => "true", :disabled => "", :name => "field17301153", :type => "radio", :value => "$0.00"}/
+  /                   %label.fsOptionLabel{:for => "field17301153_2"} UTAH Nonresident CCW Course (Pay-Later) - $0
+  /                   %br/
+  /                   #fsSupporting.fsSupporting
+  /                     If "Pay Now" is chosen you will have the ability to add additional guest reservations on the next page. "Pay Later" option is only available for single bookings.
+  /             %td.fsRowBody.fsCell.fsLast{:colspan => "1"}  
+  /             %td.fsRowClose  
+  /           %tr.fsSpacerRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /           %tr.fsRowBottom{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /       .fsPagination
+  /         %button.fsNextButton{:onclick => "form1126946.nextPage(2)", :type => "button", :value => "Next"}
+  /           %span Next
+  /         %button.fsPreviousButton{:onclick => "form1126946.previousPage(2)", :type => "button", :value => "Previous"}
+  /           %span Previous
+  /         \
+  /         .fsPaginationContent
+  /     #fsPage1126946-3.fsPage{:style => "display: none;"}
+  /       %table#fsSection13413457.fsSection.fsTable{:cellpadding => "0", :cellspacing => "0", :role => "presentation"}
+  /         %tbody
+  /           %tr#fsRow1126946-10.fsRow.fsSectionRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413457.fsRowBody.fsCell.fsSectionCell{:colspan => "2"}
+  /               .FSSectionTop
+  /               .fsSectionText
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"}
+  /                   %img{:alt => "", :height => "85", :src => "https://secure860.hostgator.com/~sepinson/massachusettsgunsafety.com/images/progress3.png", :width => "550"}/
+  /                 %h4{:style => "outline-style: none; outline-width: initial; outline-color: initial; font-family: Arial, Helvetica, sans-serif; color: #303030; font-size: 16px; line-height: 1.5; padding: 0px; margin: 0px;"} 3. Review and Confirm
+  /               .FSSectionBottom
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-11.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell16407551.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{"aria-describedby" => "fsSupporting16407551", :colspan => "2"}
+  /               %label#label16407551.fsLabel{:for => "field16407551"} Number Of Guests
+  /               %select#field16407551.fsField{:disabled => "", :name => "field16407551", :size => "1"}
+  /                 %option{:title => "0 - Just Me!", :value => "$0"} 0 - Just Me!
+  /                 %option{:title => "1 Guest", :value => "$95"} 1 Guest
+  /                 %option{:title => "2 Guests", :value => "$190"} 2 Guests
+  /                 %option{:title => "3 Guests", :value => "$285"} 3 Guests
+  /                 %option{:title => "4 Guests", :value => "$380"} 4 Guests
+  /               #fsSupporting.fsSupporting
+  /                 You may book additional reservations for a friend or guest. Each additional booking will be added to your "Total Due Now" below.
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-12.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413458.fsRowBody.fsCell.fsFieldCell.fsReadOnly.fsFirst.fsLast.fsLabelVertical{"aria-describedby" => "fsSupporting13413458", :colspan => "2"}
+  /               %label#label13413458.fsLabel{:for => "field13413458"} Total Due Now
+  /               %input#field13413458.fsField{:name => "field13413458", :readonly => "readonly", :size => "10", :type => "text", :value => ""}/
+  /               #fsSupporting.fsSupporting
+  /                 **If "Pay Later" option was chosen, please be prepared to pay by cash or check when arriving to class.
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-13.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413459.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical{:colspan => "2"}
+  /               %p
+  /                 %span{:style => "font-size: small;"}
+  /                   %span{:style => "font-family: arial, helvetica, sans-serif;"} .........................................................................................................................
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-14.fsRow.fsFieldRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13414519.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLabelVertical{"aria-describedby" => "fsSupporting13414519", :colspan => "1"}
+  /               %label#label13414519.fsLabel.fsRequiredLabel{:for => "field13414519"}
+  /                 First Name
+  /                 %span.fsRequiredMarker *
+  /               %input#field13414519.fsField.fsRequired{"aria-required" => "true", :name => "field13414519", :size => "30", :type => "text", :value => ""}/
+  /               .fsSupporting.fsCallout{:role => "alert", :style => "display: none; opacity: 0;"}
+  /                 .fsCalloutTop
+  /                 .fsCalloutBody THIS SHOULD BE THE NAME OF THE PERSON ATTENDING THE CLASS AS IT APPEARS ON THEIR STATE ISSUED I.D. OR DRIVERS LICENSE.
+  /                 .fsCalloutBottom
+  /             %td#fsCell14286250.fsRowBody.fsCell.fsFieldCell.fsLast.fsLabelVertical{"aria-describedby" => "fsSupporting14286250", :colspan => "1"}
+  /               %label#label14286250.fsLabel.fsRequiredLabel{:for => "field14286250"}
+  /                 Last Name
+  /                 %span.fsRequiredMarker *
+  /               %input#field14286250.fsField.fsRequired{"aria-required" => "true", :name => "field14286250", :size => "30", :type => "text", :value => ""}/
+  /               .fsSupporting.fsCallout{:role => "alert", :style => "display: none; opacity: 0;"}
+  /                 .fsCalloutTop
+  /                 .fsCalloutBody THIS SHOULD BE THE NAME OF THE PERSON ATTENDING THE CLASS AS IT APPEARS ON THEIR STATE ISSUED I.D. OR DRIVERS LICENSE.
+  /                 .fsCalloutBottom
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-15.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13414511.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical{"aria-describedby" => "fsSupporting13414511", :colspan => "2"}
+  /               %label#label13414511.fsLabel.fsRequiredLabel{:for => "field13414511"}
+  /                 Phone Number
+  /                 %span.fsRequiredMarker *
+  /               %input#field13414511.fsField.fsRequired{"aria-required" => "true", :name => "field13414511", :size => "20", :type => "text", :value => ""}/
+  /               .fsSupporting.fsCallout{:role => "alert", :style => "display: none; opacity: 0;"}
+  /                 .fsCalloutTop
+  /                 .fsCalloutBody THIS PHONE NUMBER WILL BE USED TO CONTACT YOU IF THERE ARE ANY PROBLEMS THAT REQUIRE US TO CANCEL THE CLASS.
+  /                 .fsCalloutBottom
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-16.fsRow.fsFieldRow.fsLastRow{:style => "", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413461.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical{:colspan => "2"}
+  /               %p
+  /                 %span{:style => "font-size: small;"}
+  /                   %span{:style => "font-family: arial, helvetica, sans-serif;"} .........................................................................................................................
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-17.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413462.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{:colspan => "2"}
+  /               %label#label13413462.fsLabel.fsRequiredLabel{:for => "field13413462"}
+  /                 Credit Card Number
+  /                 %span.fsRequiredMarker *
+  /               %input#field13413462.fsField.fsRequired.fsFormatCreditCard.fsFormatCreditCardVisa.fsFormatCreditCardMasterCard.fsFormatCreditCardAmex.fsFormatCreditCardDiscover{"aria-required" => "true", :autocomplete => "off", :disabled => "", :name => "field13413462", :size => "20", :type => "text", :value => ""}/
+  /               %img.fsCreditCardLogo{:alt => "Visa", :src => "https://www.formstack.com/forms/images/2/creditcard/visa.png"}/
+  /               %img.fsCreditCardLogo{:alt => "MasterCard", :src => "https://www.formstack.com/forms/images/2/creditcard/mastercard.png"}/
+  /               %img.fsCreditCardLogo{:alt => "American Express", :src => "https://www.formstack.com/forms/images/2/creditcard/amex.png"}/
+  /               %img.fsCreditCardLogo{:alt => "Discover", :src => "https://www.formstack.com/forms/images/2/creditcard/discover.png"}/
+  /             %td.fsRowClose  
+  /           %tr#fsRow1126946-18.fsRow.fsFieldRow.fsLastRow{:style => "display: none;", :valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td#fsCell13413463.fsRowBody.fsCell.fsFieldCell.fsFirst.fsLast.fsLabelVertical.fsHiddenCell{:colspan => "2"}
+  /               %fieldset#label13413463
+  /                 %legend.fsLabel.fsRequiredLabel
+  /                   %span
+  /                     Expiration Date
+  /                     %span.fsRequiredMarker *
+  /                 .fieldset-content
+  /                   %label.hidden{:for => "field13413463M"} Month
+  /                   %select#field13413463M.fsField.fsRequired{"aria-required" => "true", :disabled => "", :name => "field13413463M"}
+  /                     %option{:selected => "selected", :value => ""}  
+  /                     %option{:value => "Jan"} Jan
+  /                     %option{:value => "Feb"} Feb
+  /                     %option{:value => "Mar"} Mar
+  /                     %option{:value => "Apr"} Apr
+  /                     %option{:value => "May"} May
+  /                     %option{:value => "Jun"} Jun
+  /                     %option{:value => "Jul"} Jul
+  /                     %option{:value => "Aug"} Aug
+  /                     %option{:value => "Sep"} Sep
+  /                     %option{:value => "Oct"} Oct
+  /                     %option{:value => "Nov"} Nov
+  /                     %option{:value => "Dec"} Dec
+  /                   %label.hidden{:for => "field13413463Y"} Year
+  /                   %select#field13413463Y.fsField.fsRequired{"aria-required" => "true", :disabled => "", :name => "field13413463Y"}
+  /                     %option{:selected => "selected", :value => ""}  
+  /                     %option{:value => "2013"} 2013
+  /                     %option{:value => "2014"} 2014
+  /                     %option{:value => "2015"} 2015
+  /                     %option{:value => "2016"} 2016
+  /                     %option{:value => "2017"} 2017
+  /                     %option{:value => "2018"} 2018
+  /                     %option{:value => "2019"} 2019
+  /                     %option{:value => "2020"} 2020
+  /                     %option{:value => "2021"} 2021
+  /                     %option{:value => "2022"} 2022
+  /                     %option{:value => "2023"} 2023
+  /                   %a#fsCalendar13413463Link.fsCalendarPickerLink{:href => "javascript://", :style => "margin:0 5px;display:inline-block"}
+  /                     %img{:alt => "Select Date", :src => "https://www.formstack.com/forms/images/2/calendar.png"}/
+  /                   #fsCalendar13413463.fsCalendar.yui-calcontainer.single.withtitle{:style => "display:none; position:absolute"}
+  /                     .title  
+  /                     %table#fsCalendar13413463.yui-calendar.y2013{:cellspacing => "0"}
+  /                       %thead
+  /                         %tr
+  /                           %th.calhead{:colspan => "7"}
+  /                             .calheader
+  /                               %a.calnavleft{:href => "#"} Previous Month (January 2013)
+  /                               February 2013
+  /                               %a.calnavright{:href => "#"} Next Month (March 2013)
+  /                         %tr.calweekdayrow
+  /                           %th.calweekdaycell{:scope => "col"} Su
+  /                           %th.calweekdaycell{:scope => "col"} Mo
+  /                           %th.calweekdaycell{:scope => "col"} Tu
+  /                           %th.calweekdaycell{:scope => "col"} We
+  /                           %th.calweekdaycell{:scope => "col"} Th
+  /                           %th.calweekdaycell{:scope => "col"} Fr
+  /                           %th.calweekdaycell{:scope => "col"} Sa
+  /                       %tbody.m2.calbody
+  /                         %tr.w5
+  /                           %td#fsCalendar13413463_cell0.calcell.oom.calcelltop.calcellleft 27
+  /                           %td#fsCalendar13413463_cell1.calcell.oom.calcelltop 28
+  /                           %td#fsCalendar13413463_cell2.calcell.oom.calcelltop 29
+  /                           %td#fsCalendar13413463_cell3.calcell.oom.calcelltop 30
+  /                           %td#fsCalendar13413463_cell4.calcell.oom.calcelltop 31
+  /                           %td#fsCalendar13413463_cell5.calcell.wd5.d1.selectable.calcelltop
+  /                             %a.selector{:href => "#"} 1
+  /                           %td#fsCalendar13413463_cell6.calcell.wd6.d2.selectable.calcelltop.calcellright
+  /                             %a.selector{:href => "#"} 2
+  /                         %tr.w6
+  /                           %td#fsCalendar13413463_cell7.calcell.wd0.d3.selectable.calcellleft
+  /                             %a.selector{:href => "#"} 3
+  /                           %td#fsCalendar13413463_cell8.calcell.wd1.d4.selectable
+  /                             %a.selector{:href => "#"} 4
+  /                           %td#fsCalendar13413463_cell9.calcell.wd2.d5.selectable
+  /                             %a.selector{:href => "#"} 5
+  /                           %td#fsCalendar13413463_cell10.calcell.wd3.d6.selectable
+  /                             %a.selector{:href => "#"} 6
+  /                           %td#fsCalendar13413463_cell11.calcell.wd4.d7.selectable
+  /                             %a.selector{:href => "#"} 7
+  /                           %td#fsCalendar13413463_cell12.calcell.wd5.d8.selectable
+  /                             %a.selector{:href => "#"} 8
+  /                           %td#fsCalendar13413463_cell13.calcell.wd6.d9.selectable.calcellright
+  /                             %a.selector{:href => "#"} 9
+  /                         %tr.w7
+  /                           %td#fsCalendar13413463_cell14.calcell.wd0.d10.selectable.calcellleft
+  /                             %a.selector{:href => "#"} 10
+  /                           %td#fsCalendar13413463_cell15.calcell.wd1.d11.selectable
+  /                             %a.selector{:href => "#"} 11
+  /                           %td#fsCalendar13413463_cell16.calcell.wd2.d12.selectable
+  /                             %a.selector{:href => "#"} 12
+  /                           %td#fsCalendar13413463_cell17.calcell.wd3.d13.selectable
+  /                             %a.selector{:href => "#"} 13
+  /                           %td#fsCalendar13413463_cell18.calcell.wd4.d14.selectable
+  /                             %a.selector{:href => "#"} 14
+  /                           %td#fsCalendar13413463_cell19.calcell.wd5.d15.today.selectable
+  /                             %a.selector{:href => "#"} 15
+  /                           %td#fsCalendar13413463_cell20.calcell.wd6.d16.selectable.calcellright
+  /                             %a.selector{:href => "#"} 16
+  /                         %tr.w8
+  /                           %td#fsCalendar13413463_cell21.calcell.wd0.d17.selectable.calcellleft
+  /                             %a.selector{:href => "#"} 17
+  /                           %td#fsCalendar13413463_cell22.calcell.wd1.d18.selectable
+  /                             %a.selector{:href => "#"} 18
+  /                           %td#fsCalendar13413463_cell23.calcell.wd2.d19.selectable
+  /                             %a.selector{:href => "#"} 19
+  /                           %td#fsCalendar13413463_cell24.calcell.wd3.d20.selectable
+  /                             %a.selector{:href => "#"} 20
+  /                           %td#fsCalendar13413463_cell25.calcell.wd4.d21.selectable
+  /                             %a.selector{:href => "#"} 21
+  /                           %td#fsCalendar13413463_cell26.calcell.wd5.d22.selectable
+  /                             %a.selector{:href => "#"} 22
+  /                           %td#fsCalendar13413463_cell27.calcell.wd6.d23.selectable.calcellright
+  /                             %a.selector{:href => "#"} 23
+  /                         %tr.w9
+  /                           %td#fsCalendar13413463_cell28.calcell.wd0.d24.selectable.calcellleft
+  /                             %a.selector{:href => "#"} 24
+  /                           %td#fsCalendar13413463_cell29.calcell.wd1.d25.selectable
+  /                             %a.selector{:href => "#"} 25
+  /                           %td#fsCalendar13413463_cell30.calcell.wd2.d26.selectable
+  /                             %a.selector{:href => "#"} 26
+  /                           %td#fsCalendar13413463_cell31.calcell.wd3.d27.selectable
+  /                             %a.selector{:href => "#"} 27
+  /                           %td#fsCalendar13413463_cell32.calcell.wd4.d28.selectable
+  /                             %a.selector{:href => "#"} 28
+  /                           %td#fsCalendar13413463_cell33.calcell.oom 1
+  /                           %td#fsCalendar13413463_cell34.calcell.oom.calcellright 2
+  /                         %tr.w10
+  /                           %td#fsCalendar13413463_cell35.calcell.oom.calcellleft.calcellbottom 3
+  /                           %td#fsCalendar13413463_cell36.calcell.oom.calcellbottom 4
+  /                           %td#fsCalendar13413463_cell37.calcell.oom.calcellbottom 5
+  /                           %td#fsCalendar13413463_cell38.calcell.oom.calcellbottom 6
+  /                           %td#fsCalendar13413463_cell39.calcell.oom.calcellbottom 7
+  /                           %td#fsCalendar13413463_cell40.calcell.oom.calcellbottom 8
+  /                           %td#fsCalendar13413463_cell41.calcell.oom.calcellright.calcellbottom 9
+  /                     %a.link-close{:href => "#"}
+  /                       %span.close-icon.calclose Close
+  /                   \ 
+  /             %td.fsRowClose  
+  /           %tr.fsSpacerRow{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /           %tr.fsRowBottom{:valign => "top"}
+  /             %td.fsRowOpen  
+  /             %td.fsRowBody{:colspan => "2"}
+  /             %td.fsRowClose  
+  /     #fsSubmit1126946.fsSubmit.fsPagination{:style => "display: none;"}
+  /       %input#fsSubmitButton1126946.fsSubmitButton.fsSubmitMultipage{:onclick => "form1126946.submitForm(); return false;", :type => "submit", :value => "  Complete Registration  "}/
+  /       %button.fsPreviousButton{:onclick => "form1126946.previousPage(3)", :type => "button", :value => "Previous"}
+  /         %span Previous
+  /       \   
+  /     %br{:style => "clear:both"}/
+  /     :javascript

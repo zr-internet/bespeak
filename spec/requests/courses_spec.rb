@@ -13,7 +13,17 @@ describe "Courses" do
 			end
 		end
 	end
-	describe "GET /book/payment" do		
+	describe "GET /form/" do		
+		context "with an open course" do
+			let!(:course) { FactoryGirl.create(:open_course) }
+			
+			 it "should return a success code" do
+				get form_path
+				response.should be_success
+			end
+		end
+	end
+	describe "GET /book/payment" do
 		context "with an open course" do
 			let!(:course) { FactoryGirl.create(:open_course) }
 			

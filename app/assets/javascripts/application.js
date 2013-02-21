@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require_directory .
 //= require book/booking
+//= require form/form
