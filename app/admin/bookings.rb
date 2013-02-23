@@ -9,7 +9,7 @@ ActiveAdmin.register Booking do
 		end
 		column :attendees
 		column "owed" do |b| humanized_money_with_symbol(b.owed) end
-		column "paid" do |b| link_to humanized_money_with_symbol(b.paid), :controller => "payments", :action => "index", 'q[booking_id_eq]' => "#{booking.id}".html_safe end
+		column "paid" do |b| link_to humanized_money_with_symbol(b.paid), :controller => "payments", :action => "index", 'q[booking_id_eq]' => "#{b.id}".html_safe end
     default_actions
   end
 	
