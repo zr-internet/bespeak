@@ -6,3 +6,4 @@
 //= require form/nav
 //= require form/page-select-date
 //= require form/page-select-course
+//= require form/page-pay-cash

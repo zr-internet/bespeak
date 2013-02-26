@@ -1,9 +1,18 @@
-#form > .intro > #filters {
-	#course-type-filter { margin-bottom: 1em; }
-}
+#form {
+  & > .intro > #filters {
+  	#course-type-filter { margin-bottom: 1em; }
+  }
 
-.nav {
-	margin-top: 2em;
-	.next { float: right}
-	.previous { float: left}
+	.payment-details { border-bottom: 1px dashed #888; margin-bottom: 2em; padding-bottom: 1em; }
+	
+	input { 
+    &[readonly] { border: 0; background-image: none; background: transparent; } 
+  }
+
+  .nav {
+  	margin-top: 2em;
+  	.submit, .next { float: right}
+  	.previous { float: left}
+  }
+
 }

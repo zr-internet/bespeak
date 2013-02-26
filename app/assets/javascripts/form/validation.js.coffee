@@ -15,7 +15,8 @@ namespace 'Bespeak', (exports) =>
       @validations ||= {}
     
     add_validation: (selector, matcher) =>
-      @validations[selector] = matcher
+      @validations[selector] ||= []
+      @validations[selector].push matcher
     
     validation: (selector) =>
       @validations[selector]
@@ -24,7 +25,11 @@ namespace 'Bespeak', (exports) =>
       v = this.validation(selector) 
       return true unless v
       
-      return v.match(selector)
+      match = true
+      for matcher in v
+        match &= matcher.match(selector)
+        
+      match
       
     
   Bespeak.activeValidation = new Bespeak.Validation

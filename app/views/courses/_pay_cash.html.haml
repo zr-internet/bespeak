@@ -1,12 +1,24 @@
 %section#pay-cash.hidden
   %fieldset#payment-options
-    %legend 3. Review and Confirm
-    .errors
+    %legend 3. Review and Confirm    
+    .alert.warning
+      %strong Please be prepared to pay course fees by cash or check when arriving to class.
+
+    .errors    
     .payment-details
-      %label.due-now 
-        Total Due Now
+      #due
+        %label.due-now{for: "due-now"}
+          Total Due Now
         %input{name:'due-now', readonly: true, value: "$0.00"}
-        %small Please be prepared to pay by cash or check when arriving to class.
+          
+    #personal-details
+      .control-group.name
+        %label.required{:for => "nameCash"} Name
+        %input{name:'name', :name => "name", :placeholder => "Your Name", :type => "text", :value => ""}
+
+      .control-group.phone
+        %label.required{:for => "telephone"} Telephone
+        %input{:name => "telephone", :type => "tel", :placeholder => "(617) 555 - 1212" }
    
     .nav
       %button.btn.previous{data:{show: '#select-course', hide: "#pay-cash"}} Previous
