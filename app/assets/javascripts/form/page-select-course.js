@@ -2,7 +2,7 @@ $(function() {
 	var scope = '#select-course'; var jScope = $('#select-course');
 	var matcher = new Bespeak.Matcher(
 		function(selector) {
-			jScope.find('.errors').remove('.payment_method');
+			jScope.find('.errors').remove('.payment_method_error');
 			var match = !!$(selector).find('input[type="radio"][name="payment[method]"]').filter(':checked').val();
 			if(match) { jScope.find('.errors').empty(); }
 			

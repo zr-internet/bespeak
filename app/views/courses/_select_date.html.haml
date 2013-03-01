@@ -8,7 +8,7 @@
       #course-type-filter.controls-row
         - @course_filters.each do |course_filter|
           %label.radio.inline.nowrap
-            %input{type: "radio", name: "filters-courses", "data-office-id" => course_filter.office.id, "data-office-name" => course_filter.office.name, "data-course-type-id" => course_filter.course_type.id, "data-course-type-name" => course_filter.course_type.name}
+            %input{type: "radio", name: "filters-courses", "data-office-id" => course_filter.office.id, "data-office-name" => course_filter.office.name, "data-course-type-id" => course_filter.course_type.id, "data-course-type-name" => course_filter.course_type.name, 'data-dates' => '#' + ['courses',course_filter.course_type.name, course_filter.office.name].join('_').parameterize }
             = course_filter.course_type.name + "(#{course_filter.office.name})"
         
       #courses

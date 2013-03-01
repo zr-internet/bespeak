@@ -1,5 +1,5 @@
 $(function() {
-	var scope = '#pay-cash'; var jScope = $(scope);
+	var scope = '#pay-coupon'; var jScope = $(scope);
 	var nameMatcher = new Bespeak.Matcher(
 		function(selector) {
 			jScope.find('.errors > .name_error').remove();
@@ -26,6 +26,18 @@ $(function() {
 		});
 	Bespeak.activeValidation.add_validation(scope, phoneMatcher);
 	
+	var couponMatcher = new Bespeak.Matcher(
+		function(selector) {
+			jScope.find('.errors > .coupon_error').remove();
+			var match = !!$(selector).find('input[name="code"]').val();
+			
+			return match;
+		},
+		function() {
+			jScope.find('.errors').append('<div class="alert alert-error coupon_error">Please enter your coupon code.</div>');
+		});
+	Bespeak.activeValidation.add_validation(scope, couponMatcher);
+	
 	var submit = function() {
 		var submitButton = this;
 		submitButton.text("Submitting...").attr('disabled', true);
@@ -38,6 +50,7 @@ $(function() {
 			payment_method : 'cash',
 			name : jScope.find('input[name="name"]').val(),
 			phone : jScope.find('input[name="telephone"]').val(),
+			coupon : jScope.find('input[name="code"]').val(),
 			payment_details : {}
 		};
 
@@ -55,7 +68,7 @@ $(function() {
 						var heading = e;
 						var error = "";
 						if(e == 'payments') {
-							error = '<div class="alert alert-error submit_error card_error">Booking failed to process. Please double check your booking details.</div>';
+							error = '<div class="alert alert-error submit_error card_error">Coupon failed to process. Please double check your coupon details.</div>';
 						}
 						else {
 							for(var i = 0; i < response.errors[e].length; i++) { 

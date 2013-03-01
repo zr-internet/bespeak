@@ -26,6 +26,8 @@ namespace 'Bespeak', (exports) =>
     
     get_office_name: => @office_name
     
+    get_cost: => 95.0
+    
     _trigger_change: () =>
       jQuery(this).trigger("change", this);
       

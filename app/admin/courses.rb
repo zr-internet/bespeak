@@ -33,8 +33,8 @@ ActiveAdmin.register Course do
 		f.inputs "Course Details" do			 
 			f.input :course_type									
 			f.input :office						 
-			f.input :start_at, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "Start (in office local time)"
-			f.input :end_at, :as => :datetime_picker, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "End (in office local time)"
+			f.input :start_at, :as => :string, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "Start (in office local time)"
+			f.input :end_at, :as => :string, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "End (in office local time)"
 			f.input :max_occupancy
 		end																
 		f.buttons													

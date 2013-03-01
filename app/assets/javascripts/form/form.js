@@ -1,4 +1,5 @@
 //= require form/validation
+//= require form/credit-card-validation
 //= require form/course
 //= require form/payment
 //= require form/course-type-filter
@@ -7,3 +8,5 @@
 //= require form/page-select-date
 //= require form/page-select-course
 //= require form/page-pay-cash
+//= require form/page-pay-credit-card
+//= require form/page-pay-coupon

@@ -1,0 +1,27 @@
+%section#pay-coupon.hidden
+  %fieldset.payment-options
+    %legend 3. Review and Confirm
+
+    .errors    
+    .payment-details
+      .due
+        .due-now{for: "due-now"}
+          Total Due Now
+        #coupon-due-now.total{name:'due-now'} 0.00
+          
+    .personal-details
+      .control-group.name
+        %label.required{:for => "coupon-name"} Name
+        %input#coupon-name{name:'name', :placeholder => "Your Name", :type => "text", :value => ""}
+
+      .control-group.phone
+        %label.required{:for => "coupon-telephone"} Telephone
+        %input#coupon-telephone{:name => "telephone", :type => "tel", :placeholder => "(617) 555 - 1212" }
+        
+      .control-group
+        %label.required{:for => "coupon-code"} Name
+        %input#coupon-code{name:'code', :placeholder => "Coupon Code", :type => "text", :value => ""}
+   
+    .nav
+      %button.btn.previous{data:{show: '#select-course', hide: "#pay-coupon"}} Previous
+      %button.btn.btn-primary.submit{data:{validate: "#pay-coupon"}} Complete Registration

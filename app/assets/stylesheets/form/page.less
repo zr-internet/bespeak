@@ -1,13 +1,14 @@
 #form {
-  & > .intro > #filters {
-  	#course-type-filter { margin-bottom: 1em; }
-  }
+  #course-type-filter { margin-bottom: 1em; }
+  #email { margin-top: 1em; }
 
-	.payment-details { border-bottom: 1px dashed #888; margin-bottom: 2em; padding-bottom: 1em; }
-	
-	input { 
-    &[readonly] { border: 0; background-image: none; background: transparent; } 
-  }
+	.payment-details {
+	  border-bottom: 1px dashed #888; margin-bottom: 2em; padding-bottom: 1em; 
+	  .due {
+	    font-weight: bold;
+	    .total:before { content: '$'; margin-right: .2em; }
+    }
+	}
 
   .nav {
   	margin-top: 2em;

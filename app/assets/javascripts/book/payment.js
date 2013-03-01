@@ -1,6 +1,6 @@
 $(function() { setGrandTotal(); });
 
-$(function() { $(document).on('change', "input[type='radio'][name='paymentOptions']", function(e) {
+$(function() { $('#payment').on('change', "input[type='radio'][name='paymentOptions']", function(e) {
   var payOpt = $("input[type='radio'][name='paymentOptions']:checked").val();
   if(payOpt == 'cash') {
     $('#cash-details input[name="name"]').val($('#credit-card-details input[name="name"]').val());
@@ -36,20 +36,20 @@ function setGrandTotal() {
 		$('.payments').slideDown();
 	}
 }
-$(function() { $(document).on('change', '.attendee-selector', function(e) {
+$(function() { $('#payment').on('change', '.attendee-selector', function(e) {
   var attendeeCount = $(e.currentTarget).val();
   $(".total").text((attendeeCount * $(".cost").text()).toFixed(2));
   setGrandTotal();
 })});
 
-$(function() { $(document).on('click', '#bill a[data-other-id="coupon-form"]', function(e) {
+$(function() { $('#payment').on('click', '#bill a[data-other-id="coupon-form"]', function(e) {
 	e.preventDefault();
   $(e.currentTarget).hide();
   $('#coupon-form').show();
 	return false;
 })});
 
-$(function() { $(document).on('submit', "#coupon-form", function() {
+$(function() { $('#payment').on('submit', "#coupon-form", function() {
 	var code = $('#coupon-form input[name="coupon-code"]').val();
   if(code != '') { 
 		$('#coupon-form').replaceWith("<p class='coupon well'>Coupon: <span class='coupon-code'>" + code + "</span><span class='discount' data-discount='-95'>-95.00</span></p>");

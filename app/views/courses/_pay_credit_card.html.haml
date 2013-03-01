@@ -1,0 +1,56 @@
+%section#pay-credit_card.hidden
+  %fieldset.payment-options
+    %legend 3. Review and Confirm    
+    .errors    
+    .payment-details
+      .attendees
+        %label{:for => "credit-card-attendees"} Number of Guests
+        %input#credit-card-attendees.attendee-selector.input-small{:name => "attendees", :max => "10", :min => "1", :size => "2", :type => "number", :value => "", :value => 1}
+        %span.help-block You may book additional reservations for a friend or guest. Each additional booking will be added to your "Total Due Now" below.
+      
+      .due
+        .due-now Total Due Now
+        #credit-card-due-now.total{name:'due-now'} 95.00
+        
+    #credit-card-details
+      %label.required{:for => "credit-card-name"} Name (as it appears on card)
+      %input#credit-card-name.input-xlarge{:name => "name", :placeholder => "Your Name", :type => "text", :value => ""}
+    .control-group
+      %label.required{:for => "credit-card-number"} Card Number
+      %input#credit-card-number.input-xlarge{:autocomplete => "off", :name => "credit-card-number", :size => "20", :type => "tel", :value => ""}
+      .acceptedCards
+        %img.fsCreditCardLogo{:alt => "Visa", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/visa.png"}
+        %img.fsCreditCardLogo{:alt => "MasterCard", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/mastercard.png"}
+        %img.fsCreditCardLogo{:alt => "American Express", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/amex.png"}
+        %img.fsCreditCardLogo{:alt => "Discover", :src => "//dts8zy8jzywwi.cloudfront.net/37/assets/discover.png"}
+    .control-group.creditCardExp
+      %label.required{:for => "credit-card-exp-month"} Expiration Date
+      .controls-row
+        %select#credit-card-exp-month.input-small{:name => "credit-card-exp-month"}
+          %option{:selected => "selected", :value => ""} Month
+          %option{:value => "01"} Jan
+          %option{:value => "02"} Feb
+          %option{:value => "03"} Mar
+          %option{:value => "04"} Apr
+          %option{:value => "05"} May
+          %option{:value => "06"} Jun
+          %option{:value => "07"} Jul
+          %option{:value => "08"} Aug
+          %option{:value => "09"} Sep
+          %option{:value => "10"} Oct
+          %option{:value => "11"} Nov
+          %option{:value => "12"} Dec
+        %select#credit-card-exp-year.input-small{:name => "credit-card-exp-year"}
+          %option{:selected => "selected", :value => ""} Year
+          %option{:value => "13"} 2013
+          %option{:value => "14"} 2014
+          %option{:value => "15"} 2015
+          %option{:value => "16"} 2016
+          %option{:value => "17"} 2017
+    .ccv
+      %label.required{:for => "credit-card-ccv"} Security Code
+      %input#credit-card-ccv.input-small{:maxlength => "4", :name => "credit-card-ccv", :type => "tel"}
+    
+    .nav
+      %button.btn.previous{data:{show: '#select-course', hide: "#pay-credit_card"}} Previous
+      %button.btn.btn-primary.submit{data:{validate: "#pay-credit_card"}} Complete Registration

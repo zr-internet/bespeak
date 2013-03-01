@@ -47,21 +47,26 @@ function onSuccess(data, status, jqXHR) {
   window.top.location.href = 'http://www.massachusettsgunsafety.com/thanks.html'
 }
 
-function onError(data, status, jqXHR) {
+function onError(jqXHR, status, error) {
   $("#booking-form input[type='submit']").attr('disabled', false).val("Try again");
-	
-	var response = JSON.parse(data.responseText);
-	var errors = $("<ul></ul>");
-	for(var e in response.errors) {
-		var heading = e;
-		var error = $("<li data-errors-for='" + heading + "'></li>");
-		if(e == 'payments') {
-			error.append("<p>Credit card failed to process. Please double check your credit card details.</p>");
+	var errors = "";
+	if(status == "timeout") {
+			errors = $("<ul><li><p>The connection with the booking server has been interrupted. Please check your email to see if your booking has gone through. If not please try again.</p></li></ul>");
+	}
+	else {
+		var response = JSON.parse(jqXHR.responseText);
+		errors = $("<ul></ul>");
+		for(var e in response.errors) {
+			var heading = e;
+			var error = $("<li data-errors-for='" + heading + "'></li>");
+			if(e == 'payments') {
+				error.append("<p>Credit card failed to process. Please double check your credit card details.</p>");
+			}
+			else {
+				for(var i = 0; i < response.errors[e].length; i++) { error.append("<p>"+heading + " " + response.errors[e][i]+"</p>"); }
+			}
+			errors.append(error);
 		}
-		else {
-			for(var i = 0; i < response.errors[e].length; i++) { error.append("<p>"+heading + " " + response.errors[e][i]+"</p>"); }
-		}
-		errors.append(error);
 	}
   $("#submit-errors").html(errors);
 }
@@ -270,10 +275,8 @@ Bespeak.prototype.get = function (url, onsuccess, onerror) {
 		url : url,
 		contentType : 'text/plain',
 		dataType : 'text json',
-		error : onerror,
-		success : onsuccess,
 		timeout : 2000
-	});
+	}).done(onsuccess).fail(onerror);
 }
 
 Bespeak.prototype.post = function (url, data, onsuccess, onerror) {
@@ -283,10 +286,8 @@ Bespeak.prototype.post = function (url, data, onsuccess, onerror) {
 		contentType : 'text/plain',
 		data : data,
 		dataType : 'text json',
-		error : onerror,
-		success : onsuccess,
-		timeout : 4000
-	});
+		timeout : 3000
+	}).done(onsuccess).fail(onerror);
 }
 
 Bespeak.prototype.load = function(onsuccess, onerror) {
@@ -304,7 +305,9 @@ Bespeak.prototype.load = function(onsuccess, onerror) {
 }
 
 Bespeak.prototype.process_booking = function(payload, onsuccess, onerror) {
-	Bespeak.bsp.post(Bespeak.bsp.protocol + Bespeak.bsp.server + Bespeak.bsp.bookingUrl, payload, onSuccess, onError);
+	var successCallback = onsuccess || onSuccess;
+	var errorCallback = onerror || onError;
+	Bespeak.bsp.post(Bespeak.bsp.protocol + Bespeak.bsp.server + Bespeak.bsp.bookingUrl, payload, successCallback, errorCallback);
 }
 
 Bespeak.bsp = new Bespeak;
