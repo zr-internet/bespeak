@@ -9,6 +9,19 @@ class Customer < ActiveRecord::Base
 		self.bookings.reduce(Money.new(0)) { |total, booking| total += booking.owed }
 	end
 
+	def to_s
+		return email if email.present?
+		
+		if id.present? then
+			"customer_#{id}"
+		else
+			self.inspect
+		end
+	end
+	def to_label
+		self.to_s
+	end
+
 	def self.find_or_create_by_email(email)
 		customer =  Customer.where(email: email).first
 		unless customer.present?

@@ -9,6 +9,9 @@ class Course < ActiveRecord::Base
 	def to_s
 		[name, office.name, start_at.in_time_zone(office.time_zone).strftime("%F - %l:%M %P")].join(", ")
 	end
+	def to_label
+		self.to_s
+	end
 	
 	def attendee_count
 		bookings.sum(:attendees)

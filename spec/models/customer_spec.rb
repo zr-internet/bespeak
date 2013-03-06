@@ -27,4 +27,34 @@ describe Customer do
 			end
 		end
 	end
+	
+	context "#to_s" do
+		context "with an email" do
+		  subject { FactoryGirl.build(:customer) }
+			it "should == customer.email" do
+				subject.to_s.should == subject.email
+			end
+		end
+		context "without an email" do
+		  subject { FactoryGirl.build(:customer, email: nil) }
+			context "with an id" do
+				before(:each) do
+					subject.stub(id: 1337)
+				end
+				
+				it "should == 'customer_\#{id}" do
+					subject.to_s.should == "customer_#{subject.id}"
+				end			  
+			end
+			context "without an id" do
+				before(:each) do
+					subject.stub(id: nil)
+				end
+				
+				it "should == inspect" do
+					subject.to_s.should == subject.inspect
+				end			  
+			end
+		end
+	end
 end
