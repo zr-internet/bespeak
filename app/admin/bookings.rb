@@ -1,4 +1,10 @@
 ActiveAdmin.register Booking do
+	filter :customer_email, :as => :string
+	filter :course_course_type_name, :as => :select, :collection => CourseType.all.map(&:name), :label => "Course Type"
+	filter :course_office_name, :as => :select, :collection => Office.all.map(&:name), :label => "Office"
+	filter :course_start_at, :as => :date_range, :label => "Course Date"
+	filter :created_at, :label => "Booking Date"
+	
   index do
     column :id
 		column "course" do |booking|
