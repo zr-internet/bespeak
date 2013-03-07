@@ -74,6 +74,54 @@ describe Course do
 		end
 	end
 	
+	context "revenue reporting methods" do
+		describe "#total_paid" do
+			context "with a booking paid by credit card" do
+				let(:payment) { FactoryGirl.create(:payment, :credit_card, amount: Money.new(1000)) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_paid.should == payment.amount }
+			end
+			
+			context "with a booking paid by coupon" do
+				let(:payment) { FactoryGirl.create(:payment, :coupon, amount: Money.new(1000)) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_paid.should == payment.amount }
+			end
+			
+			context "with a booking paid by cash" do
+				let(:payment) { FactoryGirl.create(:payment, :cash) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_paid.should == Money.new(0) }
+			end
+		end
+		describe "#total_owed" do
+			context "with a booking paid by credit card" do
+				let(:payment) { FactoryGirl.create(:payment, :credit_card, amount: Money.new(1000)) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_owed.should == subject.cost - payment.amount }
+			end
+			
+			context "with a booking paid by coupon" do
+				let(:payment) { FactoryGirl.create(:payment, :coupon, amount: Money.new(1000)) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_owed.should == subject.cost - payment.amount }
+			end
+			
+			context "with a booking paid by cash" do
+				let(:payment) { FactoryGirl.create(:payment, :cash) }
+				subject { payment.booking.course.reload }
+				
+				it { subject.total_owed.should == subject.cost }
+			end
+		end
+	end
+	
+	
 	describe "scopes" do
 		subject { Course }
 		it { should respond_to :available }

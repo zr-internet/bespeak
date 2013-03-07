@@ -1,10 +1,10 @@
 class Course < ActiveRecord::Base
   attr_accessible :course_type_id, :end_at, :max_occupancy, :office_id, :start_at, :as => :admin
 
-	belongs_to 	:office
-	belongs_to 	:course_type
+	belongs_to 	:office, 			inverse_of: :courses
+	belongs_to 	:course_type,	inverse_of: :courses
 	
-	has_many		:bookings
+	has_many		:bookings,		inverse_of: :course
 	
 	def to_s
 		[name, office.name, start_at.in_time_zone(office.time_zone).strftime("%F - %l:%M %P")].join(", ")
@@ -22,6 +22,16 @@ class Course < ActiveRecord::Base
 	end
 	def closed?
 		!open?
+	end
+	
+	monetize :total_paid_cents
+	def total_paid_cents
+		self.bookings.reduce(0) { |total, b| total += b.paid_cents }
+	end
+	
+	monetize :total_owed_cents
+	def total_owed_cents
+		(self.cost_cents * self.attendee_count) - self.total_paid_cents
 	end
 	
 	delegate :cost, :cost_cents, :description, :name, :to => :course_type

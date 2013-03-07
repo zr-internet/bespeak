@@ -1,7 +1,7 @@
 - content_for :head do
   :javascript
-    Bespeak.CourseTypes = #{ render(template: 'course_types/index.json.rabl', formats: [:json], handlers: [:rabl]) };
-    Bespeak.Offices = #{ render(template: 'offices/index.json.rabl', formats: [:json], handlers: [:rabl]) };
+    Bespeak.CourseTypes = #{ render(template: 'course_types/index', formats: [:json], handlers: [:rabl]) };
+    Bespeak.Offices = #{ render(template: 'offices/index', formats: [:json], handlers: [:rabl]) };
   :javascript
     setTimeout(function(){var a=document.createElement("script");
     var b=document.getElementsByTagName("script")[0];
