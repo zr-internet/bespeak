@@ -18,6 +18,33 @@ ActiveAdmin.register Booking do
 		column "paid" do |b| link_to humanized_money_with_symbol(b.paid), :controller => "payments", :action => "index", 'q[booking_id_eq]' => "#{b.id}".html_safe end
     default_actions
   end
+
+	csv do
+		column :id
+		column "course" do |booking|
+			booking.course.to_s
+		end
+		column "customer" do |booking|
+			booking.customer.email
+		end
+		column :attendees
+		column "owed" do |b| humanized_money_with_symbol(b.owed) end
+		column "paid" do |b| humanized_money_with_symbol(b.paid) end
+		column "methods" do |b| 
+			methods = []
+			b.payments.each do |p|
+				methods << p.method
+			end
+			methods.join(' & ')
+		end
+		column "tokens" do |b|
+			tokens = []
+			b.payments.each do |p|
+				tokens << p.token
+			end
+			tokens.join(' & ')
+		end
+	end
 	
 	show do |booking|
 		attributes_table do
