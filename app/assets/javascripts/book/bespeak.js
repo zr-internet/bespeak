@@ -286,7 +286,7 @@ Bespeak.prototype.post = function (url, data, onsuccess, onerror) {
 		contentType : 'text/plain',
 		data : data,
 		dataType : 'text json',
-		timeout : 3000
+		timeout : 5000
 	}).done(onsuccess).fail(onerror);
 }
 
