@@ -12,6 +12,7 @@ describe Course do
 	
 	it { should belong_to :office }
 	it { should belong_to :course_type }
+	it { should belong_to :site }
 	
 	describe "#attendee_count" do
 		context "with no bookings" do
@@ -44,7 +45,7 @@ describe Course do
 	describe "#open?" do
 		it { should respond_to :open?}
 		context "with course in the future" do
-		  subject { FactoryGirl.build(:course, start_at: Time.now + 1.second) }
+		  subject { FactoryGirl.build(:course, start_at: Time.now + 1.minute) }
 			context "with attendee count < max_occupancy" do
 			  before(:each) do 
 					subject.max_occupancy = subject.attendee_count + 1
@@ -71,6 +72,14 @@ describe Course do
 	describe "#closed?" do
 		it "should return the opposite of #open?" do
 			subject.closed?.should == !subject.open?
+		end
+	end
+	
+	describe "#to_label" do
+		let(:course) { FactoryGirl.build_stubbed(:course) }
+		it { should respond_to :to_label }
+		it "should return course.to_s" do
+			course.to_label.should == course.to_s
 		end
 	end
 	
@@ -120,6 +129,8 @@ describe Course do
 			end
 		end
 	end
+	
+	
 	
 	
 	describe "scopes" do

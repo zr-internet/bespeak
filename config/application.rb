@@ -17,6 +17,7 @@ module Bespeak
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib/active_admin)
     config.autoload_paths += %W(#{config.root}/lib/active_support)
     config.autoload_paths += %W(#{config.root}/lib/filters)
     config.autoload_paths += %W(#{config.root}/lib/validators)

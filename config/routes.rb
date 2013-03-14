@@ -13,11 +13,19 @@ Bespeak::Application.routes.draw do
 		end
 	end
 	
-	match	'/book' => 'courses#book', :as => 'book'
-	match	'/form' => 'courses#formstack', :as => 'form'
-	match	'/book/payment' => 'courses#payment', :as => 'payment_book'
+	match	'/book' => 'sites#old_book', :as => 'book'
+	match	'/form' => 'sites#old_formstack', :as => 'form'
+	match	'/book/payment' => 'sites#old_payment', :as => 'payment_book'
+	
+	resources :sites do
+		resources :courses
+		member do
+			get 'form', action: 'formstack'
+			get 'payment'
+		end
+	end
 
-
+	
   resources :offices
 
 

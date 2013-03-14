@@ -22,7 +22,7 @@ end
 
 gem "haml", '~>4'
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails', '~>2.1'
+gem 'twitter-bootstrap-rails', '~>2'
 gem "fog"
 
 gem 'activeadmin'
@@ -37,7 +37,7 @@ gem 'geocoder'
 gem 'rabl'
 gem 'honeybadger'
 gem "high_voltage"
-gem 'draper', '~> 1.0'
+gem 'draper', '~> 1'
 
 gem "dalli"
 
@@ -48,7 +48,7 @@ group :development do
   gem "rails3-generators"
 
   gem "haml-rails"
-	gem 'rb-fsevent', '~> 0.9.1'
+	gem 'rb-fsevent', '~> 0.9'
   gem "guard"
   gem "guard-bundler"
   gem "guard-rspec"
@@ -58,7 +58,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'spork', '~> 0.9.2'
+  gem 'spork', '~> 0.9'
   gem "factory_girl_rails", :require => false
   gem "rspec-rails"
   gem "foreman"
@@ -73,7 +73,7 @@ end
 group :test do
   gem "capybara"
   gem "database_cleaner"
-	gem "no_peeping_toms", "~> 2.1.3"
+	gem "no_peeping_toms", "~> 2"
   gem "pickle"
   gem "bourne"
   gem "timecop"

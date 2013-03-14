@@ -2,6 +2,8 @@ require 'authorize_net'
 
 module PaymentProcess
   module Processor
+		AccessDetails = Struct.new(:login, :key)
+		
   	def process!(options)
   		self.token = nil
 
@@ -14,7 +16,15 @@ module PaymentProcess
 				else
 					gateway = :sandbox
 				end
-  			transaction = AuthorizeNet::AIM::Transaction.new(ENV['AUTHORIZE_NET_LOGIN_ID'], ENV['AUTHORIZE_NET_TRANSACTION_KEY'],
+				processor_details = AccessDetails.new
+				if self.booking.site.present?
+					processor_details.login = self.booking.site.payment_processor.login
+					processor_details.key = self.booking.site.payment_processor.key
+				else
+					processor_details.login = ENV['AUTHORIZE_NET_LOGIN_ID']
+					processor_details.key = ENV['AUTHORIZE_NET_TRANSACTION_KEY']
+				end
+  			transaction = AuthorizeNet::AIM::Transaction.new(processor_details.login, processor_details.key,
   			  :gateway => gateway)
   			credit_card = AuthorizeNet::CreditCard.new(options[:credit_card_number], options[:credit_card_expiration_month].to_s+options[:credit_card_expiration_year].to_s, {:card_code => options[:ccv]})
   			response = transaction.purchase(self.amount.to_s, credit_card)

@@ -8,4 +8,15 @@ module ActiveAdmin::ViewsHelper
 		end
 		revenue
 	end
+	
+	def revenue_by_site(site, start_at, end_at)
+		courses = site.courses.search({start_at_gteq: start_at, start_at_lt: end_at})
+		revenue = {paid: Money.new(0), owed: Money.new(0)}
+		courses.each do |c|
+			revenue[:paid] += c.total_paid
+			revenue[:owed] += c.total_owed
+		end
+		revenue
+	end
+
 end

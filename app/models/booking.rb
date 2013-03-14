@@ -1,8 +1,9 @@
 require 'validates_associated_with_error_messages'
 
 class Booking < ActiveRecord::Base
-  attr_accessible	:attendees, :course_id, :customer_id, :as => [:customer, :admin]
+  attr_accessible	:attendees, :course_id, :customer_id, :site_id, :as => [:customer, :admin]
 
+	has_one					:site, through: :course
 	belongs_to			:customer, :inverse_of => :bookings
 	belongs_to			:course
 	has_many				:payments, :inverse_of => :booking
@@ -25,4 +26,8 @@ class Booking < ActiveRecord::Base
 	delegate :email, :to => :customer, :prefix => true, :allow_nil => true
 	delegate :name, :start_at, :end_at, :address, :cost, :to => :course, :prefix => true, :allow_nil => true
 	delegate :office_name, :to => :course, :prefix => false, :allow_nil => true
+	
+	def to_label
+		[ id, course.to_s, customer_email, attendees ].join('-')
+	end
 end

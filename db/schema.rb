@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214183800) do
+ActiveRecord::Schema.define(:version => 20130318212938) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,7 +60,10 @@ ActiveRecord::Schema.define(:version => 20130214183800) do
     t.integer  "cost_cents",  :default => 0, :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.integer  "site_id"
   end
+
+  add_index "course_types", ["site_id"], :name => "index_course_types_on_site_id"
 
   create_table "courses", :force => true do |t|
     t.integer  "office_id"
@@ -70,7 +73,13 @@ ActiveRecord::Schema.define(:version => 20130214183800) do
     t.integer  "max_occupancy"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "site_id"
   end
+
+  add_index "courses", ["course_type_id"], :name => "index_courses_on_course_type_id"
+  add_index "courses", ["office_id"], :name => "index_courses_on_office_id"
+  add_index "courses", ["site_id"], :name => "index_courses_on_site_id"
+  add_index "courses", ["start_at"], :name => "index_courses_on_start_at"
 
   create_table "customers", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -109,7 +118,21 @@ ActiveRecord::Schema.define(:version => 20130214183800) do
     t.string   "phone"
     t.string   "time_zone"
     t.text     "directions"
+    t.integer  "site_id"
   end
+
+  add_index "offices", ["site_id"], :name => "index_offices_on_site_id"
+
+  create_table "payment_processors", :force => true do |t|
+    t.string   "name"
+    t.string   "login"
+    t.string   "key"
+    t.integer  "site_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "payment_processors", ["site_id"], :name => "index_payment_processors_on_site_id"
 
   create_table "payments", :force => true do |t|
     t.integer  "amount_cents", :default => 0,      :null => false
@@ -121,5 +144,14 @@ ActiveRecord::Schema.define(:version => 20130214183800) do
   end
 
   add_index "payments", ["booking_id"], :name => "index_payments_on_booking_id"
+
+  create_table "sites", :force => true do |t|
+    t.string   "token"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sites", ["token"], :name => "index_sites_on_token", :unique => true
 
 end

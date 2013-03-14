@@ -4,6 +4,7 @@ class Customer < ActiveRecord::Base
 
 	has_many			:bookings, :inverse_of => :customer
 	has_many			:payments, :through => :bookings
+	has_one				:site, through: :bookings
 
 	def owed
 		self.bookings.reduce(Money.new(0)) { |total, booking| total += booking.owed }
@@ -18,9 +19,7 @@ class Customer < ActiveRecord::Base
 			self.inspect
 		end
 	end
-	def to_label
-		self.to_s
-	end
+	alias_method :to_label, :to_s
 
 	def self.find_or_create_by_email(email)
 		customer =  Customer.where(email: email).first

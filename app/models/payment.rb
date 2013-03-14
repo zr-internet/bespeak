@@ -9,8 +9,8 @@ class Payment < ActiveRecord::Base
 	end
 	validates	:amount_cents, :presence => true
 
-
-  belongs_to :booking, :inverse_of => :payments
+  belongs_to 	:booking, :inverse_of => :payments
+	has_one			:site, through: :course, :inverse_of => :payments
 
 	monetize	:amount_cents
 	
@@ -28,6 +28,10 @@ class Payment < ActiveRecord::Base
 	
 	def coupon?
 		method == self.class.payment_methods[:coupon]
+	end
+	
+	def to_label
+		[ booking.customer_email, method, amount, token].join('-')
 	end
 	
 	def self.cashs

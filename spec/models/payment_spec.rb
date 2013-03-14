@@ -27,4 +27,17 @@ describe Payment do
 	it { should respond_to :token }
 	
 	it { should belong_to :booking }
+	it { should respond_to :site }
+	
+	describe "#to_label" do
+		let(:payment) { FactoryGirl.build_stubbed(:payment) }
+		it { should respond_to :to_label }
+		it "should return customer_email-method-amount-token" do
+			payment.to_label.should == [ 
+				payment.booking.customer_email, 
+				payment.method, 
+				payment.amount, 
+				payment.token].join('-')
+		end
+	end
 end

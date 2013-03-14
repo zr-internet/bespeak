@@ -2,11 +2,12 @@ require 'active_support'
 require 'time_zone_ext'
 
 class Office < ActiveRecord::Base
-	attr_accessible :address, :name, :phone, :time_zone, :directions, :as => :admin
+	attr_accessible :address, :name, :phone, :time_zone, :directions, :site_id, :as => :admin
 
 	geocoded_by :address
 	after_validation :geocode          # auto-fetch coordinates
 	
+	belongs_to				:site, 				inverse_of: :offices
 	has_many					:courses
 	
 	def time_zone
@@ -26,4 +27,5 @@ class Office < ActiveRecord::Base
 	def to_s
 		name
 	end
+	alias_method :to_label, :to_s
 end

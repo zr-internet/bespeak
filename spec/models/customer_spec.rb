@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Customer do
 	it { should have_many :bookings }
 	it { should have_many :payments }
+	it { should have_one :site }
 	
 	context "#owed" do
 	  it { should respond_to :owed }
@@ -55,6 +56,14 @@ describe Customer do
 					subject.to_s.should == subject.inspect
 				end			  
 			end
+		end
+	end
+	
+	describe "#to_label" do
+		let(:customer) { FactoryGirl.build_stubbed(:customer) }
+		it { should respond_to :to_label }
+		it "should return customer.to_s" do
+			customer.to_label.should == customer.to_s
 		end
 	end
 end

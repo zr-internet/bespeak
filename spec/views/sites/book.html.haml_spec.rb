@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "courses/book" do
+describe "sites/book" do
 	before(:each) do
 		assign(:courses, [])
 		assign(:course_types, [])

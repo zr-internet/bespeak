@@ -35,9 +35,5 @@ describe CoursesController do
       delete("/courses/1").should route_to("courses#destroy", :id => "1")
     end
 
-		it "routes to #book" do
-			get("/book").should route_to("courses#book")
-		end
-
   end
 end

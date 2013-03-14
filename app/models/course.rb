@@ -1,6 +1,7 @@
 class Course < ActiveRecord::Base
-  attr_accessible :course_type_id, :end_at, :max_occupancy, :office_id, :start_at, :as => :admin
+  attr_accessible :course_type_id, :end_at, :max_occupancy, :office_id, :start_at, :site_id, :as => :admin
 
+	belongs_to	:site, 				inverse_of: :courses
 	belongs_to 	:office, 			inverse_of: :courses
 	belongs_to 	:course_type,	inverse_of: :courses
 	
@@ -9,9 +10,7 @@ class Course < ActiveRecord::Base
 	def to_s
 		[name, office.name, start_at.in_time_zone(office.time_zone).strftime("%F - %l:%M %P")].join(", ")
 	end
-	def to_label
-		self.to_s
-	end
+	alias_method :to_label, :to_s
 	
 	def attendee_count
 		bookings.sum(:attendees)
