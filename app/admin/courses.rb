@@ -45,10 +45,11 @@ ActiveAdmin.register Course do
 		active_admin_comments
 	end
 	
-	form do |f|													
+	form do |f|
+		site = Site.find_by_token(params[:site_id])
 		f.inputs "Course Details" do			 
-			f.input :course_type									
-			f.input :office						 
+			f.input :course_type, collection: site.course_types
+			f.input :office, collection: site.offices
 			f.input :start_at, :as => :string, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "Start (in office local time)"
 			f.input :end_at, :as => :string, :placeholder => "YYYY-MM-DD HH:MM", :size => 22, :label => "End (in office local time)"
 			f.input :max_occupancy

@@ -13,13 +13,14 @@ ActiveAdmin.register Payment do
 	end
 	
 	form do |f|
+		site = Site.find_by_token(params[:site_id])
 		f.inputs name: "Payment" do
 			f.input		:method,  :as => :radio, :collection => Payment.payment_methods
-			f.input		:booking
+			f.input		:booking, collection: site.bookings
 			f.input		:amount_cents
 			f.input		:token
 		end
-		f.buttons
+		f.actions
 	end
 	
 	index do
@@ -38,4 +39,22 @@ ActiveAdmin.register Payment do
 
     default_actions
   end
+
+	controller do
+		def build_new_resource
+			p = Payment.new
+			if params[:payment]
+				p.update_attributes(params[:payment].slice(:booking_id, :method, :amount_cents, :token), as: :admin)
+			end
+			p
+		end
+		
+		def create
+			create!(:notice => "Project has been created") do |format|
+				format.html do
+					redirect_to admin_site_payment_path(resource.site, resource)
+				end
+			end
+		end
+	end
 end

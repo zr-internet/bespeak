@@ -10,7 +10,7 @@ class Payment < ActiveRecord::Base
 	validates	:amount_cents, :presence => true
 
   belongs_to 	:booking, :inverse_of => :payments
-	has_one			:site, through: :course, :inverse_of => :payments
+	has_one			:site, through: :booking, :inverse_of => :payments
 
 	monetize	:amount_cents
 	

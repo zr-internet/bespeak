@@ -74,4 +74,14 @@ ActiveAdmin.register Booking do
 		end
 		active_admin_comments
 	end
+	
+	form do |f|
+		site = Site.find_by_token(params[:site_id])
+		f.inputs "Bookings Details" do
+			f.input :customer, collection: site.customers
+			f.input :course, collection: site.courses
+			f.input :attendees
+		end
+		f.buttons
+	end
 end
