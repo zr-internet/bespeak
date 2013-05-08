@@ -13,13 +13,33 @@ ActiveAdmin.register Customer do
 		breadcrumb
 	end
 	
+	config.sort_order = "created_at_asc"
+	index do
+		site = Site.find_by_token(params[:site_id])
+		
+		column :name
+		column :email
+		column :phone
+		column "bookings", :sortable => :true do |customer|
+			link_to customer.bookings.count, :controller => "bookings", :site_id => params[:site_id], :action => "index", 'q[customer_id_eq]' => "#{customer.id}".html_safe
+		end
+		column "owed" do |customer|
+			total_cents = customer.bookings.inject(0) { |total, b| total += b.owed_cents }
+			humanized_money_with_symbol(Money.new(total_cents))
+		end
+		column "paid" do |customer|
+			total_cents = customer.bookings.inject(0) { |total, b| total += b.paid_cents }
+			humanized_money_with_symbol(Money.new(total_cents))
+		end
+		
+		default_actions
+	end
+	
   form do |f|
 		f.inputs name: "Customer" do
 			f.input :name
 			f.input :email
 			f.input :phone
-			f.input :password               
-      f.input :password_confirmation
 		end
 		f.buttons
 	end

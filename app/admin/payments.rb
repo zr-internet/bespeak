@@ -50,7 +50,7 @@ ActiveAdmin.register Payment do
 		end
 		
 		def create
-			create!(:notice => "Project has been created") do |format|
+			create! do |format|
 				format.html do
 					redirect_to admin_site_payment_path(resource.site, resource)
 				end

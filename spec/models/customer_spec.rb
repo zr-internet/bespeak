@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Customer do
 	it { should have_many :bookings }
 	it { should have_many :payments }
-	it { should have_one :site }
+	it { should belong_to :site }
 	
 	context "#owed" do
 	  it { should respond_to :owed }

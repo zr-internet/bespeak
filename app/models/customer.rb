@@ -1,10 +1,10 @@
 class Customer < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name, :phone, :as => [:admin, :user]
+  attr_accessible :email, :name, :phone, :site_id, :as => [:admin, :user]
 
 	has_many			:bookings, :inverse_of => :customer
 	has_many			:payments, :through => :bookings
-	has_one				:site, through: :bookings
+	belongs_to		:site, :inverse_of => :customers
 
 	def owed
 		self.bookings.reduce(Money.new(0)) { |total, booking| total += booking.owed }

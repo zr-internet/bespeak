@@ -4,7 +4,7 @@ class Site < ActiveRecord::Base
 	has_many					:offices, inverse_of: :site
 	has_many					:course_types, inverse_of: :site
 	has_many					:bookings, through: :courses, inverse_of: :site
-	has_many					:customers, through: :bookings, inverse_of: :site
+	has_many					:customers, inverse_of: :site
 	has_many					:payments, through: :bookings, inverse_of: :site
 	has_one						:payment_processor, inverse_of: :site
 	validates					:token, uniqueness: true, presence: true
