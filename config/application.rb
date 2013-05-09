@@ -66,7 +66,7 @@ module Bespeak
 		config.assets.paths << Rails.root.join('lib', 'bespeak_client')
 		config.assets.paths << Rails.root.join('lib', 'assets', 'javascripts')
 		config.assets.paths << Rails.root.join('lib', 'assets', 'stylesheets')
-		config.assets.precompile += %w(active_admin.css active_admin/print.css active_admin.js bespeak.js)
+		config.assets.precompile += %w(active_admin.css active_admin/bespeak.css active_admin/print.css active_admin.js bespeak.js)
 
 
     # Version of your assets, change this if you want to expire all your assets
