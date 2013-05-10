@@ -40,6 +40,8 @@ describe Site do
 	
 	it { should have_one :payment_processor }
 	it { should accept_nested_attributes_for :payment_processor }
+	it { should have_one :email_configuration }
+	it { should accept_nested_attributes_for :email_configuration }
 	
 	context "callbacks" do
 		describe "before valiation" do

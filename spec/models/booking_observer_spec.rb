@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BookingObserver do
+describe BookingObserver, :vcr do
 	context "#after_create" do
 		let(:customer_email) { "customer@example.com" }
 		let(:booking) { FactoryGirl.build_stubbed(Booking, customer: FactoryGirl.build_stubbed(Customer, email: customer_email)) }
@@ -13,15 +13,21 @@ describe BookingObserver do
 	    end
 	  end
 
-		it "should call CustomerMailer.booking_confirmation for booking" do
-			CustomerMailer.should_receive(:booking_confirmation).with(booking).and_return(mail)
-			BookingObserver.instance.after_create(booking)
-		end
-		
-		it "should deliver an email" do
-			CustomerMailer.stub(:booking_confirmation).with(booking).and_return(mail)
-			mail.should_receive(:deliver)
-			BookingObserver.instance.after_create(booking)
+		context "confirmation emails" do
+			let(:emailer) do 
+				FactoryGirl.build(:emailer_details).extend Emailer::MandrillPlugin
+			end
+			
+			it "should extend booking with Emailer::Mandrill" do
+				booking.should_receive(:extend).with(Emailer::MandrillPlugin).and_return(emailer)
+				BookingObserver.instance.after_create(booking)
+			end
+			
+			it "should call emailer.send_confirmation" do
+				booking.should_receive(:extend).with(Emailer::MandrillPlugin).and_return(emailer)
+				emailer.should_receive(:send_confirmation)
+				BookingObserver.instance.after_create(booking)
+			end
 		end
 	end
 end

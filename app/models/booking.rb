@@ -24,8 +24,16 @@ class Booking < ActiveRecord::Base
 	end
 	
 	delegate :email, :to => :customer, :prefix => true, :allow_nil => true
+	delegate :email_configuration, :to => :site, :prefix => true, :allow_nil => true
 	delegate :name, :start_at, :end_at, :address, :cost, :to => :course, :prefix => true, :allow_nil => true
 	delegate :office_name, :to => :course, :prefix => false, :allow_nil => true
+	delegate :office_time_zone, :to => :course, :prefix => false, :allow_nil => true
+	def office_address
+		course_address
+	end
+	def office_directions
+		course.office.directions
+	end
 	
 	def to_label
 		[ id, course.to_s, customer_email, attendees ].join('-')

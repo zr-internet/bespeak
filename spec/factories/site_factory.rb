@@ -9,4 +9,8 @@ FactoryGirl.define do
 	trait :authorize_net do
 		payment_processor
 	end
+	
+	trait :test_email do
+		email_configuration
+	end
 end

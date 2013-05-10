@@ -7,8 +7,10 @@ describe Booking do
 	it { should respond_to :course_name }
 	it { should respond_to :course_start_at }
 	it { should respond_to :course_address }
+	it { should respond_to :office_address }
 	it { should respond_to :course_cost }
 	it { should respond_to :office_name }
+	it { should respond_to :office_time_zone }
 	it { should respond_to :attendees }
 	
 	it { should validate_presence_of :customer }
@@ -25,6 +27,20 @@ describe Booking do
 		end
 	end
 
+	describe "#site_email_configuration" do
+	  it { should respond_to :site_email_configuration }
+		context "with a site" do
+			before(:each) do
+				subject.stub(site: mock_model(Site))
+			end
+			it "should return the site's email configuration" do
+				subject.site.should_receive(:email_configuration).once.and_return(double("email config"))
+				subject.site_email_configuration
+			end
+		end
+	end
+
+	
 	
 	context "caching" do
 		context "#cache_key" do

@@ -28,6 +28,8 @@ gem "fog"
 gem 'activeadmin'
 gem 'omniauth'
 gem "authorize-net", "~> 1.5.2"
+gem "mandrill-api", "~> 1.0"
+
 
 gem 'responders'
 
@@ -38,6 +40,8 @@ gem 'rabl'
 gem 'honeybadger'
 gem "high_voltage"
 gem 'draper', '~> 1'
+
+
 
 gem "dalli"
 
@@ -81,6 +85,7 @@ group :test do
   gem "email_spec"
   gem "poltergeist"
   gem "vcr"
+	gem "excon"
 end
 
 group :production do

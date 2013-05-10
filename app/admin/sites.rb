@@ -3,7 +3,19 @@ ActiveAdmin.register Site do
 		f.inputs "Site" do
 			f.input :name	
 		end
-		f.inputs "Configuration" do
+
+		f.inputs do
+			f.object.email_configuration || f.object.build_email_configuration({from: 'noreply@bespeakbooking.com'}, as: :admin)
+			f.semantic_fields_for :email_configuration do |ec|
+				ec.inputs "Email Configuration" do
+					ec.input	:name
+					ec.input	:key, label: 'Mandrill API Key'
+					ec.input	:confirmation_template
+					ec.input	:reminder_template
+				end
+			end
+		end
+		f.inputs do
 			f.object.payment_processor || f.object.build_payment_processor({name: 'Authorize.NET'}, as: :admin)
 			f.semantic_fields_for :payment_processor do |pp|
 				pp.inputs "Payment Processor" do
@@ -22,6 +34,20 @@ ActiveAdmin.register Site do
 			row :id
 			row :name
 			row :token
+			
+			row :email_configuration_name do
+				site.email_configuration.name
+			end
+			row :email_configuration_key do
+				site.email_configuration.key
+			end
+			row :email_configuration_confirmation_template do
+				site.email_configuration.confirmation_template
+			end
+			row :email_configuration_reminder_template do
+				site.email_configuration.reminder_template
+			end
+			
 			
 			row :payment_processor do
 				site.payment_processor.name

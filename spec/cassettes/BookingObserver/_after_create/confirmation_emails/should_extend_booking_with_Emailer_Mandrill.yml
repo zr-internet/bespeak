@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mandrillapp.com/api/1.0/messages/send-template.json
+    body:
+      encoding: UTF-8
+      string: ! '{"template_name":"test confirmation template","template_content":[],"message":{"to":[{"email":"person1@example.com"}],"auto_text":true,"inline_css":true,"global_merge_vars":[{"name":"COURSE_NAME","content":"Test
+        Course Name"},{"name":"OFFICE_NAME","content":"Test Office Name"},{"name":"COURSE_START","content":"May
+        16th, 2013 12:02"},{"name":"OFFICE_ADDRESS","content":"Test "},{"name":"OFFICE_DIRECTIONS","content":"<p>Test
+        Directions\n<br />Turn left, then go straight</p>"}]},"async":false,"key":"this is a test mandrill key"}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 15 May 2013 16:02:12 GMT
+      Server:
+      - nginx/1.2.4
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.3.10-1ubuntu3.4
+      Content-Length:
+      - '90'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '[{"email":"person1@example.com","status":"sent","_id":"051da09fd1864765b696b0406d0ad64e"}]'
+    http_version: 
+  recorded_at: Wed, 15 May 2013 16:02:18 GMT
+recorded_with: VCR 2.4.0
