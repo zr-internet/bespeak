@@ -13,11 +13,13 @@ FactoryGirl.define do
 		end
 
 		after(:build) do |course, evaluator|
-			course.course_type.site = course.office.site = if course.site.present?
+			course.office.site = if course.site.present?
 				course.site
 			else
 				course.office.site
 			end
+			course.site = course.course_type.site = course.office.site
+			
 		end
   end
 end

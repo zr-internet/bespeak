@@ -72,7 +72,9 @@ $(function() {
 		};
 
 		Bespeak.bsp.process_booking(payload, 
-			function() {   window.top.location.href = 'http://www.massachusettsgunsafety.com/thanks.html' }, 
+			function(data, status, jqXHR) {
+			  window.top.location.href = data["confirmation_url"];
+			}, 
 			function(jqXHR, status, error) {
 			  submitButton.attr('disabled', false).text("Try again");
 				var errors = "";

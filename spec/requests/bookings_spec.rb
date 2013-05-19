@@ -52,6 +52,15 @@ describe "Bookings" do
 						response.should be_success
 					end
 					
+					context "data returned on successful booking" do
+						it "should include confirmation_page" do
+							post bookings_path(:format => :json), params
+							JSON.parse(response.body).should have_key "confirmation_url"
+						end
+					  
+					end
+					
+					
 					it "should create a booking for the course" do
 					  expect {
 							post bookings_path(:format => :json), params
@@ -116,7 +125,15 @@ describe "Bookings" do
 							post bookings_path(:format => :json), params
 							response.should be_success
 						end
-
+						
+						context "data returned on successful booking" do
+							it "should include confirmation_page" do
+								post bookings_path(:format => :json), params
+								JSON.parse(response.body).should have_key "confirmation_url"
+							end
+						  
+						end
+						
 						it "should create a booking for the course" do
 						  expect {
 								post bookings_path(:format => :json), params
@@ -155,6 +172,15 @@ describe "Bookings" do
 							post bookings_path(:format => :json), params
 							response.should be_success
 						end
+
+						context "data returned on successful booking" do
+							it "should include confirmation_page" do
+								post bookings_path(:format => :json), params
+								JSON.parse(response.body).should have_key "confirmation_url"
+							end
+						  
+						end
+
 
 						it "should create a booking for the course" do
 						  expect {

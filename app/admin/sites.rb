@@ -1,7 +1,8 @@
 ActiveAdmin.register Site do
   form do |f|
 		f.inputs "Site" do
-			f.input :name	
+			f.input :name
+			f.input :confirmation_url
 		end
 
 		f.inputs do
@@ -34,6 +35,8 @@ ActiveAdmin.register Site do
 			row :id
 			row :name
 			row :token
+			
+			row :confirmation_url
 			
 			row :email_configuration_name do
 				site.email_configuration.name

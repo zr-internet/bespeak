@@ -1,5 +1,5 @@
 class Site < ActiveRecord::Base
-  attr_accessible 	:name, :token, :payment_processor_attributes, :email_configuration_attributes, :as => :admin
+  attr_accessible 	:name, :token, :confirmation_url, :payment_processor_attributes, :email_configuration_attributes, :as => :admin
 	has_many					:courses, inverse_of: :site
 	has_many					:offices, inverse_of: :site
 	has_many					:course_types, inverse_of: :site

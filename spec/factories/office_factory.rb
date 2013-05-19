@@ -4,5 +4,7 @@ FactoryGirl.define do
 		address			"office address"
 		
 		time_zone		"Pacific Time (US & Canada)"
+		
+		site
   end
 end

@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :site do
-    name "Test Site"
-		token { Site.generate_token }
+    name								"Test Site"
+		token								{ Site.generate_token }
+		confirmation_url		"http://test.com/thanks"
   end
 
 	trait :authorize_net do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512001141) do
+ActiveRecord::Schema.define(:version => 20130519172430) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,8 +162,9 @@ ActiveRecord::Schema.define(:version => 20130512001141) do
   create_table "sites", :force => true do |t|
     t.string   "token"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "confirmation_url"
   end
 
   add_index "sites", ["token"], :name => "index_sites_on_token", :unique => true

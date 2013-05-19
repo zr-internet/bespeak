@@ -32,6 +32,8 @@ class BookingsController < InheritedResources::Base
 			payment.extend PaymentProcess::Processor
 			payment.process!(params[:payment_details])
 		end
-		create!
+		create! do |success, failure|
+			success.json { render json: { confirmation_url: @booking.site.confirmation_url } }
+		end
 	end	
 end
