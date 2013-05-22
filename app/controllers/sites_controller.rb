@@ -10,6 +10,11 @@ class SitesController < ApplicationController
 		@offices = @site.offices.all
 		@course_types = @site.course_types.all
 		@course_filters = @courses.map{ |c| CourseFilters.new(c.course_type, c.office) }.uniq.sort { |a,b| a.course_type.name + a.office.name <=> b.course_type.name + b.course_type.name }
+		@form = if @site.form.present?
+			@site.form
+		else
+			Form.default("formstack")
+		end.decorate
 		respond_with @courses
 	end
 	
@@ -35,9 +40,12 @@ class SitesController < ApplicationController
 		@offices = Office.all
 		@course_types = CourseType.all
 		@course_filters = @courses.map{ |c| CourseFilters.new(c.course_type, c.office) }.uniq.sort { |a,b| a.course_type.name + a.office.name <=> b.course_type.name + b.course_type.name }
+		@form = Form.default("formstack").decorate
+		
 		respond_with @courses do |format|
 			format.html { render 'formstack' }
 		end
+
 	end
 	
 	def old_book

@@ -26,6 +26,28 @@ ActiveAdmin.register Site do
 				end
 			end
 		end
+		f.inputs do
+			f.object.form || f.object.build_form({name: 'Form customization'}, as: :admin)
+			f.semantic_fields_for :form do |site_form|
+				site_form.inputs "Form Customization" do
+					site_form.input	:name
+					site_form.input	:template, collection: ["formstack"]
+				end
+				site_form.inputs "Content" do
+					site_form.semantic_fields_for :options do |opts|
+						opts.inputs do
+							opts.input "progress_step_1", required: false, input_html: { value: site_form.object.options["progress_step_1"]}
+							opts.input "progress_step_2", required: false, input_html: { value: site_form.object.options["progress_step_2"]}
+							opts.input "progress_step_3", required: false, input_html: { value: site_form.object.options["progress_step_3"]}
+							opts.input "step_1_title", required: false, input_html: { value: site_form.object.options["step_1_title"]}
+							opts.input "step_1_course_type_office_select_heading", required: false, input_html: { value: site_form.object.options["step_1_course_type_office_select_heading"]}
+							opts.input "step_2_title", required: false, input_html: { value: site_form.object.options["step_2_title"]}
+							opts.input "step_3_title", required: false, input_html: { value: site_form.object.options["step_3_title"]}	
+						end
+					end
+				end
+			end
+		end
 
 		f.actions
 	end

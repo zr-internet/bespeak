@@ -1,9 +1,9 @@
 %section#select-date
   %fieldset#filters
-    %legend 1. Select a Class Date
+    %legend= @form.value_for("step_1_title")
     .errors
     .license
-      %h4 Select License
+      %h4= @form.value_for("step_1_course_type_office_select_heading")
 
       #course-type-filter.controls-row
         - @course_filters.each do |course_filter|

@@ -11,9 +11,23 @@ describe "Sites" do
 				context "with an open course" do
 					let!(:course) { FactoryGirl.create(:open_course) }
 			
-					 it "should return a success code" do
+					it "should return a success code" do
 						get form_site_path(site)
 						response.should be_success
+					end
+					
+					context "with a site that has customized its form" do
+					  let!(:site) do
+							course.site.tap { |site| site.form = FactoryGirl.build(:customized_form, site: site); }
+						end
+					
+						it "should return a customized form with each value in form options" do
+							pending "getting an anonymous class here"
+							get form_site_path(site)
+							site.form.each do |k,v|
+								response.body.should include v
+							end
+						end
 					end
 				end
 			end

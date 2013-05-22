@@ -18,5 +18,4 @@ module ActiveAdmin::ViewsHelper
 		end
 		revenue
 	end
-
 end

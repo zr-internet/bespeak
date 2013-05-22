@@ -12,9 +12,9 @@
   %section.intro.row-fluid
     %header
       .progress
-        .bar.bar-success.active{:style => "width:34%;"} Select Date
-        .bar{:style => "width: 33%;"} Select Course
-        .bar{:style => "width: 33%;"} Review & Submit
+        .bar.bar-success.active{:style => "width:34%;"}= @form.value_for("progress_step_1")
+        .bar{:style => "width: 33%;"}= @form.value_for("progress_step_2")
+        .bar{:style => "width: 33%;"}= @form.value_for("progress_step_3")
         
     = render partial: 'select_date'
     = render partial: 'select_course'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519172430) do
+ActiveRecord::Schema.define(:version => 20130521062602) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,10 +116,12 @@ ActiveRecord::Schema.define(:version => 20130519172430) do
   add_index "email_configurations", ["site_id"], :name => "index_email_configurations_on_site_id"
 
   create_table "forms", :force => true do |t|
+    t.string   "name"
     t.string   "template"
-    t.string   "callback",   :default => "{{referrer}}"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.integer  "site_id"
+    t.text     "options"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "offices", :force => true do |t|
