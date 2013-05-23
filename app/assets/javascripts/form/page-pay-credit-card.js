@@ -52,6 +52,9 @@ $(function() {
 	jScope.on('change', 'input[name="attendees"]', function(e) {
 		jScope.find("div.total[name='due-now']").text(($(e.target).val() * Bespeak.selectedCourse.get_cost()).toFixed(2))
 	});
+	$(Bespeak.selectedCourse).on('change', function(e) {
+			jScope.find("div.total[name='due-now']").text(Bespeak.selectedCourse.get_cost())
+	});
 	
 	var submit = function() {
 		var submitButton = this;

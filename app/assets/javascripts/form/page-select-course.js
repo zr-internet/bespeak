@@ -15,6 +15,7 @@ $(function() {
 	
 	$(Bespeak.selectedCourse).on('change', function(e) {
 		jScope.find('span.course_type_name').text(e.target.get_course_type_name());
+		jScope.find('label.credit_card span.payment .cost').text("$" + e.target.get_cost());
 	});
 	
 	jScope.on('change', 'input[type="radio"][name="payment[method]"]', function(e) {

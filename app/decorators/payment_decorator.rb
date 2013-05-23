@@ -7,7 +7,7 @@ class PaymentDecorator < Draper::Decorator
 	end
 	
 	def price_now
-		prices = {cash: '$0', credit_card: '$95', coupon: '$0' }.freeze
+		prices = {cash: '$0', credit_card: "$0", coupon: '$0' }.freeze
 		prices[source.method]
 	end
 end
