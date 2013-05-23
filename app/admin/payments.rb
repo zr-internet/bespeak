@@ -50,7 +50,7 @@ ActiveAdmin.register Payment do
 		end
 		
 		def scoped_collection
-			Payment.includes(booking: [:customer, course: [:office, :course_type]])
+			end_of_association_chain.includes(booking: [:customer, course: [:office, :course_type]])
 		end
 		
 		def create
