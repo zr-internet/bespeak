@@ -49,6 +49,10 @@ ActiveAdmin.register Payment do
 			p
 		end
 		
+		def scoped_collection
+			Payment.includes(booking: [:customer, course: [:office, :course_type]])
+		end
+		
 		def create
 			create! do |format|
 				format.html do
