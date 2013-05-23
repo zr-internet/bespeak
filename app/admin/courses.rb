@@ -64,5 +64,9 @@ ActiveAdmin.register Course do
 			params[:course][:end_at] = timezone.parse(params[:course][:end_at])
 			super
 		end
+		
+		def scoped_collection
+			end_of_association_chain.includes(:bookings)
+		end
 	end
 end

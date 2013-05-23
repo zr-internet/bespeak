@@ -84,4 +84,10 @@ ActiveAdmin.register Booking do
 		end
 		f.buttons
 	end
+	
+	controller do
+		def scoped_collection
+			end_of_association_chain.includes(:payments, :customer, course: [:course_type, :office])
+		end
+	end
 end
