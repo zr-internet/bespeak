@@ -1,4 +1,6 @@
 require 'plain_text_params_filter'
+require "addressable/uri"
+
 
 class BookingsController < InheritedResources::Base
 	respond_to :json, :only => :create
@@ -33,7 +35,13 @@ class BookingsController < InheritedResources::Base
 			payment.process!(params[:payment_details])
 		end
 		create! do |success, failure|
-			success.json { render json: { confirmation_url: @booking.site.confirmation_url } }
+			success.json do
+				confirmation_url = Addressable::URI.parse(@booking.site.confirmation_url)
+				confirmation_url.query_values = {
+					tid: @booking.id, total: @booking.paid.to_s, course: @booking.course_name, price: @booking.course_cost.to_s, quantity: @booking.attendees
+				}.reverse_merge(confirmation_url.query_values || {})
+				render json: { confirmation_url: confirmation_url.to_s }
+			end
 		end
 	end	
 end

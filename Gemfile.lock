@@ -366,6 +366,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  addressable
   asset_sync
   authorize-net (~> 1.5.2)
   bourne
