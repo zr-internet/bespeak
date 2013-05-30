@@ -38,7 +38,7 @@ class BookingsController < InheritedResources::Base
 			success.json do
 				confirmation_url = Addressable::URI.parse(@booking.site.confirmation_url)
 				confirmation_url.query_values = {
-					tid: @booking.id, total: @booking.paid.to_s, course: @booking.course_name, price: @booking.course_cost.to_s, quantity: @booking.attendees
+					tid: @booking.id, total: @booking.paid.to_s, course: @booking.course_name, price: @booking.course_cost.to_s, quantity: @booking.attendees, office: @booking.office_name, time: @booking.course.decorate.start_date_time
 				}.reverse_merge(confirmation_url.query_values || {})
 				render json: { confirmation_url: confirmation_url.to_s }
 			end
