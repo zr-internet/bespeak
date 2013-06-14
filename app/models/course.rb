@@ -38,6 +38,9 @@ class Course < ActiveRecord::Base
 	delegate :name, :time_zone, :to => :office, :prefix => true, :allow_nil => true
 	
 	scope :upcoming, lambda { where('start_at >= ?', Time.zone.now) }
+	scope :recent, lambda { where('start_at >= ? and start_at <=', Time.zone.now - 1.week, Time.zone.now) }
+	scope :recent_and_upcoming, lambda { where('start_at >= ?', Time.zone.now - 1.week) }
+	
 	# TODO: Replace with code like: http://blog.donwilson.net/2011/11/constructing-a-less-than-simple-query-with-rails-and-arel/
 	def self.available
 		Rails.cache.fetch available_key do

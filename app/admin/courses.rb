@@ -2,6 +2,11 @@ ActiveAdmin.register Course do
 	belongs_to		:site, :finder => :find_by_token, :param => :site_id
 	navigation_menu	:site
 	
+	scope :all
+	scope :recent_and_upcoming, :default => true do |courses|
+		courses.recent_and_upcoming
+	end
+	
 	breadcrumb do
 		site = Site.find_by_token(params[:site_id])
 		breadcrumb = [
