@@ -1,0 +1,81 @@
+<html>
+<body>
+<h1>How to Create Your Site in Bespeak</h1>
+
+<p>Creating a new site in Bespeak is fairly easy, but to get the most out of the system there are a few moving pieces you'll want to make sure you stay on top of. This tutorial will cover the entire process from start to finish.</p>
+
+<h2>Step 1 - Create a New Site</h2>
+
+<p>The first step to creating a new site is to actually create the site in the backend. To do that login to bespeak and click on the sites menu item. From there you'll see a table with all your existing sites. Over on the upper left you'll see the "New Site" button. That's the button you want. Click it.</p>
+
+<p><strong>Congratulations! You've taken the first step.</strong></p>
+
+<h2>Step 2 - The New Site Form</h2>
+
+<p>At first glance the new site form may look a little overwhelming. There are countless fields to enter data into, and if you screw up some of them you may just find all of your money going to some random joker in Nunavit. But if you keep an even keel and follow these instructions closely, before long you'll have cash flowing into your bank account. Also remember, you don't have to enter all the information. You can add more details over time.</p>
+
+<p>Here is the form: <img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site.png" alt="new site form" title="New Site Form" /></p>
+
+<p>The first piece of information you'll want to enter is the site name. Enter that in the name field.
+<img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site-name.png" alt="new site name" title="New Site Name" /></p>
+
+<p>Next you'll want to enter your Payment Processor details. Currently Bespeak only supports Authorize.NET but we'll support additional payment processors in the future.</p>
+
+<p><img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site-payment-processor.png" alt="new site payment processor" title="New Site Payment Processor" /></p>
+
+<p>You can find your Authorize.NET API Login ID and API Key within the Authorize.NET interface.</p>
+
+<p>Now that you've got your site named and payments can come through you should save your work so far. Go ahead and click "Create Site" at the bottom of the form.</p>
+
+<h2>Step 3 - Setting Up Emails</h2>
+
+<p>Bespeak uses your <a href="http://mandrillapp.com">Mandrill</a> account to send out confirmation and reminder emails.</p>
+
+<p>Once you've logged into Mandrill you'll want to record your api key, you can find this under the settings menu on the top right (click the gear icon, then select SMTP &amp; API Credentials).</p>
+
+<p><img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site-mandrill-api-key.png" alt="Accessing the API Credentials" title="Accessing the API Credentials" /></p>
+
+<p>From the SMTP &amp; API Credentials Page you'll need to create a new API Key, simply click on the New API Key button fill in the description with the name of your site, and then copy the generated key to a convenient location so you can paste it into Bespeak later. The API Key allows Bespeak to communicate with Mandrill and instruct Mandrill to send emails.</p>
+
+<p>The next step is to create the emails you want to send. To get up and running quickly we'll focus on the confirmation email.</p>
+
+<p>The confirmation email is sent to customers after they have successfully booked a course. To create your confirmation email in Mandrill go to the Outbound menu and select Templates:</p>
+
+<p><img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site-mandrill-outbound-menu.png" alt="Templates in the Outbound Menu" title="" /></p>
+
+<p>Next click the "Create a Template" button, name your template SITE-NAME Booking Confirmation and click "Start Coding"</p>
+
+<p>Now you can build your confirmation email - you have access to the following placeholders: 
+<ul>
+	<li>*|COURSE_NAME|*</li>
+	<li>*|OFFICE_NAME|*</li>
+	<li>*|COURSE_START|*</li>
+	<li>*|OFFICE_ADDRESS|*</li>
+	<li>*|OFFICE_DIRECTIONS|*</li>
+</ul>
+
+<p><img src="http://assets-bespeak.s3.amazonaws.com/docs/bespeak-new-site-mandrill-example-email.png" alt="Example confirmation email" title="" /></p>
+
+<p>Once you are happy with your email copy the template slug and keep it with the API Key you copied earlier.</p>
+
+<p>Now go back to Bespeak, edit the site you are creating, and fill in the email details (use whatever you want for the name) and save your site.</p>
+
+<h2>Step 4 - Set Up Offices</h2>
+
+<p>Now that you have your emails set up it is time to scheduling courses, but before you do that we need to create offices and course types. First we create offices.</p>
+
+<p>From the site page click on offices in the right hand bar and then click "Create a New Office" and fill in the office details. Lather, rinse, and repeat until you have all your offices created.</p>
+
+<h2>Step 5 - Create Course Types</h2>
+
+<p>Now we to create the course types that people can sign up for. This process is very straight forward and basically works the same as creating a new office.</p>
+
+<h2>Step 6 - Schedule Courses</h2>
+
+<p>You guys already know how to do this.</p>
+
+<h2>Step 7 - Get the Bespeak Code Installed on Your Site</h2>
+
+<p>Crowdvert can handle this.</p>
+</body>
+</html>
