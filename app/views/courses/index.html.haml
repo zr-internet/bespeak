@@ -15,12 +15,10 @@
     %tr
       %td= course.office_id
       %td= course.course_type_id
-      %td= course.start
-      %td= course.end
+      %td= course.start_at
+      %td= course.end_at
       %td= course.max_occupancy
       %td= link_to 'Show', course
-      %td= link_to 'Edit', edit_course_path(course)
-      %td= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

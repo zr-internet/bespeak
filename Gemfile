@@ -46,6 +46,8 @@ gem 'draper', '~> 1'
 
 gem "dalli"
 
+gem 'rack-jsonp-middleware', :require => 'rack/jsonp'
+
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rack-cache'
 

@@ -7,7 +7,30 @@ describe "Sites" do
 		context "with an existing site" do
 		  let(:site) { FactoryGirl.create(:site) }
 		
-			describe "GET /sites/:id/form/" do		
+			describe "GET /sites/:param/courses/available.json" do
+				let(:action) { :get }
+				let(:path) { "/sites/#{site.to_param}/courses/available.json" }
+				before(:each) do
+					self.send(action, path)
+				end
+				subject { response }
+				
+				it { should be_success }
+			end
+			
+			describe "GET /sites/:param/courses/available.jsonp?callback=foo" do
+				let(:action) { :get }
+				let(:path) { "/sites/#{site.to_param}/courses/available.jsonp?callback=foo" }
+				before(:each) do
+					self.send(action, path)
+				end
+				subject { response }
+				
+				it { should be_success }
+				it { subject.body.should match /foo\(\[.*\]\);/}
+			end
+		
+			describe "GET /sites/:param/form/" do		
 				context "with an open course" do
 					let!(:course) { FactoryGirl.create(:open_course) }
 			

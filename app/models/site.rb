@@ -29,10 +29,35 @@ class Site < ActiveRecord::Base
 		token
 	end
 	
+	def available_key
+		"site-#{self.token}-courses-available-" + Digest::MD5.hexdigest("#{latest_course_updated_at.try(:to_i)}-#{courses_count}-#{next_course_start_at.try(:to_i)}-#{latest_booking_updated_at.try(:to_i)}-#{bookings_count}")
+	end
+	
+	def courses_count
+		self.courses.count
+	end
+	
+	def bookings_count
+		self.bookings.count
+	end
+	
+	def next_course_start_at
+		courses.upcoming.minimum(:start_at)
+	end
+	
+	def latest_course_updated_at
+		courses.maximum(:updated_at)
+	end
+	
+	def latest_booking_updated_at
+		bookings.maximum(:updated_at)
+	end
+	
 	def self.generate_token
 		begin
 			token = SecureRandom.urlsafe_base64(16)[0,16]
 		end while Site.where(:token => token).exists?
 		token
 	end
+	
 end

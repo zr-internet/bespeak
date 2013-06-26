@@ -18,7 +18,11 @@ Bespeak::Application.routes.draw do
 	match	'/book/payment' => 'sites#old_payment', :as => 'payment_book'
 	
 	resources :sites do
-		resources :courses
+		resources :courses do
+			collection do
+				get 'available'
+			end
+		end
 		member do
 			get 'form', action: 'formstack'
 			get 'payment'
