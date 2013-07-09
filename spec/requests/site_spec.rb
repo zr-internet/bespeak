@@ -16,6 +16,9 @@ describe "Sites" do
 				subject { response }
 				
 				it { should be_success }
+				it { subject.body.should match /offices/ }
+				it { subject.body.should match /courses/ }
+				it { subject.body.should match /course_types/ }
 			end
 			
 			describe "GET /sites/:param/courses/available.jsonp?callback=foo" do
@@ -26,6 +29,31 @@ describe "Sites" do
 				end
 				subject { response }
 				
+				it { should be_success }
+				it { subject.body.should match /foo\(\{.*\}\);/}
+			end
+			
+			describe "GET /sites/:param/offices.jsonp?callback=foo" do
+				let(:action) { :get }
+				let(:path) { "/sites/#{site.to_param}/offices.jsonp?callback=foo" }
+				before(:each) do
+					self.send(action, path)
+				end
+				subject { response }
+
+				it { should be_success }
+				it { subject.body.should match /foo\(\[.*\]\);/}
+			end
+			
+			
+			describe "GET /sites/:param/course_types.jsonp?callback=foo" do
+				let(:action) { :get }
+				let(:path) { "/sites/#{site.to_param}/course_types.jsonp?callback=foo" }
+				before(:each) do
+					self.send(action, path)
+				end
+				subject { response }
+
 				it { should be_success }
 				it { subject.body.should match /foo\(\[.*\]\);/}
 			end

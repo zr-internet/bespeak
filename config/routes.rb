@@ -23,6 +23,8 @@ Bespeak::Application.routes.draw do
 				get 'available'
 			end
 		end
+		resources :offices
+		resources :course_types
 		member do
 			get 'form', action: 'formstack'
 			get 'payment'

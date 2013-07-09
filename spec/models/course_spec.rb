@@ -137,6 +137,7 @@ describe Course do
 	describe "scopes" do
 		subject { Course }
 		it { should respond_to :available }
+		
 		it { should respond_to :upcoming }
 	end
 	

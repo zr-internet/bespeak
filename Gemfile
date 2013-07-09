@@ -85,6 +85,7 @@ group :test do
   gem "bourne"
   gem "timecop"
   gem "shoulda-matchers"
+	gem "json_spec"
   gem "email_spec"
   gem "poltergeist"
   gem "vcr"
