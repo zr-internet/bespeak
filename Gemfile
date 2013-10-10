@@ -38,11 +38,8 @@ gem 'money-rails'
 gem 'chronic'
 gem 'geocoder'
 gem 'rabl'
-gem 'honeybadger'
 gem "high_voltage"
 gem 'draper', '~> 1'
-
-
 
 gem "dalli"
 
@@ -96,4 +93,5 @@ group :production do
 	gem 'unicorn'
 	gem 'newrelic_rpm'
 	gem 'librato-rails'
+	gem 'airbrake_user_attributes'
 end

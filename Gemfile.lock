@@ -42,6 +42,11 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.4)
     aggregate (0.2.2)
+    airbrake (3.1.14)
+      builder
+      json
+    airbrake_user_attributes (0.1.6)
+      airbrake (~> 3.1.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -167,8 +172,6 @@ GEM
     hashie (2.0.4)
     high_voltage (1.2.2)
     hike (1.2.2)
-    honeybadger (1.6.2)
-      json
     http_parser.rb (0.5.3)
     i18n (0.6.1)
     inherited_resources (1.4.0)
@@ -372,6 +375,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   addressable
+  airbrake_user_attributes
   asset_sync
   authorize-net (~> 1.5.2)
   bourne
@@ -396,7 +400,6 @@ DEPENDENCIES
   haml (~> 4)
   haml-rails
   high_voltage
-  honeybadger
   jquery-rails
   json_spec
   less-rails
