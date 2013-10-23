@@ -94,4 +94,5 @@ group :production do
 	gem 'newrelic_rpm'
 	gem 'librato-rails'
 	gem 'airbrake_user_attributes'
+  gem 'memcachier'
 end
