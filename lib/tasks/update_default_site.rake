@@ -53,8 +53,14 @@ namespace :sites do
 			puts "Updating #{customers.count} customers."
 			ActiveRecord::Base.transaction do
 				customers.each do |c| 
-					assigned_site = c.bookings.first.course.site
-					c.update_attributes({site_id: assigned_site.id}, as: :admin) 
+					first_booking = c.bookings.first
+					if first_booking
+						course = first_booking.course
+						assigned_site = ccourse.site
+						c.update_attributes({site_id: assigned_site.id}, as: :admin)
+					else
+						puts "Customer #{c.id} no bookings"
+					end
 				end
 			end
 			
