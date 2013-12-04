@@ -60,7 +60,7 @@ namespace :sites do
 							assigned_site = course.site
 							c.update_attributes({site_id: assigned_site.id}, as: :admin)
 						else
-							puts "Course not found #{course.id}"
+							puts "Course not found #{first_booking.course_id}"
 						end
 					else
 						puts "Customer #{c.id} no bookings"
