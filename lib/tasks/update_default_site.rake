@@ -56,7 +56,7 @@ namespace :sites do
 					first_booking = c.bookings.first
 					if first_booking
 						course = first_booking.course
-						assigned_site = ccourse.site
+						assigned_site = course.site
 						c.update_attributes({site_id: assigned_site.id}, as: :admin)
 					else
 						puts "Customer #{c.id} no bookings"
