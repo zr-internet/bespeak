@@ -45,16 +45,17 @@ namespace :sites do
 			puts "completed"
 		end
 		
-		desc "update all customers not assigned to a site to the passed in site_id (defaults to Site.first.id)"
+		desc "update all customers not assigned to a site to the site of their first booking"
 		task :customers, [:site] => :environment do |t, args|
 			puts "Starting Sites::Update::Customers"
-			args.with_defaults(:site => Site.first.id)
 			
-			site = Site.find(args.site)
 			customers = Customer.where(site_id: nil)
 			puts "Updating #{customers.count} customers."
 			ActiveRecord::Base.transaction do
-				customers.each { |c| c.update_attributes({site_id: site.id}, as: :admin) }
+				customers.each do |c| 
+					assigned_site = c.bookings.first.course.site
+					c.update_attributes({site_id: assigned_site.id}, as: :admin) 
+				end
 			end
 			
 			puts "completed"

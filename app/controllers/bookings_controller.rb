@@ -8,10 +8,12 @@ class BookingsController < InheritedResources::Base
 	
 	def create
 		params_comb = [:course_id, :attendees, :email, :payment_method, :payment_details, :coupons]
-		customer = Customer.find_or_create_by_email(params[:email])
-		course = Course.find(params[:course_id])
 		
+		course = Course.find(params[:course_id])
+		site = course.site
+		customer = site.customers.where(email: params[:email]).first_or_create({}, as: :user)
 		@booking = course.bookings.new
+
 		@booking.customer, @booking.attendees = customer, params[:attendees]
 		
 		#process coupons prior to processing any payments

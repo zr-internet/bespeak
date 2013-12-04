@@ -70,7 +70,7 @@ describe "Bookings" do
 					it "should leave the customer owing the course value" do
 						post bookings_path(:format => :json), params
 						
-						customer = Customer.find_or_create_by_email(email)
+						customer = course.site.customers.where(email: email).first_or_create({}, as: :admin)
 						customer.owed.should == course.cost
 					end
 				end
@@ -141,14 +141,14 @@ describe "Bookings" do
 						end
 
 						it "should create a booking for the customer" do
-							customer = Customer.find_or_create_by_email(email)
+							customer = course.site.customers.where(email: email).first_or_create({}, as: :admin)
 						  expect {
 								post bookings_path(:format => :json), params
 							}.to change {customer.bookings.count }.by(1)
 						end
 
 						it "should create a coupon payment for the customer" do
-							customer = Customer.find_or_create_by_email(email)
+							customer = course.site.customers.where(email: email).first_or_create({}, as: :admin)
 
 						  expect {
 								post bookings_path(:format => :json), params
@@ -189,14 +189,14 @@ describe "Bookings" do
 						end
 
 						it "should create a booking for the customer" do
-							customer = Customer.find_or_create_by_email(email)
+							customer = course.site.customers.where(email: email).first_or_create({}, as: :admin)
 						  expect {
 								post bookings_path(:format => :json), params
 							}.to change {customer.bookings.count }.by(1)
 						end
 
 						it "should create a coupon payment for the customer" do
-							customer = Customer.find_or_create_by_email(email)
+							customer = course.site.customers.where(email: email).first_or_create({}, as: :admin)
 
 						  expect {
 								post bookings_path(:format => :json), params

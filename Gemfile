@@ -41,6 +41,8 @@ gem 'rabl'
 gem "high_voltage"
 gem 'draper', '~> 1'
 
+gem 'airbrake_user_attributes'
+
 gem "dalli"
 
 gem 'rack-jsonp-middleware', :require => 'rack/jsonp'
@@ -93,6 +95,5 @@ group :production do
 	gem 'unicorn'
 	gem 'newrelic_rpm'
 	gem 'librato-rails'
-	gem 'airbrake_user_attributes'
   gem 'memcachier'
 end
