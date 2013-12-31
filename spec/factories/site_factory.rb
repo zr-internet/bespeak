@@ -8,7 +8,9 @@ FactoryGirl.define do
   end
 
 	trait :authorize_net do
-		payment_processor
+		after(:build) do |site, evaluator|
+			site.build_payment_processor(FactoryGirl.attributes_for(:credit_card_payment_processor), as: :admin)
+		end
 	end
 	
 	trait :test_email do

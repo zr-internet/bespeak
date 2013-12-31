@@ -9,13 +9,14 @@ require 'spec_helper'
 # 	"payment_details"=>"[FILTERED]"
 # }
 
-describe "Bookings" do
+describe "Bookings", :vcr do
   describe "POST /bookings.json" do
 		let(:email)	{ "test@test.com" }
 		let(:name)	{ "Test User" }
+		let(:site) { FactoryGirl.create(:site, :authorize_net)}
 		
 		context "with an open course" do
-			let!(:course) { FactoryGirl.create(:open_course) }
+			let!(:course) { FactoryGirl.create(:open_course, site: site) }
 			
 			context "with text/plain post" do
 			  let(:params) {
@@ -84,26 +85,48 @@ describe "Bookings" do
 							"payment_method"=>"credit_card", 
 							"name"=>name, 
 							"payment_details"=> { 
-								"credit_card_number" => "4007000000027",
+								"credit_card_number" => "4111111111111",
 								"credit_card_expiration_month" => Time.now.month,
-								"credit_card_expiration_year" => Time.now.year,
-								"credit_card_ccv" => "1234"
+								"credit_card_expiration_year" => Time.now.year + 1,
+								"credit_card_ccv" => "123"
 							}
 						}
 					}
 					
 					context "with valid credit card details" do
 						it "should return a success code" do
-							pending "Need to implement credit card processing tests"
+							pending "I think I blew up Auth.net - not sure why vcr isn't working"
 							post bookings_path(:format => :json), params
 							response.should be_success
 						end
 
 						it "should create a booking for the course" do
-							pending "Need to implement credit card processing tests"
+							pending "I think I blew up Auth.net - not sure why vcr isn't working"
 						  expect {
 								post bookings_path(:format => :json), params
 							}.to change {course.bookings.count }.by(1)
+						end
+					end
+
+					context "with invalid credit card details" do
+						before(:each) do
+						  params["payment_details"]["credit_card_expiration_month"] = "13"
+						end
+
+						context "invalid experation date" do
+							it "should return a 422 code" do
+								pending "I think I blew up Auth.net - not sure why vcr isn't working"
+								post bookings_path(:format => :json), params
+								response.status.should == 422
+							end
+
+							it "should return an error for payments" do
+								pending "I think I blew up Auth.net - not sure why vcr isn't working"
+								post bookings_path(:format => :json), params
+								JSON.parse(response.body).should have_key "errors"
+								JSON.parse(response.body)["errors"].should have_key "payments"
+								JSON.parse(response.body)["errors"]["payments"].size.should  > 0
+							end  
 						end
 					end
 				end

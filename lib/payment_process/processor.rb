@@ -5,6 +5,7 @@ module PaymentProcess
 		AccessDetails = Struct.new(:login, :key)
 		
   	def process!(options)
+
   		self.token = nil
 
 			case self.method
@@ -37,8 +38,8 @@ module PaymentProcess
 						self.token = SecureRandom.urlsafe_base64(9)
 					end
   			else
-					logger.debug response.fields[:response_reason_text]
-  			  self.errors.add(:token, response.fields[:response_reason_text])
+  				reason = {code: response.fields[:response_reason_code] || "unknown", text: response.fields[:response_reason_text] || ""}
+					logger.debug reason.to_s
   			end
 			when self.class.payment_methods[:coupon]
 				self.token = options[:coupon_code]

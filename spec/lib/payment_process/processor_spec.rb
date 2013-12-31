@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PaymentProcess::Processor do
+describe PaymentProcess::Processor, :vcr do
 	subject { FactoryGirl.build_stubbed(:payment).extend PaymentProcess::Processor }
 	describe "#process!" do
 		it { should respond_to :process! }
@@ -20,8 +20,9 @@ describe PaymentProcess::Processor do
 			let(:payment) { FactoryGirl.build_stubbed(:credit_card_payment).extend PaymentProcess::Processor }
 			let(:options) { {credit_card_number: 'credit card number', credit_card_expiration_month: "credit card expiration month", credit_card_expiration_year: "credit card expiration year", card_code: 'credit card ccv'} }
 			let(:site) do
-				FactoryGirl.build_stubbed(:site, :authorize_net).tap do |s|
-					payment.booking.stub(site: s)
+				#TODO: CLean this up!!!
+				payment.booking.course.office.site.tap do |s|
+					s.build_payment_processor(FactoryGirl.attributes_for(:credit_card_payment_processor), :as => :admin)
 				end
 			end
 			
