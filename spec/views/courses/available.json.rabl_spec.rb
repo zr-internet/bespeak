@@ -51,15 +51,17 @@ describe "courses/available.json.rabl" do
 	end
 	
 	context "with a course" do
-		let(:course) { FactoryGirl.build(:course) }
-		let(:courses) { [course, FactoryGirl.build(:course)] }
+		let(:course) { FactoryGirl.build_stubbed(:course) }
+		let(:courses) { [course, FactoryGirl.build_stubbed(:course)] }
 		before(:each) do
 			render({template: 'courses/available', formats: :json, handlers: :rabl})
 		end
 
 
 		subject { rendered }
-		it { pending; should include course.id }
+		it { should include course.id.to_s }
+		it { should include course.start_at.to_i.to_s }
+		it { should include course.start_at.in_time_zone(course.office.time_zone).utc_offset.to_s }
 		it { pending; should have_json_size(1).at_path("courses") }
 	end
 
