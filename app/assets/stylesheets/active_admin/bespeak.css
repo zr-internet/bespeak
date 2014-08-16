@@ -1,2 +1,4 @@
 #revenue-by-site .site { margin-top: 1em; }
 #revenue-by-site .site h3 { margin-bottom: 0; line-height: 1.5em; }
+
+.panel ul > li { margin-bottom: .5em; }
