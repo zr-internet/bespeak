@@ -3,7 +3,7 @@ HOST_OS = RbConfig::CONFIG['host_os']
 
 source 'http://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.5'
 gem 'rails', '~> 3.2'
 gem 'rake', '~> 10.0'
 
@@ -71,9 +71,9 @@ group :development, :test do
   gem "foreman"
   gem "timecop"
   gem "growl"
-  unless ENV["CI"]
-    gem 'debugger'
-  end
+  #unless ENV["CI"]
+  #  gem 'debugger'
+  #end
 	gem 'thin'
 end
 
@@ -83,7 +83,6 @@ group :test do
 	gem "no_peeping_toms", "~> 2"
   gem "pickle"
   gem "bourne"
-  gem "timecop"
   gem "shoulda-matchers"
 	gem "json_spec"
   gem "email_spec"

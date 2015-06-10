@@ -1,6 +1,6 @@
 development: &default
   adapter: postgresql
-  database: bespeak_development
+  database: bespeak
   pool: 5
   timeout: 5000
 

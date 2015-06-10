@@ -14,3 +14,7 @@
 /log/*.log
 /tmp
 .env
+
+.ruby-version
+.ruby-gemset
+.DS_Store
