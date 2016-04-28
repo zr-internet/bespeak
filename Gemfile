@@ -1,7 +1,7 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby '2.1.5'
 gem 'rails', '~> 3.2'
